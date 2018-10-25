@@ -24,8 +24,9 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  database: hoge_app_production
+  database: threways_nikunabi_db
   username: root
-  password: root # その1で設定したサーバー側のmysqlのパスワード
-  socket: /var/lib/mysql/mysql.sock
+  password: PpDH7562kXS3 # その1で設定したサーバー側のmysqlのパスワード
+  socket: /tmp/mysql.sock
+  host: 133.167.104.12
 
