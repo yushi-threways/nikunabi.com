@@ -12,7 +12,7 @@ working_directory "#{app_path}"
 # リクエストを受け取る ポート番号を指定
 listen "/home/threwaysuser/nikunabi/shared/tmp/sockets/unicorn.sock"
 # PIDの管理ディレクトリ
-pid "/home/threwaysuser/nikunabi/shared/tmp/pids/unicorn.pid" # nginxで指定したパスを設定してください
+pid "/home/threwaysuser/nikunabi/tmp/pids/unicorn.pid" # nginxで指定したパスを設定してください
 
 stdout_path "#{app_path}/log/unicorn.log"
 stderr_path "#{app_path}/log/unicorn.log"

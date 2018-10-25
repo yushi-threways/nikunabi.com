@@ -49,10 +49,12 @@ server "133.167.104.12", user: "threwaysuser", roles: %w{app db web}, port: 22
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-set ssh_options, {
-  port: 22,
-  keys: %w(/Users/yushiseki/.ssh/id_rsa),
-  forward_agent: ture,
-  auth_methods: %w(publickey)
-  # password: "please use keys"
-}
+server "133.167.104.12",
+  user: "threwaysuser",
+  ssh_options: {
+    user: "user_name", # overrides user setting above
+    keys: %w(/Users/yushiseki/.ssh/id_rsa),
+    forward_agent: false,
+    auth_methods: %w(publickey)
+    # password: "please use keys"
+  }
