@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  concept: 
+  particular: 
+  image: 
+  user: one
+
+two:
+  concept: 
+  particular: 
+  image: 
+  user: two

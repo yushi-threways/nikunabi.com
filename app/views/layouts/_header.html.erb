@@ -1,0 +1,100 @@
+<header class="nikunabi_header">
+  <div class="nikunabi_sub_nav container">
+    <h1 class="h5 nikunabi_title">名古屋肉専門の情報サイト - ニクナビ</h1>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "ヘルプ", help_path %></li>
+        <li><%= link_to "ニクナビとは？", about_path %></li>
+        <% if shop_signed_in? %>
+        <li><%= link_to current_shop.name, mypages_shop_path(current_shop) %></li>
+        <li><%= link_to 'ログアウト', destroy_shop_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to '店舗を登録する', new_shop_registration_path %></li>
+        <li><%= link_to 'ログイン', new_shop_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
+  <nav class="navbar navbar-default <% if current_page?(root_path) %>mb-0<% end %>">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+           <%= link_to image_tag('nikunabi_logo.png', { :border => '0', :alt => 'logp'}), root_path, id: "logo", class: "nikunabi-logo" %>
+				</div>
+		
+				<div class="navbar-collapse collapse" id="navbarEexample" aria-expanded="false" style="height: 1px;">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ドロップダウン <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">リンク・リスト１</a></li>
+								<li><a href="#">リンク・リスト２</a></li>
+								<li><a href="#">リンク・リスト３</a></li>
+							</ul>
+						</li>
+					</ul>
+           <%= search_form_for @q, url: search_path, class: "navbar-form navbar-left", role: "search" do |f| %>
+              <a id="serch-drop-js" type="button" href="javascript:void(0)" role="button" aria-expanded="false">自信のある部位<span class="caret"></span></a>
+							<ul id="search-drop-check" class="dropdown-menu" role="menu" style="display: none;">
+              <div class="form-group">
+                <%= f.collection_check_boxes(:recommends_id_eq_all, @recommends, :id, :name, include_hidden: false) do |b| %>
+                  <div class="btn-group" data-toggle="buttons">
+                    <%= b.label(class:"btn btn-danger") do %>
+                        <%= b.check_box(class: "check_box", autocomplete: "off") %><%= b.object.name %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+							</ul>
+             <script>
+            $(function(){
+              $('#serch-drop-js').click(function(){
+                
+                });
+              });
+          </script>
+              <div class="form-group"><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...', class: "form-control" %></div>
+              <%= f.submit ("検索") , class: 'btn btn-default'%>
+            <% end %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">メニュー</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ドロップダウン <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">リンク・リスト１</a></li>
+								<li><a href="#">リンク・リスト２</a></li>
+								<li><a href="#">リンク・リスト３</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+  <% if current_page?(root_path) %>
+  <div class="nikunabi_main_img">
+    <%= image_tag ('nikunabi_main_home.jpg') %>
+  </div>
+  <div class="container-fluid">
+      <div class="nikinabi_info_top">
+        <div class="container">
+        <p><i class="far fa-lightbulb"></i> お知らせ       日付  最新のお知らせが入ります</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script>
+    $('.dropdown-toggle').dropdown()
+  </script>
+
+</header>

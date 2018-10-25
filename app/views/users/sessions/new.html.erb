@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render 'layouts/head' %>
+    <%= render 'layouts/shim' %>
+</head>
+<body>
+  <header class="nikunabi_header">
+    <div class="nikunabi_sub_nav container">
+      <h1 class="h5 nikunabi_title">名古屋肉専門の情報サイト - ニクナビ</h1>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "ヘルプ", help_path %></li>
+          <li><%= link_to "ニクナビとは？", about_path %></li>
+          <% if user_signed_in? %>
+          <li><%= link_to current_user.name, user_path(current_user) %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li><%= link_to '店舗を登録する', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+    <div class="navbar navbar-default mb-0">
+      <div class="container">
+        <%= link_to "NIKUNABI", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script>
+      $('.dropdown-toggle').dropdown()
+    </script>
+
+  </header>
+       <div class="container-fluid">
+         <div class="row">
+           <div class="col-md-5 col-md-offset-4">
+
+             <h2>ログイン</h2>
+         <% resource = User.new unless resource %>
+         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+           <div class="field">
+             <%= f.label :メールアドレス %><br />
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+           </div>
+
+           <div class="field">
+             <%= f.label :パスワード %><br />
+             <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+           </div>
+
+           <% if devise_mapping.rememberable? -%>
+             <div class="field">
+               <%= f.check_box :remember_me %>
+               <%= f.label :ログイン情報を保存する %>
+             </div>
+           <% end -%>
+
+           <div class="actions">
+             <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+           </div>
+         <% end %>
+
+         <%= render "users/shared/links" %>
+           </div>
+         </div>
+       </div>
+       <footer class="footer">
+         
+         <nav>
+
+         </nav>
+       </footer>
+   </body>
+</html>

@@ -1,0 +1,173 @@
+
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sta-Home_Header {
+  background-color: #ff8585;
+  color: #fff;
+  // background: image-url("nikunabi_top.jpg") no-repeat center top;
+  h2 {
+    padding: 30px 0;
+  }
+}
+
+.nikinabi_info_top {
+  border-top:3px solid #ff8585;
+  border-bottom:3px solid #ff8585;
+  margin: 20px 0;
+  p {
+    margin: 0 auto;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+.new_top_list {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    .new_top_list-item {
+      margin: 0 auto 20px;
+      border-top: 2px solid #eeece4;
+      .nikunabi_new-open {
+        &-left {
+          float: left;
+        }
+        &-img {
+          img {
+            vertical-align: bottom;
+            padding: 3px;
+            border: 1px solid #ff8585;
+          }
+        }
+        &-name {
+          border-bottom: 1px solid #eeece4;
+          margin: 0 auto 10px;
+          p {
+            padding: 5px 0;
+            margin: 0 auto;
+            .new-open-name {
+              font-size: 20px;
+              font-weight: bold;
+              color: #ff8585;
+              letter-spacing: 1px;
+            }
+            .new-open-strc {
+              line-height: 20px;
+              color: #949499;
+              font-size: 14px;
+            }
+            .new-open-category {
+              line-height: 20px;
+              color: #949499;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.nikunabi_new-ope-left-img {
+  width: 22%;
+}
+.nikunabi_new-ope-left-detail {
+    width: 78%;
+}
+
+.top-nikunabi_list_cate {
+  li {
+    margin: 0 auto 12px;
+  }
+}
+
+.nikunabi_top-blog {
+  ul {
+    padding: 0;
+    margin: 0 auto 30px;
+    list-style-type: none;
+    li {
+      margin: 0 auto 10px;
+      img {
+        max-width: 100%;
+        vertical-align: bottom;
+        height: 120px;
+      }
+    }
+  }
+  h3 {
+    span {
+      line-height: 24px;
+      font-size: 14px;
+      color: #949499;
+    }
+  }
+}
+
+.top-nikunabi_blog-list {
+  padding: 10px;
+  border: 1px solid #eeece4;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.top-nikunabi_blog-img {
+  text-align: center;
+  img {
+
+  }
+}
+.top-nikunabi_blog-content {
+  h4 {
+    font-size: 14px;
+    border-bottom: 1px solid #eeece4;
+  }
+  p {
+    font-size: 10px;
+    color: #949499;
+  }
+}
+
+.nikunabi_shop_tag {
+  color: #fff;
+  padding: 5px 0 0 ;
+  &-recommend {
+    li {
+      font-size: 10px;
+      margin: 0 auto 10px !important;
+      display: inline-block;
+      padding: 3px 5px;
+      background-color: #ff8585;
+      border-radius: 3px;
+      border: 1px solid #f15555 !important;
+    }
+  }
+  &-feature {
+    li {
+      font-size: 10px;
+      margin: 0 auto 10px !important;
+      display: inline-block;
+      padding: 3px 5px;
+      background-color: #ff8585;
+      border-radius: 3px;
+      border: 1px solid #f15555 !important;
+    }
+  }
+}
+
+.home-city-list {
+  li {
+    margin: 0 auto 10px;
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 5px;
+      display: inline-block;
+      border: #f15555 1px solid;
+      border-radius: 2px;
+      color: #f15555;
+    }
+  }
+}

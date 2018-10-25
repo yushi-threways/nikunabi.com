@@ -1,0 +1,38 @@
+<% provide(:title, "ユーザー情報") %>
+
+<% content_for :page_h1 do %>
+<h1>
+  ユーザー情報
+  <small>店舗ユーザー情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+<div class="box box-primary">
+  <div class="container">
+    <table class="table table-striped">
+      <tr>
+        <th>id</th>
+        <td><%= @user.id %></td>
+      </tr>
+      <tr>
+        <th>店名</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @user.telNumber %></td>
+      </tr>
+
+    </table>
+  </div>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>

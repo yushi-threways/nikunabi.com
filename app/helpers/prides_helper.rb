@@ -1,0 +1,2 @@
+module PridesHelper
+end

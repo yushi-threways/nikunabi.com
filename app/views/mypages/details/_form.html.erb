@@ -1,0 +1,115 @@
+<%= form_with(model: [:mypages, @detail], url: (@detail.new_record? ? [:mypages ,:shop, @detail]: [:mypages, @detail]), local: true) do |form| %>
+  <% if detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(detail.errors.count, "error") %> prohibited this detail from being saved:</h2>
+
+      <ul>
+      <% detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :open, '営業時間' %>
+    <%= form.text_area :open, class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :holiday, '定休日' %>
+    <%= form.text_area :holiday, class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :access, 'アクセス' %>
+    <%= form.text_area :access, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :parking, '駐車場' %>
+    <label class="radio-inline"><%= form.radio_button :parking, "駐車場有り" %> 駐車場有り </label>
+    <label class="radio-inline"><%= form.radio_button :parking, "駐車場無し" %> 駐車場無し </label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :concept, '内装イメージ', class: 'control-label' %>
+      <label class="radio-inline"><%= form.radio_button :concept, "指定しない" %> 指定しない </label>
+      <label class="radio-inline"><%= form.radio_button :concept, "高級焼肉店" %> 高級焼肉店 </label>
+      <label class="radio-inline"><%= form.radio_button :concept, "リーズナブル" %> リーズナブル </label>
+      <label class="radio-inline"><%= form.radio_button :concept, "居酒屋" %> 居酒屋 </label>
+      <label class="radio-inline"><%= form.radio_button :concept, "バー" %> バー </label>
+      <label class="radio-inline"><%= form.radio_button :concept, "カフェ" %> カフェ </label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :facility, '設備' %>
+    <label class="radio-inline"><%= form.radio_button :facility, "指定しない" %> 指定しない</label>
+    <label class="radio-inline"><%= form.radio_button :facility, "無煙ロースター" %> 無煙ロースター </label>
+    <label class="radio-inline"><%= form.radio_button :facility, "ロースター" %> ロースター </label>
+    <label class="radio-inline"><%= form.radio_button :facility, "炭火焼" %> 炭火焼 </label>
+    <label class="radio-inline"><%= form.radio_button :facility, "炉端焼き" %> 炉端焼き</label>
+    <label class="radio-inline"><%= form.radio_button :facility, "一人焼肉" %> 一人焼肉</label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :light, '店内明るさ' %>
+    <label class="radio-inline"><%= form.radio_button :light, "指定しない" %> 指定しない </label>
+    <label class="radio-inline"><%= form.radio_button :light, "明るい" %> 明るい </label>
+    <label class="radio-inline"><%= form.radio_button :light, "暗い" %> 暗い </label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :vibe, '店内雰囲気' %>
+    <label class="radio-inline"><%= form.radio_button :vibe, "指定しない" %> 指定しない </label>
+    <label class="radio-inline"><%= form.radio_button :vibe, "賑やか" %> 賑やか </label>
+    <label class="radio-inline"><%= form.radio_button :vibe, "落ち着いている" %> 落ち着いている </label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :scnee, 'シーン' %><br />
+    <%= collection_check_boxes(:detail, :scene_ids, Scene.all, :id, :name) do |r| %>
+      <div class="btn-group">
+        <%= r.label{ r.check_box + r.text } %>
+      </div>
+    <% end %>
+  </div>
+
+  
+
+  <div class="form-group">
+    <%= form.label :room, '席' %><br />
+    <%= collection_check_boxes(:detail, :room_ids, Room.all, :id, :name) do |r| %>
+      <div class="btn-group">
+        <%= r.label{ r.check_box + r.text } %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :禁煙・喫煙 %>
+    <label class="radio-inline"><%= form.radio_button :smoking, "喫煙" %> 喫煙</label>
+    <label class="radio-inline"><%= form.radio_button :smoking, "禁煙" %> 禁煙</label>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :お支払い方法 %>
+    <%= form.text_area :payment, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :account, "SNSアカウント" %>
+    <%= form.text_field :account, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :店舗トップ画像 %><br>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="box-footer">
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary btn-block' %>
+    </div>
+  </div>
+<% end %>

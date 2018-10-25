@@ -1,0 +1,103 @@
+  <div class="container">
+    <h2>無料店舗アカウント登録</h2>
+
+    <p style="margin; 20px 0;">
+      貴店の情報をご入力ください。<br />
+      店の詳細情報は本登録後設定可能です。
+    </p>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :店舗名 %><br />
+        <%= f.text_field :name, :placeholder => "ニクナビ焼肉", autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :店舗名サブタイトル %><br />
+        <%= f.text_field :description, :placeholder => "ニクナビ焼肉王道焼肉", autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :電話番号 %><br />
+        <%= f.text_field :telNumber, :placeholder => "0520000000", autofocus: true, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード確認用 %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+      </div>
+
+      <%= f.fields_for :address, Address.new do |address| %>
+      <div class="form-group">
+        <%= address.label :郵便番号 %>
+        <%= address.text_field :zipcode, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :市区町村 %>
+        <%= f.collection_select( :city_id, City.all, :id, :city, {prompt: ""}, {class: "form-control"}) %>
+      </div>
+
+      <div class="form-group">
+        <%= address.label :町名番地 %>
+        <%= address.text_field :street, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= address.label :建物名 %>
+        <%= address.text_field :building, class: 'form-control'%>
+      </div>
+
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :おすすめ商品 %><br />
+        <em>最大10個まで選択可能です。</em><br />
+        <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
+        <div class="btn-group">
+          <%= r.label{ r.check_box + r.text } %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :店内サービス %><br />
+        <%= collection_check_boxes(:shop, :feature_ids, Feature.all, :id, :name) do |r| %>
+        <div class="btn-group">
+          <%= r.label{ r.check_box + r.text } %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "仮登録する", class: "btn btn-primary btn-block" %>
+      </div>
+
+    <% end %>
+
+
+    <div class="text-right">
+      <%= render "users/shared/links" %>
+    </div>
+
+    <p style="margin: 10px 0;">
+      フォーム送信後登録したメールアドレスにメールが届きます。<br />
+      そのメールから本登録へお進みください。
+    </p>
+  </div>

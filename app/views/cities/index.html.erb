@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<div class="">
+  <div class="col-xs-12 col-md-2 ccol-sm-2">
+    <%= render :partial => "search/search_form" %>
+  </div>
+
+  <div class="col-xs-12 col-md-10 ccol-sm-10">
+    <h1>愛知県の店舗一覧</h1>
+    <article class="new_top_list">
+      <ul >
+        <% @shops.each do |shop| %>
+         <%= render :partial => "shops/shop_list", locals: { shop: shop } %>
+        <% end %>
+      </ul>
+
+    </article>
+  </div>
+</div>

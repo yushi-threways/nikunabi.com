@@ -1,0 +1,57 @@
+<li class="new_top_list-item">
+<div class="nikunabi_new-open">
+          <div class="nikunabi_new-open-name">
+            <div class="clearfix">
+                <p class="col-xs-10">
+                  <span class="new-open-name"><%= shop.name  %></span>　<span class="new-open-strc">
+                  <%= link_to shop.city[:city], shops_city_path(:id => shop.city_id) %></span></p>
+                <p class="col-xs-2">
+                <%= link_to "詳細を見る", shops_city_shop_path(:city_id => shop.city_id, :id => shop.id) %>
+                </p>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="nikunabi_new-open-left nikunabi_new-ope-left-img">
+              <div class="nikunabi_new-open-img">
+              <% unless shop.details.nil? %>
+                <%= image_tag shop.details.image.url, :size => "150x150" %>
+              <% end %>
+              </div>
+            </div>
+            <div class="nikunabi_new-open-left nikunabi_new-ope-left-detail">
+              <div class="nikunabi_new-open-info">
+                <% unless shop.details.nil? %>
+                <p>営業時間：<%= shop.details.open %></p>
+                <p>定休日：<%= shop.details.holiday %></p>
+                <p>
+                アクセス：<%= shop.details.access %><br>
+                </p>
+                <p>エリア： <%= shop.city[:city] %><%= shop.address.street %><%= shop.address.building %></p>
+                <% unless shop.details.rooms.nil? %>
+                 <ul class="list-inline">
+                 <li>席：</li>
+                  <% shop.details.rooms.each do |room| %>
+                    <li><%= room.name %></li>
+                  <%- end %>
+                 </ul>
+                 <% end %>
+                <p>喫煙・禁煙：<%= shop.details.smoking %></p>
+                <p>お支払い方法：<%= shop.details.payment %></p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="nikunabi_shop_tag">
+            <ul class="nikunabi_shop_tag-recommend">
+              <% shop.recommends.each do |recommend| %>
+                <li><%= recommend.name %></li>
+              <%- end %>
+            </ul>
+            <ul class="nikunabi_shop_tag-feature">
+              <% shop.features.each do |feature| %>
+                <li><%= feature.name %></li>
+              <%- end %>
+            </ul>
+          </div>
+        </div>
+      </li>

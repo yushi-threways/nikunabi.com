@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-md-8 col-sm-8">
+  <article class="new_top_list">
+    <h3>店舗一覧</h3>
+    <ul >
+      <% @shops.each do |shop| %>
+            <%= render :partial => "shop_list", locals: { shop: shop } %>
+      <% end %>
+    </ul>
+  </article>
+</div>
+
+<div class="col-xs-12 col-md-3">
+  <%= render 'layouts/sidebar' %>
+</div>

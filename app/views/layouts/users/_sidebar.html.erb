@@ -1,0 +1,97 @@
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel">
+      <div>
+        <p style="color:#fff;"><%= current_shop.name %></p>
+      </div>
+    </div>
+
+    <!-- search form (Optional) -->
+    <% if shop_signed_in? %>
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </form>
+    <% end %>
+    <!-- /.search form -->
+    <ul class="sidebar-menu">
+    <li class="header">店舗情報</li>
+    <li>
+      <%= link_to mypages_shop_path(current_shop) do %>
+      <i class="fa fa-link"></i> <span>基本情報</span></a>
+      <% end %>
+    </li>
+    <li>
+      <% if current_shop.address %>
+        <%= link_to edit_mypages_address_url(current_shop.address) do %>
+        <i class="fa fa-link"></i> <span>アクセス情報編集</span></a>
+        <% end %>
+      <% else %>
+        <%= link_to new_mypages_shop_address_path(current_shop) do %>
+          <i class="fa fa-link"></i> <span>アクセス情報追加</span></a>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <% if current_shop.details %>
+        <%= link_to edit_mypages_detail_path(current_shop.details) do %>
+        <i class="fa fa-link"></i> <span>詳細情報編集</span></a>
+        <% end %>
+      <% else %>
+        <%= link_to new_mypages_shop_detail_path(current_shop) do %>
+          <i class="fa fa-link"></i> <span>詳細情報追加</span></a>
+        <% end %>
+      <% end %>
+    </li>
+    <li class="treeview">
+      <a href="#"><i class="fa fa-link"></i> <span>メニュー</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to mypages_shop_menus_url(current_shop) do %>
+          <i class="fa fa-link"></i> <span>メニュー一覧</span></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_mypages_shop_menu_path(current_shop) do %>
+          <i class="fa fa-link"></i> <span>メニュー作成</span></a>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="treeview">
+      <a href="#"><i class="fa fa-link"></i> <span>こだわり</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to mypages_shop_prides_url(current_shop) do %>
+          <i class="fa fa-link"></i> <span>こだわり一覧</span></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_mypages_shop_pride_path(current_shop) do %>
+          <i class="fa fa-link"></i> <span>こだわり作成</span></a>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  </section>
+  <!-- /.sidebar -->
+</aside>

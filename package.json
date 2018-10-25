@@ -1,0 +1,7 @@
+{
+  "name": "nikunabi",
+  "private": true,
+  "dependencies": {
+    "pretty-checkbox": "^3.0.3"
+  }
+}

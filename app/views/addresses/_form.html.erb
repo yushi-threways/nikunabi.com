@@ -1,0 +1,35 @@
+
+<%= form_with(model: @address, url: (@address.new_record? ? [:shop, @address]: @address), local: true) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :郵便番号 %><br />
+    <%= form.text_field :zipcode, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :番地 %><br />
+    <%= form.text_field :street, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :建物名 %><br />
+    <%= form.text_field :building, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+  </div>
+<% end %>

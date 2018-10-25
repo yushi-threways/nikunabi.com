@@ -1,0 +1,60 @@
+<header class="main-header">
+
+  <!-- Logo -->
+  <%= link_to root_path, class:"logo" do %>
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>NK</b>U</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>NKNB</b>User</span>
+    <% end %>
+
+<!-- Header Navbar -->
+<nav class="navbar navbar-static-top" role="navigation">
+  <!-- Sidebar toggle button-->
+  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+    <span class="sr-only">Toggle navigation</span>
+  </a>
+  <!-- Navbar Right Menu -->
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <!-- Messages: style can be found in dropdown.less-->
+      <li><!-- Task item -->
+        <%= link_to shops_city_shop_path(:city_id => current_shop.city_id, :id => current_shop.id) do %>
+        <%= fa_icon "building", text: "店舗ページを見る"  %>
+        <% end %>
+      </li>
+    
+      <!-- User Account Menu -->
+      <li class="dropdown user user-menu">
+        <!-- Menu Toggle Button -->
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <!-- The user image in the navbar-->
+          <!-- hidden-xs hides the username on small devices so only the image appears. -->
+          <% if shop_signed_in? %>
+          <span class="hidden-xs"><%= current_shop.name %></span>
+          <% else %>
+          <% end %>
+        </a>
+        <ul class="dropdown-menu">
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <% if shop_signed_in? %>
+            <div class="pull-left">
+              <%= link_to '店舗情報編集', edit_shop_registration_path(current_shop), class: "btn btn-default btn-flat" %>
+            </div>
+            <div class="pull-right">
+              <%= link_to 'ログアウト', destroy_shop_session_path, method: :delete, class: "btn btn-default btn-flat" %>
+            </div>
+            <% else %>
+            <div class="pull-right">
+              <%= link_to 'ログイン', new_shop_session_path, class: "btn btn-default btn-flat" %>
+            </div>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>

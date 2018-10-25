@@ -1,0 +1,15 @@
+<% breadcrumb :shops %>
+<div class="col-xs-12 col-md-2 ccol-sm-2">
+  <%= render :partial => "search/search_form" %>
+</div>
+
+<div class="col-xs-12 col-md-10 col-sm-10">
+  <article class="new_top_list">
+    <h3>店舗一覧</h3>
+    <ul >
+      <% @shops.each do |shop| %>
+      <%= render :partial => "shop_list", locals: { shop: shop } %>
+      <% end %>
+    </ul>
+  </article>
+</div>

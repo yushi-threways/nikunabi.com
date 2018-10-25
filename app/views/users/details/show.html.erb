@@ -1,0 +1,56 @@
+<% provide(:title, "店舗詳細情報") %>
+
+<% content_for :page_h1 do %>
+<h1>
+  店舗情報
+  <small>店舗詳細情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+<div class="box box-primary">
+    <p id="notice"><%= notice %></p>
+      <table class="table table-striped">
+        <tr>
+          <th>営業時間</th>
+          <td>
+            <%= @detail.open %>
+          </td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td>
+            <%= @detail.holiday %>
+          </td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td>
+            <%= @detail.parking %>
+          </td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
+          <td>
+            <%= @detail.payment %>
+          </td>
+        </tr>
+        <tr>
+          <th>個室</th>
+          <td>
+            <%= @detail.room %>
+          </td>
+        </tr>
+        <tr>
+          <th>禁煙・喫煙</th>
+          <td>
+            <%= @detail.smoking %>
+          </td>
+        </tr>
+      </table>
+      <%= link_to '編集', edit_users_detail_path(@detail) %> |
+
+</div>

@@ -1,0 +1,31 @@
+<%= search_form_for(@q, url:search_path, method: :get, local: true) do |form| %>
+
+
+<div class="form-group">
+  <%= form.label :city_id_in, '検索地域', class: "label-control" %><br />
+  <div class="checkbox-inline">
+  <%= form.collection_check_boxes :city_id_in, @search_cities, :id, :city, include_hidden: false %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :recommends_id_eq_all, 'こだわり検索', class: "label-control" %><br />
+  <div class="checkbox-inline">
+  <%= form.collection_check_boxes :recommends_id_eq_all, @search_recommends, :id, :name, include_hidden: false %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= form.label :features_id_eq_all, '詳細検索', class: "label-control" %><br />
+  <div class="checkbox-inline">
+  <%= form.collection_check_boxes :features_id_eq_all, @search_features, :id, :name, include_hidden: false %>
+  </div>
+</div>
+
+  <div class="form-group">
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+  </div>
+
+<% end %>

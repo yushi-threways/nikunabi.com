@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+
+.field {
+  padding: 10px 0;
+}
+
+// 共通
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.nikunabi_main_img {
+  img {
+    max-width: 100%;
+  }
+}
+
+.nikunabi_btn_white {
+  a {
+    color: #fff;
+  }
+}
+
+article {
+  margin: 0 auto 50px;
+}

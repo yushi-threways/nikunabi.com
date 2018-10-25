@@ -1,0 +1,48 @@
+<% provide(:title, "店舗基本情報編集") %>
+
+<% content_for :page_h1 do %>
+<h1>
+  店舗情報
+  <small>店舗情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">店舗基本情報</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                  <th>コンセプト</th>
+                  <th><%= @shop.concept %></th>
+                </tr>
+                <tr>
+                  <td>こだわり</td>
+                  <td><%= @shop.particular %></td>
+                </tr>
+                <tr>
+                  <td>店舗トップ画像</td>
+                  <td>
+                    <%= image_tag(@shop.image.to_s) %>
+                  </td>
+                </tr>
+              </tbody></table>
+              <div class="box-body text-right">
+                <%= link_to edit_shop_path(@shop) do %>
+                    編集する</a>
+                <% end %>
+              </div>
+          </div>
+      </div>
+      <%= link_to "Back", :back %>
+
+    </div>
+  </div>

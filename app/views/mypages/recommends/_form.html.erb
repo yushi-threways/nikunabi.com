@@ -1,0 +1,22 @@
+<%= form_with(model: @recommend, url: (@recommend.new_record? ? [:mypages ,:shop, @recommend]: [:mypages, @recommend]), local: true) do |form| %>
+  <% if recommend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recommend.errors.count, "error") %> prohibited this recommend from being saved:</h2>
+
+      <ul>
+      <% recommend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+   <%= form.label :recommend %><br />
+   <%= form.collection_check_boxes(:recommends_ids, Recommend.all, :id, :name)  %>
+ </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
