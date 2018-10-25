@@ -41,21 +41,20 @@ server "133.167.104.12", user: "threwaysuser", roles: %w{app db web}, port: 22
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# The server-based syntax can be used to override options:
-# ------------------------------------
-server "133.167.104.12",
-  user: "threwaysuser",
-  roles: %w{web app},
-  ssh_options: {
-    user: "user_name", # overrides user setting above
+  set :ssh_options, {
     keys: %w(/Users/yushiseki/.ssh/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
-    # password: "please use keys"
   }
+#
+# The server-based syntax can be used to override options:
+# ------------------------------------
+#server "133.167.104.12",
+#  user: "threwaysuser",
+#  ssh_options: {
+#    user: "user_name", # overrides user setting above
+#    keys: %w(/Users/yushiseki/.ssh/id_rsa),
+#    forward_agent: true,
+#    auth_methods: %w(publickey)
+    # password: "please use keys"
+#  }
