@@ -34,6 +34,7 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 require 'capistrano/rails'
+# require "pry"
 
 set :linked_files, %w{config/secrets.yml}
 
