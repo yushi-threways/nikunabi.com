@@ -27,6 +27,6 @@ production:
   database: threways_nikunabi_db
   username: root
   password: PpDH7562kXS3 # その1で設定したサーバー側のmysqlのパスワード
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
   host: 133.167.104.12
 
