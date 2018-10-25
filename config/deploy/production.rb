@@ -54,7 +54,7 @@ server "133.167.104.12",
   roles: %w{web app},
   ssh_options: {
     user: "user_name", # overrides user setting above
-    keys: %w(/home/threwaysuser/.ssh/id_rsa),
+    keys: %w(/Users/yushiseki/.ssh/id_rsa),
     forward_agent: false,
     auth_methods: %w(publickey)
     # password: "please use keys"

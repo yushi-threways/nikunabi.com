@@ -40,12 +40,11 @@ set :deploy_via, :remote_cache
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 #set :ssh_options, verify_host_key: :secure
-set :ssh_options, :port =&gt; "22" #SSH接続に使うポート名
+set :ssh_options, :port => "22" #SSH接続に使うポート名
 
 set :rbenv_type, :user # :system or :user
-
 set :rbenv_ruby, '2.4.1'
-set :rbenv_path, '/home/username/.rbenv'
+set :rbenv_path, '/home/threwaysuser/.rbenv'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 
 set :log_level, :debug
