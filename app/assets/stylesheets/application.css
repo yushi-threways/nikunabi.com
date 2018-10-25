@@ -13,6 +13,5 @@
  *= require_tree .
  *= require_self
  *= require adminlte
- *= require admin-lte/dist/css/skins/skin-blue
  *= require font-awesome
  */
