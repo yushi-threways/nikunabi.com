@@ -25,6 +25,7 @@ gem 'bullet'
 gem 'gretel'
 gem "gmaps4rails"
 gem 'geocoder'
+gem "rails-observers"
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
