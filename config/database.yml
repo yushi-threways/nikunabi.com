@@ -28,4 +28,4 @@ production:
   username: threways
   password: PpDH7562kXS3 # その1で設定したサーバー側のmysqlのパスワード
   socket: /var/lib/mysql/mysql.sock
-  host: 133.167.104.12
+  host: os3-382-24008.vs.sakura.ne.jp
