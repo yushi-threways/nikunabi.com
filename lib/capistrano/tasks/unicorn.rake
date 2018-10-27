@@ -1,6 +1,6 @@
 namespace :unicorn do
   task :environment do
-    set :unicorn_pid, "/home/threwaysuser/nikunabi/shared/tmp/pids/unicorn.pid" # config/unicorn/production.rbないのpidと同じ
+    set :unicorn_pid, "/home/threwaysuser/nikunabi.com/shared/tmp/pids/unicorn.pid" # config/unicorn/production.rbないのpidと同じ
     set :unicorn_config, "#{current_path}/config/unicorn/production.rb"
   end
 
