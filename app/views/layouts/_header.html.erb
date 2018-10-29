@@ -39,29 +39,7 @@
 							</ul>
 						</li>
 					</ul>
-           <%= search_form_for @q, url: search_path, class: "navbar-form navbar-left", role: "search" do |f| %>
-              <a id="serch-drop-js" type="button" href="javascript:void(0)" role="button" aria-expanded="false">自信のある部位<span class="caret"></span></a>
-							<ul id="search-drop-check" class="dropdown-menu" role="menu" style="display: none;">
-              <div class="form-group">
-                <%= f.collection_check_boxes(:recommends_id_eq_all, @recommends, :id, :name, include_hidden: false) do |b| %>
-                  <div class="btn-group" data-toggle="buttons">
-                    <%= b.label(class:"btn btn-danger") do %>
-                        <%= b.check_box(class: "check_box", autocomplete: "off") %><%= b.object.name %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-							</ul>
-             <script>
-            $(function(){
-              $('#serch-drop-js').click(function(){
-                
-                });
-              });
-          </script>
-              <div class="form-group"><%= f.text_field :name_cont ,placeholder: '検索するテキストを入力...', class: "form-control" %></div>
-              <%= f.submit ("検索") , class: 'btn btn-default'%>
-            <% end %>
+          
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">メニュー</a></li>
 						<li class="dropdown">
