@@ -40,6 +40,15 @@ CSV.foreach('db/detail_rooms.csv') do |row|
   Room.create!(record)
 end
 
+Recommend.delete_all
+CSV.foreach('db/recommends.csv') do |row|
+  record = {
+    :name => row[0]
+  }
+  p record
+  Recommend.create!(record)
+end
+
 Feature.create(name: '高級肉')
 Feature.create(name: '写真映えメニュー')
 Feature.create(name: 'デカ盛りメニュー')
@@ -49,22 +58,6 @@ Feature.create(name: '韓国系メニュー')
 Feature.create(name: '食べ放題コース')
 Feature.create(name: '飲み放題コース')
 Feature.create(name: '食事コース')
-
-Recommend.create(name: '骨つきカルビ')
-Recommend.create(name: 'カルビ')
-Recommend.create(name: 'ロース')
-Recommend.create(name: '牛タン')
-Recommend.create(name: 'ハラミ')
-Recommend.create(name: 'ユッケ')
-Recommend.create(name: '新鮮レバー')
-Recommend.create(name: '冷麺')
-Recommend.create(name: 'ビビンバ')
-Recommend.create(name: 'ミノ')
-Recommend.create(name: 'てっちゃん')
-Recommend.create(name: 'なんこつ系')
-Recommend.create(name: 'センマイ刺')
-Recommend.create(name: 'ヒレ')
-Recommend.create(name: 'プリプリホルモン')
 
 Admin.delete_all
 admin = Admin.create!(password: 'password', email: 'test@admin.jp')

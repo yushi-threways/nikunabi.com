@@ -1,10 +1,13 @@
   <div class="container">
-    <h2>無料店舗アカウント登録</h2>
-
-    <p style="margin; 20px 0;">
-      貴店の情報をご入力ください。<br />
+  <h2>無料店舗アカウント登録</h2>
+  <p class="h5" style="margin; 20px 0;">
+      貴店の情報をご入力ください。
       店の詳細情報は本登録後設定可能です。
-    </p>
+  </p>
+   <hr />
+
+  <div class="clearfix">
+  <div class="col-md-5 col-xm-10 col-xm-offset-1">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -66,24 +69,39 @@
 
       <% end %>
 
-      <div class="form-group">
-        <%= f.label :おすすめ商品 %><br />
-        <em>最大10個まで選択可能です。</em><br />
-        <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
-        <div class="btn-group">
-          <%= r.label{ r.check_box + r.text } %>
-        </div>
-        <% end %>
       </div>
+      <div class="col-md-5 col-xm-10 col-xm-offset-1">
+      <p class="h4">こだわり商品</p>
+            <ul class="inline-list no-padding">
+              <div class="form-group">
+                <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
+                  <div class="btn-group" data-toggle="buttons">
+                    <%= r.label(class:"btn btn-danger registrations-new-nikunabi") do %>
+                        <%= r.check_box(class: "check_box", autocomplete: "off") %><%= r.object.name %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+						</ul>
 
-      <div class="form-group">
-        <%= f.label :店内サービス %><br />
-        <%= collection_check_boxes(:shop, :feature_ids, Feature.all, :id, :name) do |r| %>
-        <div class="btn-group">
-          <%= r.label{ r.check_box + r.text } %>
-        </div>
-        <% end %>
-      </div>
+
+
+            <p class="h4">来店ポイント</p>
+            <ul class="inline-list no-padding">
+              <div class="form-group">
+                <%= collection_check_boxes(:shop, :feature_ids, Feature.all, :id, :name) do |r| %>
+                  <div class="btn-group registrations-new" data-toggle="buttons">
+                    <%= r.label(class:"btn registrations-new-nikunabi") do %>
+                        <%= r.check_box(class: "check_box", autocomplete: "off") %><%= r.object.name %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+						</ul>
+
+    </div>
+  </div>
+
 
       <div class="actions">
         <%= f.submit "仮登録する", class: "btn btn-primary btn-block" %>

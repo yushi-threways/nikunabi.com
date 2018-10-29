@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2018_10_22_095054) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-    t.index [nil], name: "index_admins_on_confirmation_token", unique: true
   end
 
   create_table "blogs", force: :cascade do |t|
