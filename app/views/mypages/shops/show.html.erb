@@ -129,12 +129,12 @@
              <ul class="mypages_shop_recommend-list">
              <% current_shop.features.each do |feature| %>
                  <li><%= feature.name %></li>
-                 <div class="box-body text-right">
+             <% end %>
+             <div class="box-body text-right">
                 <%= link_to edit_mypages_feature_path(current_shop.features) do %>
                     編集する</a>
                 <% end %>
               </div>
-             <% end %>
              </ul>
            <% else %>
                  <p>店舗各種情報の登録はございません。</p>

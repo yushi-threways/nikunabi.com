@@ -32,7 +32,7 @@ class Mypages::PridesController < ApplicationController
 
     respond_to do |format|
       if @pride.save
-        format.html { redirect_to @pride, notice: 'Pride was successfully created.' }
+        format.html { redirect_to [:mypages, @pride], notice: 'こだわり情報を作成しました。' }
         format.json { render :show, status: :created, location: @pride }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class Mypages::PridesController < ApplicationController
   def update
     respond_to do |format|
       if @pride.update(pride_params)
-        format.html { redirect_to @pride, notice: 'Pride was successfully updated.' }
+        format.html { redirect_to [:mypages, @pride], notice: 'こだわり情報を更新しました。' }
         format.json { render :show, status: :ok, location: @pride }
       else
         format.html { render :edit }
@@ -73,6 +73,6 @@ class Mypages::PridesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pride_params
-      params.require(:pride).permit(:images, :title, :content)
+      params.require(:pride).permit(:title, :image, :content)
     end
 end

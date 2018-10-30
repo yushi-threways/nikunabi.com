@@ -69,22 +69,21 @@
   <div class="form-group">
     <%= form.label :scnee, 'シーン' %><br />
     <%= collection_check_boxes(:detail, :scene_ids, Scene.all, :id, :name) do |r| %>
-      <div class="btn-group">
-        <%= r.label{ r.check_box + r.text } %>
-      </div>
+        <%= r.label(class: "checkbox-inline") do %>
+          <%= r.check_box %> <%= r.object.name %>
+        <% end %>
     <% end %>
   </div>
-
-  
 
   <div class="form-group">
     <%= form.label :room, '席' %><br />
     <%= collection_check_boxes(:detail, :room_ids, Room.all, :id, :name) do |r| %>
-      <div class="btn-group">
-        <%= r.label{ r.check_box + r.text } %>
-      </div>
+        <%= r.label(class: "checkbox-inline") do %>
+          <%= r.check_box %> <%= r.object.name %>
+        <% end %>
     <% end %>
   </div>
+
 
   <div class="form-group">
     <%= form.label :禁煙・喫煙 %>
@@ -100,6 +99,12 @@
   <div class="form-group">
     <%= form.label :account, "SNSアカウント" %>
     <%= form.text_field :account, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :party, "宴会可能人数" %>
+    <em>数値のみ入力可能です</em>
+    <%= form.number_field :party, class: 'form-control' %>
   </div>
 
   <div class="form-group">
