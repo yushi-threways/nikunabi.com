@@ -58,7 +58,8 @@
         <div class="box-header with-border">
           <h3 class="box-title">店舗アクセス情報</h3>
         </div><!-- /.box-header -->
-        <div class="box-body no-padding">
+        <div class="box-body">
+         <% unless current_shop.address.nil? %>
               <table class="table table-striped">
                 <tbody>
                   <tr>
@@ -80,7 +81,15 @@
                     編集する</a>
                 <% end %>
               </div>
+             <% else %>
+             <div class="box-body text-right">
+              <%= link_to new_mypages_shop_address_path(current_shop) do %>
+                住所を登録する</a>
+             <% end %>
+             </div>
           </div>
+          <% end %>
+
       </div>
 
       <div class="box box-info">
@@ -94,14 +103,20 @@
                  <li><%= recommend.name %></li>
              <% end %>
              </ul>
-           <% else %>
-                 <p>店舗こだわり条件の登録はございません。</p>
-           <% end %>
-              <div class="box-body text-right">
-                <%= link_to edit_mypages_recommend_path(current_shop.recommend) do %>
+             <div class="box-body text-right">
+                <%= link_to edit_mypages_recommend_path(current_shop.recommends) do %>
                     編集する</a>
                 <% end %>
               </div>
+           <% else %>
+                 <p>店舗こだわり条件の登録はございません。</p>
+                 <div class="box-body text-right">
+                 <%= link_to new_mypages_shop_recommend_path(current_shop) do %>
+                    こだわり条件を追加する</a>
+                    <% end %>
+                  </div>
+           <% end %>
+              
           </div>
       </div>
 
@@ -114,28 +129,34 @@
              <ul class="mypages_shop_recommend-list">
              <% current_shop.features.each do |feature| %>
                  <li><%= feature.name %></li>
+                 <div class="box-body text-right">
+                <%= link_to edit_mypages_feature_path(current_shop.features) do %>
+                    編集する</a>
+                <% end %>
+              </div>
              <% end %>
              </ul>
            <% else %>
                  <p>店舗各種情報の登録はございません。</p>
-           <% end %>
-              <div class="box-body text-right">
-                <%= link_to edit_mypages_feature_path(current_shop.feature) do %>
-                    編集する</a>
+                 <div class="box-body text-right">
+                <%= link_to new_mypages_shop_feature_path(current_shop) do %>
+                    店舗詳細情報を追加する</a>
                 <% end %>
               </div>
+           <% end %>
+              
           </div>
       </div>
 
     </div>
 
-    <% unless current_shop.details.nil? %>
     <div class="col-md-6">
       <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">店舗詳細情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
+            <% unless current_shop.details.nil? %>
               <table class="table table-striped">
                 <tbody>
                   <% unless current_shop.details.open.nil? %>
@@ -237,8 +258,15 @@
               </tbody>
             </table>
               <div class="box-body text-right">
-                <%= link_to edit_mypages_shop_path(current_shop) do %>
+                <%= link_to edit_mypages_detail_url(current_shop.details) do %>
                     編集する</a>
+                <% end %>
+              </div>
+              <% else %>
+              <p>店舗詳細情報の登録はございません。</p>
+               <div class="box-body text-right">
+                <%= link_to new_mypages_shop_detail_url(current_shop) do %>
+                    店舗詳細情報を追加する</a>
                 <% end %>
               </div>
           </div>
