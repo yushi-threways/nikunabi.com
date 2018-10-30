@@ -120,11 +120,17 @@
   }
 }
 .top-nikunabi_blog-content {
+  overflow: hidden;
   h4 {
     font-size: 14px;
     border-bottom: 1px solid #eeece4;
+    padding: 0 0 3px;
   }
   p {
+    margin: 0 auto 3px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     font-size: 10px;
     color: #949499;
   }
