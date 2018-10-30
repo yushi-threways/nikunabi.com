@@ -3,8 +3,10 @@
   <div class="shop-detail">
     <article class="new_top_list">
       <div class="shop-detail-top-img">
-        <% unless @shop.details.image.nil? %>
+        <% if @shop.details.image.nil? %>
           <%= image_tag @shop.details.image.url %>
+        <% else %>
+          <%= image_tag 'nikunabi_def.jpg' %>
         <% end %>
       </div>
 
