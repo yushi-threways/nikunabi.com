@@ -74,6 +74,6 @@ class PridesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pride_params
-      params.require(:pride).permit(:images, :title, :content)
+      params.require(:pride).permit(:title, :image, :content)
     end
 end
