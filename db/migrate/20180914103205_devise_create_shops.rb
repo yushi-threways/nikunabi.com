@@ -39,7 +39,7 @@ class DeviseCreateShops < ActiveRecord::Migration[5.2]
 
     add_index :shops, :email,                unique: true
     add_index :shops, :reset_password_token, unique: true
-    # add_index :shops, :confirmation_token,   unique: true
+    add_index :shops, :confirmation_token,   unique: true
     # add_index :shops, :unlock_token,         unique: true
   end
 end
