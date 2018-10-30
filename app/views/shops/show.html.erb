@@ -5,10 +5,12 @@
       <div class="shop-detail-top-img">
         <% unless @shop.details.image.nil? %>
           <%= image_tag @shop.details.image.url %>
+        <% else %>
+          <%= image_tag 'nikunabi_def.jpg', :size => "150x150" %>
         <% end %>
       </div>
 
-      
+
       <div class="nikunabi_shop_tag">
         <ul class="nikunabi_shop_tag-recommend">
           <% @shop.recommends.each do |recommend| %>
