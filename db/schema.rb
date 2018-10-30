@@ -186,6 +186,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_095054) do
     t.string "description", default: "", null: false
     t.string "telNumber", default: "", null: false
     t.index ["city_id"], name: "index_shops_on_city_id"
+    t.index ["confirmation_token"], name: "index_shops_on_confirmation_token", unique: true
     t.index ["email"], name: "index_shops_on_email", unique: true
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
   end
