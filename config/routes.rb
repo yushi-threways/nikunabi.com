@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       resources :prides
       resource :recommends, only: [:index, :show ]
       resources :recommends
+      resource :features, only: [:index, :show ]
+      resources :features
     end
   end
   resource :shops, only: [:index] do

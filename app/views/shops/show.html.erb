@@ -3,10 +3,10 @@
   <div class="shop-detail">
     <article class="new_top_list">
       <div class="shop-detail-top-img">
-        <% unless @shop.details.image.nil? %>
-          <%= image_tag @shop.details.image.url %>
+        <% unless @shop.details %>
+          <%= image_tag 'nikunabi_def.jpg'%>
         <% else %>
-          <%= image_tag 'nikunabi_def.jpg', :size => "150x150" %>
+           <%= image_tag @shop.details.image.url %>
         <% end %>
       </div>
 
@@ -27,13 +27,15 @@
       <p class="detail-shop-name-desc"><%= @shop.description %></p>
       <h1 class="detail-shop-name"><%= @shop.name %></h1>
       <div class="shop-detail-top-info">
-        <% unless @shop.details.concept.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：最寄えきが入ります ｜<% end %>
-        <% unless @shop.details.concept.nil? %> <span><%= fa_icon("mixcloud", text: "  イメージ") %>：</span><%= @shop.details.concept %><br><% end %>
-        <% unless @shop.details.holiday.nil? %><span><%= fa_icon("calendar-times-o", text: "  定休日") %>：</span><%= @shop.details.holiday %><% end %>
+        <% unless @shop.details.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：最寄えきが入ります ｜<% end %>
+        <% unless @shop.details.nil? %> <span><%= fa_icon("mixcloud", text: "  イメージ") %>：</span><%= @shop.details.concept %><br><% end %>
+        <% unless @shop.details.nil? %><span><%= fa_icon("calendar-times-o", text: "  定休日") %>：</span><%= @shop.details.holiday %><% end %>
       </div>
       <div class="shop-detail-top-map">
+      <% unless @shop.address.nil? %>
         <p><%= fa_icon("map-marker") %> <%= @shop.city[:city]%><%= @shop.address[:street] %><%= @shop.address[:building] %></p>
         <span><%= link_to "MAPを見る" %></span>
+        <% end %>
       </div>
 
       <% unless @shop.prides.nil? %>
