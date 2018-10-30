@@ -41,7 +41,7 @@
      <% @blogs.each do |blog| %>
      <li class="top-nikunabi_blog-list col-sm-4">
         <div class="top-nikunabi_blog-img">
-          <%= image_tag 'yakiniku.jpg', :size => "180x70" %>
+          <%= image_tag blog.image.url, :size => "180x70" %>
         </div>
         <div class="top-nikunabi_blog-content">
           <h4><%= blog.title %></h4>

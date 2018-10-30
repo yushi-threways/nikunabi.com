@@ -41,6 +41,7 @@ CSV.foreach('db/recommends.csv') do |row|
   Recommend.create!(record)
 end
 
+Feature.delete_all
 Feature.create(name: '高級肉')
 Feature.create(name: '写真映えメニュー')
 Feature.create(name: 'デカ盛りメニュー')
