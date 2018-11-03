@@ -18,21 +18,6 @@
       <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :店舗名 %><br />
-          <%= f.text_field :name, :placeholder => "ニクナビ焼肉", autofocus: true, class: 'form-control' %>
-        </div>
-
-        <div class="field">
-          <%= f.label :店舗名サブタイトル %><br />
-          <%= f.text_field :description, :placeholder => "王道焼肉", autofocus: true, class: 'form-control' %>
-        </div>
-
-        <div class="field">
-          <%= f.label :電話番号 %><br />
-          <%= f.text_field :telNumber, :placeholder => "0520000000", autofocus: true, class: 'form-control' %>
-        </div>
-
-        <div class="field">
           <%= f.label :メールアドレス %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
         </div>

@@ -13,6 +13,8 @@ class CreateDetails < ActiveRecord::Migration[5.2]
       t.string :facility
       t.string :light
       t.string :vibe
+      t.integer :table
+      t.integer :seat
       t.integer :party
       t.string :smoking
 

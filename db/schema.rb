@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_22_095054) do
+ActiveRecord::Schema.define(version: 2018_10_31_064015) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "shop_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_095054) do
     t.string "building"
     t.float "latitude"
     t.float "longitude"
+    t.string "station"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shop_id", "created_at"], name: "index_addresses_on_shop_id_and_created_at"
@@ -86,6 +87,8 @@ ActiveRecord::Schema.define(version: 2018_10_22_095054) do
     t.string "facility"
     t.string "light"
     t.string "vibe"
+    t.integer "table"
+    t.integer "seat"
     t.integer "party"
     t.string "smoking"
     t.datetime "created_at", null: false
@@ -108,6 +111,15 @@ ActiveRecord::Schema.define(version: 2018_10_22_095054) do
     t.datetime "updated_at", null: false
     t.index ["admin_id", "created_at"], name: "index_information_on_admin_id_and_created_at"
     t.index ["admin_id"], name: "index_information_on_admin_id"
+  end
+
+  create_table "menu_books", force: :cascade do |t|
+    t.integer "shop_id"
+    t.string "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id", "created_at"], name: "index_menu_books_on_shop_id_and_created_at"
+    t.index ["shop_id"], name: "index_menu_books_on_shop_id"
   end
 
   create_table "menus", force: :cascade do |t|

@@ -13,11 +13,6 @@ class Mypages::ShopsController < Mypages::ApplicationController
     @shop = Shop.new
   end
 
-  # GET /shops/1/edit
-  def edit
-    @shop = set_shop
-  end
-
   def create
     @shop = Shop.new(shop_params)
 
@@ -33,8 +28,6 @@ class Mypages::ShopsController < Mypages::ApplicationController
   end
 
   def update
-    @shop = set_shop
-
     respond_to do |format|
       if @shop.update(shop_params)
         format.html { redirect_to controller: 'shops', action: 'show', notice: "基本情報を編集しました"}
@@ -53,7 +46,7 @@ class Mypages::ShopsController < Mypages::ApplicationController
   end
 
   def set_shop
-    Shop.find(params[:id])
+    @shop = Shop.find(params[:id])
   end
 
   def set_address

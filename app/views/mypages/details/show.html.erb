@@ -16,7 +16,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">店舗詳細情報</h3>
       </div><!-- /.box-header -->
-      <div class="box-body no-padding">
+      <div class="box-body">
         <p id="notice"><%= notice %></p>
 
         <table class="table table-striped">
@@ -86,6 +86,13 @@
               <td><%= @detail.smoking %></td>
             </tr>
             <tr>
+              <th>テーブル数</th>
+              <td><%= @detail.table %>人</td>
+            </tr>
+             <tr>
+              <th>席数</th>
+              <td><%= @detail.seat %>人</td>
+            </tr>
             <tr>
               <th>宴会可能数</th>
               <td><%= @detail.party %>人</td>

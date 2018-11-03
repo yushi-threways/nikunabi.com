@@ -7,6 +7,8 @@ class Shop < ApplicationRecord
   has_one :details, :class_name => 'Detail', dependent: :destroy
   has_many :menus, inverse_of: :shop, dependent: :destroy
   accepts_nested_attributes_for :menus, allow_destroy: true
+  has_many :menu_books, inverse_of: :shop, dependent: :destroy
+  accepts_nested_attributes_for :menu_books, allow_destroy: true
   has_many :prides, inverse_of: :shop, dependent: :destroy
   accepts_nested_attributes_for :prides, allow_destroy: true
   accepts_nested_attributes_for :address, update_only: true

@@ -72,6 +72,6 @@ class Mypages::DetailsController < Mypages::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def detail_params
-      params.require(:detail).permit(:shop_id, :image, :open, :holiday, :access, :parking, :payment, :smoking, :facility, :light, :vibe, :party, :concept, :account, {:room_ids => []}, {:scene_ids => []})
+      params.require(:detail).permit(:shop_id, :image, :open, :holiday, :access, :parking, :payment, :smoking, :facility, :light, :vibe, :party, :concept, :account, :seat, :table, {:room_ids => []}, {:scene_ids => []})
     end
 end

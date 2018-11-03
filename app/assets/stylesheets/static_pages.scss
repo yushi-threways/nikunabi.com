@@ -84,58 +84,6 @@
   }
 }
 
-.nikunabi_top-blog {
-  ul {
-    padding: 0;
-    margin: 0 auto 30px;
-    list-style-type: none;
-    li {
-      margin: 0 auto 10px;
-      img {
-        max-width: 100%;
-        vertical-align: bottom;
-        height: 120px;
-      }
-    }
-  }
-  h3 {
-    span {
-      line-height: 24px;
-      font-size: 14px;
-      color: #949499;
-    }
-  }
-}
-
-.top-nikunabi_blog-list {
-  padding: 10px;
-  border: 1px solid #eeece4;
-  border-radius: 3px;
-  margin-bottom: 5px;
-}
-.top-nikunabi_blog-img {
-  text-align: center;
-  img {
-
-  }
-}
-.top-nikunabi_blog-content {
-  overflow: hidden;
-  h4 {
-    font-size: 14px;
-    border-bottom: 1px solid #eeece4;
-    padding: 0 0 3px;
-  }
-  p {
-    margin: 0 auto 3px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    font-size: 10px;
-    color: #949499;
-  }
-}
-
 .nikunabi_shop_tag {
   color: #fff;
   padding: 5px 0 0 ;
@@ -174,6 +122,187 @@
       border: #f15555 1px solid;
       border-radius: 2px;
       color: #f15555;
+    }
+  }
+}
+
+/** Blog **/
+.home-blog {
+  position: relative;
+  &_padding {
+    padding: 0 !important;
+  }
+  &_top {
+    &--image {
+      max-height: 300px;
+      img {
+        height: 100%;
+        max-height: 300px;
+        vertical-align: bottom;
+      }
+    }
+    &-content {
+      width: 100%;
+      padding: 10px 10px 15px;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      &--time {
+        margin: 0 auto 20px;
+        padding: 0;
+        text-align: right;
+      }
+      &--title {
+        font-weight: normal;
+        font-size: 22px;
+        margin: 0 auto 20px;
+      }
+      &--content {
+        margin: 0;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.home-blog_0 {
+  width: 30%;
+  float: left;
+  padding: 0 15px 0 0;
+  position: relative;
+  &::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #eeeeee;
+  }
+  &-inner {
+    position: relative;
+  }
+  &--image {
+    img {
+      max-height: 250px;
+      height: 100%;
+      vertical-align: bottom;
+    }
+  }
+  &-content {
+    width: 100%;
+    padding: 10px 10px 15px;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    &--time {
+      margin: 0 auto 10px;
+      padding: 0;
+      font-size: 8px;
+      text-align: right;
+    }
+    &--title {
+      font-weight: normal;
+      font-size: 16px;
+      margin: 0 auto 20px;
+    }
+    &--content {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+  }
+}
+
+.home-blog_1 {
+  width: 70%;
+  float: left;
+  max-height: 125px;
+  padding: 0 0 10px 15px;
+  &--image {
+    width: 20%;
+    float: left;
+    max-height: 115px;
+    img {
+      max-height: 115px;
+      height: 100%;
+      vertical-align: bottom;
+    }
+  }
+  &-content {
+    width: 80%;
+    float: left;
+    padding: 0 0 0 10px;
+    &--time {
+      padding: 0;
+      margin: 0 auto 10px;
+      text-align: right;
+      font-size: 8px;
+    }
+    &--title {
+      padding: 0 0 15px;
+      margin: 0 auto 15px;
+      font-size: 16px;
+      position: relative;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 30px;
+        height: 1px;
+        background-color: #949499;
+      }
+    }
+    &--content {
+      padding: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.home-blog_2 {
+  width: 70%;
+  float: left;
+  max-height: 125px;
+  padding: 10px 0 0 15px;
+  &--image {
+    img {
+
+    }
+  }
+  &-content {
+    width: 80%;
+    float: left;
+    padding: 0 0 0 10px;
+    &--time {
+      padding: 0;
+      margin: 0 auto 10px;
+      text-align: right;
+      font-size: 8px;
+    }
+    &--title {
+      padding: 0 0 15px;
+      margin: 0 auto 15px;
+      font-size: 16px;
+      position: relative;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 30px;
+        height: 1px;
+        background-color: #949499;
+      }
+    }
+    &--content {
+      padding: 0;
+      font-size: 12px;
     }
   }
 }

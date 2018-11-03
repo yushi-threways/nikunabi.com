@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-   <%= form.label :recommend %><br />
+   <%= form.label :recommend, 'こだわり商品' %><br />
    <%= form.collection_check_boxes(:recommends_ids, Recommend.all, :id, :name)  %>
  </div>
 

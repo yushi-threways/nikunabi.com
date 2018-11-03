@@ -1,0 +1,44 @@
+<% content_for :page_h1 do %>
+<h1>
+  店舗メニュー表写真
+  <small>メニュー表写真</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">店舗メニュー表</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body no-padding">
+        <p id="notice"><%= notice %></p>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>画像</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% current_shop.menu_books.each do |menu_book| %>
+              <tr>
+                <td class="mypage-shop-menu-img"><%= image_tag menu_book.images.url %></td>
+                <td><%= link_to 'Edit', edit_menu_book_path(menu_book) %></td>
+                <td><%= link_to 'Destroy', menu_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
