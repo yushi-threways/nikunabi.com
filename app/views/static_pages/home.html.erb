@@ -1,4 +1,5 @@
 <article class="home-blog">
+<% if Blog.exists? %>
 <div class="clearfix">
 <div class="col-xs-12 col-sm-9 home-blog_padding">
      <div class="home-blog_top">
@@ -29,6 +30,7 @@
 
        <hr>
 
+     <% if @homeblogs.exists? %>  
      <div class="clearfix">
      <% @homeblogs.each.with_index do |blog, i| %>
      <div class="home-blog_<%= i %>">
@@ -52,7 +54,12 @@
      </div> 
      </div>
       <% end %>
+      </div>
       <hr>
+      <% end %>
+  <% else %>
+  <p>まだニクナビタイムズの投稿はございません。</p>
+  <% end %>
   </article>
   <hr>
 
