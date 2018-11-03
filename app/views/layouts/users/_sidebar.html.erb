@@ -25,10 +25,24 @@
     <!-- /.search form -->
     <ul class="sidebar-menu">
     <li class="header">店舗情報</li>
-    <li>
-      <%= link_to mypages_shop_path(current_shop) do %>
-      <i class="fa fa-link"></i> <span>基本情報</span></a>
-      <% end %>
+    <li class="treeview">
+      <a href="#"><i class="fa fa-link"></i> <span>基本情報</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to mypages_shop_url(current_shop) do %>
+          <i class="fa fa-link"></i> <span>基本情報確認</span></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to mypages_shops_profile_edit_url(current_shop) do %>
+          <i class="fa fa-link"></i> <span>基本情報編集</span></a>
+          <% end %>
+        </li>
+      </ul>
     </li>
     <li>
       <% if current_shop.address %>
@@ -67,6 +81,16 @@
         <li>
           <%= link_to new_mypages_shop_menu_path(current_shop) do %>
           <i class="fa fa-link"></i> <span>メニュー作成</span></a>
+          <% end %>
+        </li>
+         <li>
+          <%= link_to mypages_menu_book_url(current_shop) do %>
+          <i class="fa fa-link"></i> <span>メニュー表写真一覧</span></a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_mypages_shop_menu_book_path(current_shop) do %>
+          <i class="fa fa-link"></i> <span>メニュー表写真追加</span></a>
           <% end %>
         </li>
       </ul>

@@ -27,7 +27,7 @@
       <p class="detail-shop-name-desc"><%= @shop.description %></p>
       <h1 class="detail-shop-name"><%= @shop.name %></h1>
       <div class="shop-detail-top-info">
-        <% unless @shop.details.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：最寄えきが入ります ｜<% end %>
+        <% unless @shop.address.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：<%= @shop.address[:station] %> ｜<% end %>
         <% unless @shop.details.nil? %> <span><%= fa_icon("mixcloud", text: "  イメージ") %>：</span><%= @shop.details.concept %><br><% end %>
         <% unless @shop.details.nil? %><span><%= fa_icon("calendar-times-o", text: "  定休日") %>：</span><%= @shop.details.holiday %><% end %>
       </div>

@@ -1,28 +1,60 @@
-<div class="col-xs-12 col-md-9">
-  <article class="">
-    <h3>地域で探す</h3>
-    <ul class="list-inline home-city-list">
-      <li><%= link_to "名古屋市千種区", shops_city_path(:id => 1) %></li>
-      <li><%= link_to "名古屋市東区", shops_city_path(:id => 2) %></li>
-      <li><%= link_to "名古屋市北区", shops_city_path(:id => 3) %></li>
-      <li><%= link_to "名古屋市西区", shops_city_path(:id => 4) %></li>
-      <li><%= link_to "名古屋市中村区", shops_city_path(:id => 5) %></li>
-      <li><%= link_to "名古屋市中区", shops_city_path(:id => 6) %></li>
-      <li><%= link_to "名古屋市昭和区", shops_city_path(:id => 7) %></li>
-      <li><%= link_to "名古屋市瑞穂区", shops_city_path(:id => 8) %></li>
-      <li><%= link_to "名古屋市熱田区", shops_city_path(:id => 9) %></li>
-      <li><%= link_to "名古屋市中川区", shops_city_path(:id => 10) %></li>
-      <li><%= link_to "名古屋市港区", shops_city_path(:id => 11) %></li>
-      <li><%= link_to "名古屋市南区", shops_city_path(:id => 12) %></li>
-      <li><%= link_to "名古屋市守山区", shops_city_path(:id => 13) %></li>
-      <li><%= link_to "名古屋市緑区", shops_city_path(:id => 14) %></li>
-      <li><%= link_to "名古屋市名東区", shops_city_path(:id => 15) %></li>
-      <li><%= link_to "名古屋市天白区", shops_city_path(:id => 16) %></li>
-      <li><%= link_to "名古屋市外", shops_city_path(:id => 17) %></li>
-    </ul>
-  </article>
+<article class="home-blog">
+<div class="clearfix">
+<div class="col-xs-12 col-sm-9 home-blog_padding">
+     <div class="home-blog_top">
+     <div class="home-blog_top--image">
+     <%= image_tag @firstblog.image.url %>
+     </div>
+     <div class="home-blog_top-content">
+     <p class="home-blog_top-content--time">
+     <%= @firstblog.created_at.strftime("%Y.%m.%d(#{%w(日 月 火 水 木 金 土)[@firstblog.created_at.wday]})") %>
+     </p>
+     <p class="home-blog_top-content--title">
+     <%= @firstblog.title %>
+     </p>
+     <p class="home-blog_top-content--content">
+     <%= @firstblog.content %>
+     </p>
+     </div>
+     </div>
+     </div>
+     <div class="col-xs-12 col-sm-3">
+     <div>
+     <p></p>
+     </div>
+     </div>
+     </div>
 
-  <article class="new_top_list">
+       <hr>
+
+     <div class="clearfix">
+     <% @homeblogs.each.with_index do |blog, i| %>
+     <div class="home-blog_<%= i %>">
+     <div class="home-blog_<%= i %>-inner">
+     <div class="home-blog_<%= i %>--image">
+     <%= image_tag blog.image.url %>
+     </div>
+     <div class="home-blog_<%= i %>-content">
+     <p class="home-blog_<%= i %>-content--time">
+     <%= blog.created_at.strftime("%Y.%m.%d(#{%w(日 月 火 水 木 金 土)[blog.created_at.wday]})") %>
+     </p>
+     <p class="home-blog_<%= i %>-content--title">
+     <%= blog.title %>
+     </p>
+     <p class="home-blog_<%= i %>-content--content">
+     <%= blog.content %>
+     </p>
+     </div>
+     </div> 
+     </div>
+      <% end %>
+      <hr>
+  </article>
+  <hr>
+
+<div class="clearfix">
+<div class="col-xs-12 col-md-9">
+<article class="new_top_list">
     <h3>新着店一覧</h3>
     <ul >
       <% @newShops.each do |shop| %>
@@ -33,26 +65,15 @@
     
     <%= link_to '全てのショップを見る', shops_path, class: "nikunabi_home-btn" %>
   </article>
-
-
-  <article class="nikunabi_top-blog">
-    <h3>肉ナビBLOG  <span>- 名古屋のお肉情報を発信中 -</span></h3>
-    <ul class="clearfix">
-     <% @blogs.each do |blog| %>
-     <li class="top-nikunabi_blog-list col-sm-4">
-        <div class="top-nikunabi_blog-img">
-          <%= image_tag blog.image.url, :size => "180x70" %>
-        </div>
-        <div class="top-nikunabi_blog-content">
-          <h4><%= blog.title %></h4>
-          <p><%= blog.content %></p>
-        </div>
-      </li>
-      <% end %>
-    </ul>
-  </article>
 </div>
 
+
 <div class="col-xs-12 col-md-3">
-  <%= render 'layouts/sidebar' %>
+  <div class="side_news nikunabi-side">
+    <h4>肉ナビからのお知らせ</h4>
+    
+    <hr>
+  </div>
+</div>
+
 </div>

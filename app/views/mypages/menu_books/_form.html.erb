@@ -1,0 +1,21 @@
+<%= form_with(model: [:mypages, @menu_book], url: (@menu_book.new_record? ? [:mypages, :shop, @menu_book]: [:mypages, @menu_book]), local: true) do |form| %>  <% if menu_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(menu_book.errors.count, "error") %> prohibited this menu_book from being saved:</h2>
+
+      <ul>
+      <% menu_book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :images, '画像' %>
+    <%= form.file_field :images %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>

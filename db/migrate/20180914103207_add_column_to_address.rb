@@ -7,6 +7,7 @@ class AddColumnToAddress < ActiveRecord::Migration[5.2]
       t.string :building
       t.float :latitude
       t.float :longitude
+      t.string :station
 
       t.timestamps
     end

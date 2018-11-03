@@ -88,6 +88,6 @@ class Mypages::AddressesController < Mypages::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:shop_id, :zipcode, :street, :building)
+      params.require(:address).permit(:shop_id, :zipcode, :street, :building, :station)
     end
 end
