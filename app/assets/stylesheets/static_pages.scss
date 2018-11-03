@@ -3,6 +3,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+  font-family: 'Kaushan Script';
+  font-style: normal;
+  src: url(https://themes.googleusercontent.com/static/fonts/kaushanscript/v1/qx1LSqts-NtiKcLw4N03IFhlQWQpSCpzb2Peu3I-Q34.woff) format('woff');
+}
+
 .sta-Home_Header {
   background-color: #ff8585;
   color: #fff;
@@ -128,7 +134,9 @@
 
 /** Blog **/
 .home-blog {
+  margin: 30 auto 30px;
   position: relative;
+  font-family:'Kaushan Script';
   &_padding {
     padding: 0 !important;
   }
@@ -150,11 +158,12 @@
       left: 0;
       color: #fff;
       &--time {
-        margin: 0 auto 20px;
+        margin: 0 auto 10px;
         padding: 0;
         text-align: right;
       }
       &--title {
+        font-family:'Kaushan Script';
         font-weight: normal;
         font-size: 22px;
         margin: 0 auto 20px;
@@ -162,6 +171,9 @@
       &--content {
         margin: 0;
         line-height: 1.6;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
     }
   }
@@ -172,6 +184,7 @@
   float: left;
   padding: 0 15px 0 0;
   position: relative;
+  font-family:'Kaushan Script';
   &::after {
     content: '';
     width: 1px;
@@ -208,12 +221,16 @@
     &--title {
       font-weight: normal;
       font-size: 16px;
+      font-family:'Kaushan Script';
       margin: 0 auto 20px;
     }
     &--content {
       margin: 0;
       font-size: 12px;
       line-height: 1.6;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
@@ -223,6 +240,7 @@
   float: left;
   max-height: 125px;
   padding: 0 0 10px 15px;
+  font-family:'Kaushan Script';
   &--image {
     width: 20%;
     float: left;
@@ -246,6 +264,7 @@
     &--title {
       padding: 0 0 15px;
       margin: 0 auto 15px;
+      font-family:'Kaushan Script';
       font-size: 16px;
       position: relative;
       &::after {
@@ -261,6 +280,9 @@
     &--content {
       padding: 0;
       font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
@@ -289,6 +311,7 @@
       padding: 0 0 15px;
       margin: 0 auto 15px;
       font-size: 16px;
+      font-family:'Kaushan Script';
       position: relative;
       &::after {
         position: absolute;
@@ -303,6 +326,9 @@
     &--content {
       padding: 0;
       font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

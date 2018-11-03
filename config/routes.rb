@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resource :shops, only: [:index]
     resources :shops
-    resource :blogs, only: [:index ]
     resources :blogs
     resource :informations, only: [:index ]
     resources :informations

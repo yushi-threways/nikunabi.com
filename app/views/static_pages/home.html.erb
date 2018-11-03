@@ -2,6 +2,7 @@
 <div class="clearfix">
 <div class="col-xs-12 col-sm-9 home-blog_padding">
      <div class="home-blog_top">
+     <%= link_to blog_url(@firstblog) do %>
      <div class="home-blog_top--image">
      <%= image_tag @firstblog.image.url %>
      </div>
@@ -16,6 +17,7 @@
      <%= @firstblog.content %>
      </p>
      </div>
+     </a><% end %>
      </div>
      </div>
      <div class="col-xs-12 col-sm-3">
@@ -31,6 +33,7 @@
      <% @homeblogs.each.with_index do |blog, i| %>
      <div class="home-blog_<%= i %>">
      <div class="home-blog_<%= i %>-inner">
+     <%= link_to blog_url(blog) do %>
      <div class="home-blog_<%= i %>--image">
      <%= image_tag blog.image.url %>
      </div>
@@ -45,6 +48,7 @@
      <%= blog.content %>
      </p>
      </div>
+     </a><% end %>
      </div> 
      </div>
       <% end %>

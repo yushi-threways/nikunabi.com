@@ -11,8 +11,7 @@ class Admins::BlogsController < Admins::ApplicationController
 
   # GET /blogs/1
   # GET /blogs/1.json
-  def show
-  end
+  
 
   # GET /blogs/new
   def new
@@ -32,7 +31,7 @@ class Admins::BlogsController < Admins::ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to [:admins, @blog], notice: 'Blog was successfully created.' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -46,7 +45,7 @@ class Admins::BlogsController < Admins::ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to [:admins, @blog], notice: 'Blog was successfully updated.' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
@@ -73,6 +72,6 @@ class Admins::BlogsController < Admins::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :content, :image)
+      params.require(:blog).permit(:title, :subtitle, :content, :image, :secondtitle, :secondsubtitle, :secondcontent, :secondimage)
     end
 end

@@ -17,6 +17,11 @@ crumb :show_shop do |shop|
   parent :shops_city, shop
 end
 
+crumb :show_blog do |blog|
+  link blog.title, blog_path(blog)
+  parent :root
+end
+
 # crumb :issue do |issue|
 #   link issue.title, issue_path(issue)
 #   parent :project_issues, issue.project

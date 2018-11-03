@@ -1,6 +1,7 @@
+<% breadcrumb :show_blog, @blog %>
 <p id="notice"><%= notice %></p>
-<div class="admin_blog_show">
-<div class="admin_blog_show-inner">
+<div class="static_blog_show">
+<div class="static_blog_show-inner">
 <small class="blog_show-desc">なごや焼肉情報誌 ニクナビ通信</small>
 <h2 class="blog_show-toptitle">NIKUNABI TIMES!!<h2>
 <div class="clearfix">
@@ -48,13 +49,36 @@
 </div>
 </div>
 <div class="col-sm-3">
-<p>サイドバーが入ります。</p>
+<% if Blog.exists?(:id => @blog.id) %>
+<% @otherblogs.each do |otherblog| %>
+<div class="blog_show-side">
+     <div class="blog_show-side-inner">
+     <%= link_to blog_path(otherblog) do %>
+     <div class="blog_show-side--image">
+     <p class="blog_show-side-content--time">
+     <%= otherblog.created_at.strftime("%Y.%B.%d (%a)") %>
+     </p>
+     <%= image_tag otherblog.image.url %>
+     </div>
+     <div class="blog_show-side-content">
+     <p class="blog_show-side-content--title">
+     <%= otherblog.title %>
+     </p>
+     <p class="blog_show-side-content--content">
+     <%= otherblog.content %>
+     </p>
+     </div>
+     </a><% end %>
+     </div> 
+</div>
+<hr>
+<% end %>
+<% else %>
+<p>過去のニュースはございません。</p>
+<% end %>
 </div>
 </div>
-
+<hr>
+<p class="blog_show-created"><%= @blog.created_at.strftime("%Y.%B.%d (%a)") %></p>
 </div>
 </div>
-
-
-<%= link_to 'Edit', edit_admins_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
