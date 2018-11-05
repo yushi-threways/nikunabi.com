@@ -8,8 +8,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @otherblogs = Blog.where.not(id: @blog.id)
-
+    @otherblogs = Blog.where.not(id: set_blog)
   end
 
   private

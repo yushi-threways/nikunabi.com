@@ -7,6 +7,8 @@ class AdminsController < Admins::ApplicationController
         @admins = Admin.all
     end
 
+    def show
+    end
 
     private
     def set_admin
