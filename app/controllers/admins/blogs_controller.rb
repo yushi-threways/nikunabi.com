@@ -11,7 +11,9 @@ class Admins::BlogsController < Admins::ApplicationController
 
   # GET /blogs/1
   # GET /blogs/1.json
-  
+  def show
+    @bolg = set_blog
+  end
 
   # GET /blogs/new
   def new
@@ -25,7 +27,7 @@ class Admins::BlogsController < Admins::ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @admin = Admin.find(params[:admin_id])
+    @admin = current_admin
     @blog = Blog.new(blog_params)
     @blog.admin = @admin
 
