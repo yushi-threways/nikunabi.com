@@ -76,13 +76,16 @@ Shop.delete_all
 end
 
 admins = Admin.order(:created_at)
-3.times do |n|
+4.times do |n|
   title = "タイトルが入ります"
   content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
   admins.each { |admin| admin.blogs.create!(
     title: title,
     content: content,
-    image: File.open("./app/assets/images/nikunabi_def.jpg")
+    image: File.open("./app/assets/images/nikunabi_def.jpg"),
+    secondtitle: title,
+    secondcontent: content,
+    secondimage: File.open("./app/assets/images/nikunabi_def.jpg"),
     )}
 end
 
