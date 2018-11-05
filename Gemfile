@@ -26,6 +26,7 @@ gem 'gretel'
 gem "gmaps4rails"
 gem 'geocoder'
 gem "rails-observers"
+gem 'sassc-rails'
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
@@ -92,7 +93,7 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'mysql2', '~> 0.5.2'
+  gem 'mysql2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
