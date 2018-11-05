@@ -1,5 +1,5 @@
 class AdminsController < Admins::ApplicationController
-    # before_action :set_admin
+    before_action :set_admin
     before_action :authenticate_admin!
     layout "admins"
 
@@ -7,8 +7,6 @@ class AdminsController < Admins::ApplicationController
         @admins = Admin.all
     end
 
-    def show
-    end
 
     private
     def set_admin
