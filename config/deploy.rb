@@ -1,6 +1,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.0"
 
+require "bundler/capistrano"
+
 set :application, "nikunabi.com"
 set :repo_url, "git@github.com:yushi-threways/nikunabi.com.git"
 set :branch, 'master'
