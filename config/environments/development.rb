@@ -74,12 +74,11 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :user_name => 'f506c5453ccd20',
-    :password => 'cd42edcd0ac476',
-    :address => 'smtp.mailtrap.io',
-    :domain => 'smtp.mailtrap.io',
-    :port => '2525',
-    :authentication => :cram_md5
-  }
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp18.gmoserver.jp", # smtpサーバーのホスト名
+    :port => 587,
+    :authentication => :plain,
+    :user_name => "nikunabi@nagoya1.work",
+    :password => "fq46#LBv"
+}
 end
