@@ -6,8 +6,8 @@ class CreateBlogs < ActiveRecord::Migration[5.2]
       t.string :secondtitle
       t.string :subtitle
       t.string :secondsubtitle
-      t.string :content
-      t.string :secondcontent
+      t.text   :content
+      t.text   :secondcontent
       t.string :image
       t.string :secondimage
 
