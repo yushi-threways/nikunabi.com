@@ -1,6 +1,13 @@
 require "csv"
 
 City.delete_all
+Scene.delete_all
+Room.delete_all
+Recommend.delete_all
+Feature.delete_all
+Admin.delete_all
+Blog.delete_all
+
 CSV.foreach('db/cities.csv') do |row|
   record = {
     :prefecturecode  => row[0],
@@ -14,7 +21,6 @@ CSV.foreach('db/cities.csv') do |row|
   City.create!(record)
 end
 
-Scene.delete_all
 CSV.foreach('db/detail_scenes.csv') do |row|
   record = {
     :name => row[0]
@@ -23,7 +29,6 @@ CSV.foreach('db/detail_scenes.csv') do |row|
   Scene.create!(record)
 end
 
-Room.delete_all
 CSV.foreach('db/detail_rooms.csv') do |row|
   record = {
     :name => row[0]
@@ -32,7 +37,6 @@ CSV.foreach('db/detail_rooms.csv') do |row|
   Room.create!(record)
 end
 
-Recommend.delete_all
 CSV.foreach('db/recommends.csv') do |row|
   record = {
     :name => row[0]
@@ -41,7 +45,6 @@ CSV.foreach('db/recommends.csv') do |row|
   Recommend.create!(record)
 end
 
-Feature.delete_all
 Feature.create(name: '高級肉')
 Feature.create(name: '写真映えメニュー')
 Feature.create(name: 'デカ盛りメニュー')
@@ -52,9 +55,9 @@ Feature.create(name: '食べ放題コース')
 Feature.create(name: '飲み放題コース')
 Feature.create(name: '食事コース')
 
-Admin.delete_all
 admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
+
 
 admins = Admin.order(:created_at)
 1.times do |n|
@@ -74,6 +77,6 @@ admins = Admin.order(:created_at)
     secondtitle: secondtitle,
     secondsubtitle: secondsubtitle,
     secondcontent: secondcontent,
-    image: File.open("./app/assets/images/meet.jpg")
+    secondimage: File.open("./app/assets/images/meet.jpg")
     )}
 end
