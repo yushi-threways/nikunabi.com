@@ -32,7 +32,8 @@ source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
 end
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+#gem 'sqlite3', group: :development
+gem 'mysql2'
 # 本番ではpostgressを使用する
 # gem 'pg', group: :production
 
@@ -72,6 +73,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -93,7 +97,6 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'mysql2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2018_10_31_064015) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "shop_id"
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
     t.string "street"
     t.string "zipcode"
     t.string "building"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["shop_id"], name: "index_addresses_on_shop_id"
   end
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "blogs", force: :cascade do |t|
-    t.integer "admin_id"
+  create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "admin_id"
     t.string "title"
     t.string "secondtitle"
     t.string "subtitle"
     t.string "secondsubtitle"
-    t.string "content"
-    t.string "secondcontent"
+    t.text "content"
+    t.text "secondcontent"
     t.string "image"
     t.string "secondimage"
     t.datetime "created_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["admin_id"], name: "index_blogs_on_admin_id"
   end
 
-  create_table "cities", force: :cascade do |t|
+  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "prefecturecode"
     t.string "prefecture"
     t.string "prefecturekana"
@@ -65,22 +65,22 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "detail_rooms", force: :cascade do |t|
-    t.integer "detail_id"
-    t.integer "room_id"
+  create_table "detail_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "detail_id"
+    t.bigint "room_id"
     t.index ["detail_id"], name: "index_detail_rooms_on_detail_id"
     t.index ["room_id"], name: "index_detail_rooms_on_room_id"
   end
 
-  create_table "detail_scenes", force: :cascade do |t|
-    t.integer "detail_id"
-    t.integer "scene_id"
+  create_table "detail_scenes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "detail_id"
+    t.bigint "scene_id"
     t.index ["detail_id"], name: "index_detail_scenes_on_detail_id"
     t.index ["scene_id"], name: "index_detail_scenes_on_scene_id"
   end
 
-  create_table "details", force: :cascade do |t|
-    t.integer "shop_id"
+  create_table "details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
     t.string "image"
     t.string "open", null: false
     t.string "holiday", null: false
@@ -102,14 +102,14 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["shop_id"], name: "index_details_on_shop_id"
   end
 
-  create_table "features", force: :cascade do |t|
+  create_table "features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "information", force: :cascade do |t|
-    t.integer "admin_id"
+  create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "admin_id"
     t.string "title"
     t.string "content"
     t.datetime "created_at", null: false
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["admin_id"], name: "index_information_on_admin_id"
   end
 
-  create_table "menu_books", force: :cascade do |t|
-    t.integer "shop_id"
+  create_table "menu_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
     t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["shop_id"], name: "index_menu_books_on_shop_id"
   end
 
-  create_table "menus", force: :cascade do |t|
-    t.integer "shop_id"
+  create_table "menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
     t.string "name", null: false
     t.string "image"
     t.string "price", null: false
@@ -142,8 +142,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["shop_id"], name: "index_menus_on_shop_id"
   end
 
-  create_table "prides", force: :cascade do |t|
-    t.integer "shop_id"
+  create_table "prides", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
     t.string "image"
     t.string "title"
     t.string "content"
@@ -153,35 +153,35 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["shop_id"], name: "index_prides_on_shop_id"
   end
 
-  create_table "recommends", force: :cascade do |t|
+  create_table "recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "scenes", force: :cascade do |t|
+  create_table "scenes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "shop_features", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "feature_id"
+  create_table "shop_features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "feature_id"
     t.index ["feature_id"], name: "index_shop_features_on_feature_id"
     t.index ["shop_id"], name: "index_shop_features_on_shop_id"
   end
 
-  create_table "shop_recommends", force: :cascade do |t|
-    t.integer "shop_id"
-    t.integer "recommend_id"
+  create_table "shop_recommends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "recommend_id"
     t.index ["recommend_id"], name: "index_shop_recommends_on_recommend_id"
     t.index ["shop_id"], name: "index_shop_recommends_on_shop_id"
   end
 
-  create_table "shops", force: :cascade do |t|
+  create_table "shops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "city_id"
+    t.bigint "city_id"
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
     t.string "telNumber", default: "", null: false
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -229,4 +229,19 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "shops"
+  add_foreign_key "blogs", "admins"
+  add_foreign_key "detail_rooms", "details"
+  add_foreign_key "detail_rooms", "rooms"
+  add_foreign_key "detail_scenes", "details"
+  add_foreign_key "detail_scenes", "scenes"
+  add_foreign_key "details", "shops"
+  add_foreign_key "information", "admins"
+  add_foreign_key "menu_books", "shops"
+  add_foreign_key "menus", "shops"
+  add_foreign_key "prides", "shops"
+  add_foreign_key "shop_features", "features"
+  add_foreign_key "shop_features", "shops"
+  add_foreign_key "shop_recommends", "recommends"
+  add_foreign_key "shop_recommends", "shops"
 end
