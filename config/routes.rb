@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   passwords:     'admins/passwords',
   registrations: 'admins/registrations'
   }
+
   scope 'mypages' do
     devise_for :shops, controllers: {
       sessions:      'shops/sessions',
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     resource :informations, only: [:index ]
     resources :informations
   end
+
   namespace :mypages do
     resources :shops, shallow: true do
       resource :addresses, only: [:index, :show ]
@@ -49,6 +51,7 @@ Rails.application.routes.draw do
       resources :features
     end
   end
+
   resource :shops, only: [:index] do
     resources :cities, only: [:show] do
       resources :shops, only: [:show]
