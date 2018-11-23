@@ -36,10 +36,13 @@
   background-color: $nikunabi_dark_pink__color;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 .nikunabi-main-bc {
   background-color: $nikunabi_main__color;
 }
-
 .nikunabi-logo {
   img {
     padding: 5px 0 0;
@@ -76,7 +79,6 @@
     background-color: #f15555;
   }
 }
-
 
 .nikunabi_title {
   float: left;
@@ -116,7 +118,6 @@
     }
   }
 }
-
 
 .nikunabi_home-btn {
   display: block;
