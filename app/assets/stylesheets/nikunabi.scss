@@ -3,15 +3,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
 
-/************
-  color
-********/
-
-$nikunabi_main__color: #fd7474;
-$nikunabi_sub__color: #f15555;
-$nikunabi_red___color: #C30D23;
-$nikunabi_pink__color: #E4007F;
+.color-test {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 10px;
+}
+.main-color {
+  background-color: $nikunabi_main__color;
+}
+.dark-main-color {
+  background-color: $nikunabi_dark_main__color;
+}
+.sub-color {
+  background-color: $nikunabi_sub__color;
+}
+.dark-sub-color {
+  background-color: $nikunabi_dark_sub__color;
+}
+.red-color {
+  background-color: $nikunabi_red__color;
+}
+.dark-red-color {
+  background-color: $nikunabi_dark_red__color;
+}
+.pink-color {
+  background-color: $nikunabi_pink__color;
+}
+.dark-pink-color {
+  background-color: $nikunabi_dark_pink__color;
+}
 
 .nikunabi-main-bc {
   background-color: $nikunabi_main__color;
