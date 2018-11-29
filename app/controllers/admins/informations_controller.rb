@@ -1,17 +1,11 @@
-class Admins::InformationController < Admins::ApplicationController
+class Admins::InformationsController < Admins::ApplicationController
   before_action :set_information, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin! ,only: [:new, :show, :edit, :update, :destroy]
-  layout "admins", only: [:new, :show, :edit, :update]
+  layout "admins"
 
   # GET /information
   # GET /information.json
   def index
-    @information = Information.all
-  end
-
-  # GET /information/1
-  # GET /information/1.json
-  def show
+    @informations = Information.all
   end
 
   # GET /information/new
@@ -26,19 +20,12 @@ class Admins::InformationController < Admins::ApplicationController
   # POST /information
   # POST /information.json
   def create
-    @admin = Admin.find(params[:admin_id])
-    @information = Information.new(information_params)
-    @information.admin = @admin
-
-    @information = Information.new(information_params)
-
+    @information = current_admin.informations.build(information_params)
     respond_to do |format|
       if @information.save
-        format.html { redirect_to @information, notice: 'Information was successfully created.' }
-        format.json { render :show, status: :created, location: @information }
+        format.html { redirect_to :admins_root, notice: '新着情報を登録しました。' }
       else
         format.html { render :new }
-        format.json { render json: @information.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,11 +35,9 @@ class Admins::InformationController < Admins::ApplicationController
   def update
     respond_to do |format|
       if @information.update(information_params)
-        format.html { redirect_to @information, notice: 'Information was successfully updated.' }
-        format.json { render :show, status: :ok, location: @information }
+        format.html { redirect_to :admins_root, notice: '新着情報を編集しました。' }
       else
         format.html { render :edit }
-        format.json { render json: @information.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,7 +47,7 @@ class Admins::InformationController < Admins::ApplicationController
   def destroy
     @information.destroy
     respond_to do |format|
-      format.html { redirect_to information_index_url, notice: 'Information was successfully destroyed.' }
+      format.html { redirect_to @information, notice: '新着情報を削除しました。' }
       format.json { head :no_content }
     end
   end

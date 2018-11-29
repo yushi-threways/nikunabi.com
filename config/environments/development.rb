@@ -73,6 +73,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
+
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     :address => "smtp18.gmoserver.jp", # smtpサーバーのホスト名
