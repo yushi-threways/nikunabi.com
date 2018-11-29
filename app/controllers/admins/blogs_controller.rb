@@ -1,6 +1,5 @@
 class Admins::BlogsController < Admins::ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!	,only: [:show, :edit, :update, :destroy]
   layout "admins", only: [:index, :show, :edit, :new]
 
   # GET /blogs
@@ -27,13 +26,10 @@ class Admins::BlogsController < Admins::ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @admin = current_admin
-    @blog = Blog.new(blog_params)
-    @blog.admin = @admin
-
+    @blog = current_admin.blogs.build(blog_params)
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to [:admins, @blog], notice: 'Blog was successfully created.' }
+        format.html { redirect_to [:admins, @blog], notice: '新しいブログを投稿しました。' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -47,7 +43,7 @@ class Admins::BlogsController < Admins::ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to [:admins, @blog], notice: 'Blog was successfully updated.' }
+        format.html { redirect_to [:admins, @blog], notice: 'ブログを編集しました。' }
         format.json { render :show, status: :ok, location: @blog }
       else
         format.html { render :edit }
@@ -61,7 +57,7 @@ class Admins::BlogsController < Admins::ApplicationController
   def destroy
     @blog.destroy
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
+      format.html { redirect_to admins_blog_url, notice: 'ブログを削除しました。' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +67,6 @@ class Admins::BlogsController < Admins::ApplicationController
     def set_blog
       @blog = Blog.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :subtitle, :content, :image, :secondtitle, :secondsubtitle, :secondcontent, :secondimage)

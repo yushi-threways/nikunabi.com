@@ -25,11 +25,10 @@ Rails.application.routes.draw do
       patch 'mypages/profile_update', to: 'shops/registrations#profile_update'
   end
 
-  namespace :admins do
-    resource :shops, only: [:index]
+  namespace :admins, shallow: true do
+    root 'top#index'
     resources :shops
     resources :blogs
-    resource :informations, only: [:index ]
     resources :informations
   end
 
@@ -59,7 +58,6 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:index]
-  resources :admins, only: [:index]
   resources :blogs, only: [:index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
