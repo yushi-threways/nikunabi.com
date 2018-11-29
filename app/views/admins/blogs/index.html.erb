@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Blogs</h1>
+<h1>ブログ</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
+      <th>タイトル</th>
+      <th>サブタイトル</th>
+      <th>コンテンツ</th>
+      <th>画像</th>
+      <th>タイトル２</th>
+      <th>サブタイトル２</th>
+      <th>コンテンツ２</th>
+      <th>画像２</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +21,14 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= blog.title %></td>
+        <td><%= blog.subtitle %></td>
         <td><%= blog.content %></td>
         <td class="mypage-shop-menu-img"><%= image_tag blog.image.url %></td>
-        <td><%= link_to 'Show', blog %></td>
+        <td><%= blog.secondtitle %></td>
+        <td><%= blog.secondsubtitle %></td>
+        <td><%= blog.secondcontent %></td>
+        <td class="mypage-shop-menu-img"><%= image_tag blog.secondimage.url %></td>
+        <td><%= link_to 'Show', admins_blog_url(blog) %></td>
         <td><%= link_to '編集', edit_admins_blog_url(blog) %></td>
         <td><%= link_to '削除', blog, method: :delete, data: { confirm: '削除してもよろしいでしょうか?' } %></td>
       </tr>
@@ -28,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Blog', new_admins_blog_path %>
+<%= link_to '新規ブログを投稿する', new_admins_blog_path %>
