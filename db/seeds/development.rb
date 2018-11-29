@@ -56,7 +56,7 @@ admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
 
 Shop.delete_all
-20.times do |n|
+10.times do |n|
   name = "ショップ名#{n + 1}"
   email = "test-#{n+1}@nikunabi.jp"
   password = "password"
@@ -73,27 +73,4 @@ Shop.delete_all
              )
   shop.skip_confirmation!
   shop.save!
-end
-
-admins = Admin.order(:created_at)
-4.times do |n|
-  title = "タイトルが入ります"
-  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
-  admins.each { |admin| admin.blogs.create!(
-    title: title,
-    content: content,
-    image: File.open("./app/assets/images/nikunabi_def.jpg"),
-    secondtitle: title,
-    secondcontent: content,
-    secondimage: File.open("./app/assets/images/nikunabi_def.jpg"),
-    )}
-end
-
-3.times do |n|
-  title = "タイトルが入ります"
-  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
-  admins.each { |admin| admin.informations.create!(
-    title: title,
-    content: content
-    )}
 end

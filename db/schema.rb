@@ -121,9 +121,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
   create_table "menu_books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id"
     t.string "images"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["shop_id", "created_at"], name: "index_menu_books_on_shop_id_and_created_at"
     t.index ["shop_id"], name: "index_menu_books_on_shop_id"
   end
 
