@@ -3,10 +3,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
+
 @font-face {
   font-family: 'Kaushan Script';
   font-style: normal;
   src: url(https://themes.googleusercontent.com/static/fonts/kaushanscript/v1/qx1LSqts-NtiKcLw4N03IFhlQWQpSCpzb2Peu3I-Q34.woff) format('woff');
+}
+
+.home-part--title {
+  border-left: 3px solid $nikunabi_main__color;
+  padding: 0 0 0 5px;
+  font-size: 1.8rem;
+  margin: 10px auto 20px;
 }
 
 .sta-Home_Header {
@@ -335,6 +344,89 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+  }
+}
+.home-recommends {
+  &--inner {
+
+  }
+  &--box {
+    width: 25%;
+    margin: 0 auto;
+    padding: 5px 10px;
+    float: left;
+    &-left {
+    }
+    &-right {
+    }
+  }
+  &--unit {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    &-left {
+
+    }
+    &-right {    
+    }
+    &-img {
+      margin: 0 auto 10px;
+      img {
+        max-width: 100%;
+        vertical-align: bottom;
+      }
+    }
+    &-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &-point {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.home-feature {
+  margin: 0 auto 30px;
+  ul {
+    padding: 20px 5px;
+    background-color: $nikunabi_high_light_main__color;
+    border-radius: 3px;
+  }
+}
+
+.home-footer {
+  padding: 30px 0;
+  background-color: #f4f4f4;
+  &--inner {
+  }
+  &--title {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  &--registation {
+    text-align: right;
+  }
+  &--unit {
+    background-color: #fff;
+    border: 1px solid #eeece4;
+    padding: 20px;
+    margin: 0 auto 10px;
+    h4 {
+      font-size: 1.4rem;  
+      padding: 0 0 10px;
+      border-bottom: 1px solid #eeece4; 
+    }
+    p {
+      font-size: 1.3rem;
     }
   }
 }

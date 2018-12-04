@@ -2,19 +2,24 @@ crumb :root do
   link "ニクナビ", root_path
 end
 
-crumb :shops do
-  link "焼肉店一覧", shops_path
+crumb :recommend do |recommend|
+  link "こだわり部位#{ recommend.name }の店舗", recommend_path(recommend)
   parent :root
 end
 
-crumb :shops_city do |shop|
-  link "#{shop.city[:city]}の焼肉店", shops_city_path(shop.city_id)
-  parent :shops
+crumb :area do |area|
+  link "#{ area.name }エリア店舗", area_path(area)
+  parent :root
 end
 
-crumb :show_shop do |shop|
-  link shop.name, shops_city_shop_path(shop.city_id, shop)
-  parent :shops_city, shop
+crumb :feature do |feature|
+  link "#{ faeture.name }がある店舗", feature_path(feature)
+  parent :root
+end
+
+crumb :area_shop do |shop|
+  link shop.name, area_shop_path(:area_areacode => shop.area.areacode, :id => shop)
+  parent :area, area
 end
 
 crumb :show_blog do |blog|

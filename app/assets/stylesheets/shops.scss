@@ -3,6 +3,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
 
 .shop-detail {
   h1 {
@@ -122,9 +123,9 @@
 
 .shop-detail-top-img {
   margin: 0 auto 10px;
+  text-align: center;
   img {
     width: 100%;
-    height: 120px;
     vertical-align: bottom;
   }
 }
@@ -158,5 +159,34 @@
   p {
     line-height: 1.6;
     margin: 0 auto;
+  }
+}
+
+.shop-sessions-form {
+  background-color: #f8f8f8;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 0 auto 30px;
+  .new_shop {
+    padding: 20px;
+    background-color: #fff;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+  }
+  &--logo {
+    text-align: center;
+    margin: 0 auto 20px;
+    small {
+      display: inline-block;
+      padding: 0 0 5px;
+    }
+    a {
+      img {
+        max-width: 120px;
+        width: 100%;
+      }
+    }
   }
 }

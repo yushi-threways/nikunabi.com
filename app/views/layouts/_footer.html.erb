@@ -1,8 +1,101 @@
 <footer class="footer">
-  <small>
-
-  </small>
-  <nav>
-
-  </nav>
+  <div class="footer-inner">
+  <div class="container">
+    <div class="footer-nav">
+    <div class="footer-nav--unit">
+    <ul>
+    <li><%= link_to 'トップ', :root %></li>
+    <li><%= link_to 'ニクナビタイムズ', :blogs %></li>
+    <li><%= link_to '店舗ログイン', :shop_session %></li>
+    <li><%= link_to '店舗登録', :new_shop_registration %></li>
+    </ul>
+    </div>
+    <div class="footer-nav--unit">
+    <p>エリア</p>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to area_url(:areacode => 231010012) do %>錦エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231020006) do %>大曽根エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231050107) do %>名駅エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060004) do %>大須エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060005) do %>金山エリア<% end %></li>
+    </ul>
+    </div>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to area_url(:areacode => 231060008) do %>栄エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060010) do %>新栄エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060014) do %>錦エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060023) do %>丸の内エリア<% end %></li>
+    </ul>
+    </div>
+    </div>
+    <div class="footer-nav--unit">
+    <p>サービス</p>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to '高級肉', feature_url(:id => 1) %></li>
+    <li><%= link_to '写真映えメニュー', feature_url(:id => 2) %></li>
+    <li><%= link_to 'デカ盛りメニュー', feature_url(:id => 3) %></li>
+    <li><%= link_to 'ヘルシーメニュー', feature_url(:id => 4) %></li>
+    <li><%= link_to '激辛メニュー', feature_url(:id => 5) %></li>
+    </ul>
+    </div>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to '韓国系メニュー', feature_url(:id => 6) %></li>
+    <li><%= link_to '食べ放題コース', feature_url(:id => 7) %></li>
+    <li><%= link_to '飲み放題コース', feature_url(:id => 8) %></li>
+    <li><%= link_to '食事コース', feature_url(:id => 9) %></li>
+    </ul>
+    </div>
+    </div>
+    <div class="footer-nav--unit">
+    <p>こだわり</p>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to 'タン', recommend_url(:id => 1) %></li>
+    <li><%= link_to 'ざぶとん', recommend_url(:id => 2) %></li>
+    <li><%= link_to 'みすじ', recommend_url(:id => 3) %></li>
+    <li><%= link_to '三角バラ', recommend_url(:id => 4) %></li>
+    <li><%= link_to 'サーロイン', recommend_url(:id => 5) %></li>
+    <li><%= link_to 'カルビ', recommend_url(:id => 6) %></li>
+    <li><%= link_to 'カイノミ', recommend_url(:id => 7) %></li>
+    </ul>
+    </div>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to 'ヒレ', recommend_url(:id => 8) %></li>
+    <li><%= link_to 'ランプ', recommend_url(:id => 10) %></li>
+    <li><%= link_to '外モモ', recommend_url(:id => 11) %></li>
+    <li><%= link_to '友三角', recommend_url(:id => 12) %></li>
+    <li><%= link_to 'ウルテ', recommend_url(:id => 13) %></li>
+    <li><%= link_to 'ハツ', recommend_url(:id => 14) %></li>
+    <li><%= link_to 'ハラミ', recommend_url(:id => 15) %></li>
+    <li><%= link_to 'サガリ', recommend_url(:id => 16) %></li>
+    </ul>
+    </div>
+    <div class="footer-nav--unit-inner">
+    <ul>
+    <li><%= link_to 'ミノ', recommend_url(:id => 17) %></li>
+    <li><%= link_to 'センマイ', recommend_url(:id => 18) %></li>
+    <li><%= link_to 'レバー', recommend_url(:id => 19) %></li>
+    <li><%= link_to '牛ホルモン', recommend_url(:id => 20) %></li>
+    <li><%= link_to 'てっちゃん', recommend_url(:id => 21) %></li>
+    <li><%= link_to 'シャトーブリアン', recommend_url(:id => 9) %></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <hr>
+    <div class="clearfix">
+    <div class="col-xs-6">
+    <%= image_tag 'nikunabi_logo.png', :alt => 'フッターロゴ', class: "footer-nikunabi-logo" %>
+    </div>
+    <div class="col-xs-6">
+    <small class="copy">Copyright (c) Nikunabi, Inc. All Rights Reserved. 無断転載禁止;</small>
+    </div>
+  </div>
+  </div>
+  </div>
 </footer>

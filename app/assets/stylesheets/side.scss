@@ -2,7 +2,7 @@
 .nikunabi-side {
   margin: 0 auto 30px;
   h4  {
-    font-size: 16px;
+    font-size: 1.6rem;
     text-align: center;
   }
   hr {
@@ -17,13 +17,14 @@
   padding: 20px;
 }
 
-.side_login {
-  border: 1px solid #eeece4;
-  border-radius: 3px;
-  padding: 20px;
+.home-information {
+  &--inner {
+    time {
 
-  &_about {
-    text-align: center;
-    font-size: 11px;
+    }
+    p {
+      margin: 5px auto;
+      font-size: 1.2rem;
+    }
   }
 }

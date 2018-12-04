@@ -33,24 +33,22 @@
       </a>
       <ul class="treeview-menu">
         <li>
-          <%= link_to mypages_shop_url(current_shop) do %>
+          <%= link_to :shops_root do %>
           <i class="fa fa-link"></i> <span>基本情報確認</span></a>
           <% end %>
         </li>
         <li>
-          <%= link_to mypages_shops_profile_edit_url(current_shop) do %>
-          <i class="fa fa-link"></i> <span>基本情報編集</span></a>
-          <% end %>
+          基本情報編集
         </li>
       </ul>
     </li>
     <li>
       <% if current_shop.address %>
-        <%= link_to edit_mypages_address_url(current_shop.address) do %>
+        <%= link_to edit_shops_address_url(current_shop.address)  do %>
         <i class="fa fa-link"></i> <span>アクセス情報編集</span></a>
         <% end %>
       <% else %>
-        <%= link_to new_mypages_shop_address_path(current_shop) do %>
+        <%= link_to :new_shops_address do %>
           <i class="fa fa-link"></i> <span>アクセス情報追加</span></a>
         <% end %>
       <% end %>
@@ -61,7 +59,7 @@
         <i class="fa fa-link"></i> <span>詳細情報編集</span></a>
         <% end %>
       <% else %>
-        <%= link_to new_mypages_shop_detail_path(current_shop) do %>
+        <%= link_to :new_shops_detail do %>
           <i class="fa fa-link"></i> <span>詳細情報追加</span></a>
         <% end %>
       <% end %>
@@ -74,22 +72,22 @@
       </a>
       <ul class="treeview-menu">
         <li>
-          <%= link_to mypages_shop_menus_url(current_shop) do %>
+          <%= link_to :shops_menus do %>
           <i class="fa fa-link"></i> <span>メニュー一覧</span></a>
           <% end %>
         </li>
         <li>
-          <%= link_to new_mypages_shop_menu_path(current_shop) do %>
+          <%= link_to :new_shops_menu do %>
           <i class="fa fa-link"></i> <span>メニュー作成</span></a>
           <% end %>
         </li>
          <li>
-          <%= link_to mypages_menu_book_url(current_shop) do %>
+          <%= link_to :shops_menu_books do %>
           <i class="fa fa-link"></i> <span>メニュー表写真一覧</span></a>
           <% end %>
         </li>
         <li>
-          <%= link_to new_mypages_shop_menu_book_path(current_shop) do %>
+          <%= link_to :new_shops_menu_book do %>
           <i class="fa fa-link"></i> <span>メニュー表写真追加</span></a>
           <% end %>
         </li>
@@ -103,12 +101,12 @@
       </a>
       <ul class="treeview-menu">
         <li>
-          <%= link_to mypages_shop_prides_url(current_shop) do %>
+          <%= link_to :shops_prides do %>
           <i class="fa fa-link"></i> <span>こだわり一覧</span></a>
           <% end %>
         </li>
         <li>
-          <%= link_to new_mypages_shop_pride_path(current_shop) do %>
+          <%= link_to :new_shops_pride do %>
           <i class="fa fa-link"></i> <span>こだわり作成</span></a>
           <% end %>
         </li>

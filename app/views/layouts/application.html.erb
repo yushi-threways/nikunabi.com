@@ -12,12 +12,15 @@
        <div class="container-fluid">
          <div class="row">
            <div class="container">
-             <p><%= breadcrumbs separator: " #{content_tag(:i, '', :class=>'glyphicon glyphicon-chevron-right')} "%></p>
+             <%= breadcrumbs separator: " #{content_tag(:i, '', :class=>'glyphicon glyphicon-chevron-right')} "%>
              <% unless current_page?(root_path) %>
              <hr>
              <% end %>
              <%= yield %>
            </div>
+           <% if current_page?(root_path) %>
+            <%= render 'static_pages/footer' %>
+           <% end %>
        	</div>
        </div>
        <%= render 'layouts/footer' %>

@@ -1,0 +1,118 @@
+<% content_for :page_h1 do %>
+<h1>
+  店舗詳細情報
+  <small>詳細情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">店舗詳細情報</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <p id="notice"><%= notice %></p>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Shop</th>
+              <td><%= @detail.shop.id %></td>
+            </tr>
+            <tr>
+              <th>営業時間</th>
+              <td><%= @detail.open %></td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td><%= @detail.holiday %></td>
+            </tr>
+            <tr>
+              <th>アクセス</th>
+              <td><%= @detail.access %></td>
+            </tr>
+            <tr>
+              <th>駐車場</th>
+              <td><%= @detail.parking %></td>
+            </tr>
+            <tr>
+              <th>店舗タイプ</th>
+              <td><%= @detail.concept %></td>
+            </tr>
+            <tr>
+              <th>設備</th>
+              <td><%= @detail.facility %></td>
+            </tr>
+            <tr>
+              <th>明るさ</th>
+              <td><%= @detail.light %></td>
+            </tr>
+            <tr>
+              <th>店舗雰囲気</th>
+              <td><%= @detail.vibe %></td>
+            </tr>
+            <tr>
+              <th>シーン</th>
+              <td>
+                <ul class="list-inline">
+                  <% current_shop.details.scenes.each do |scene| %>
+                    <li><%= scene.name %></li>
+                  <%- end %>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>支払い方法</th>
+              <td><%= @detail.payment %></td>
+            </tr>
+            <tr>
+              <th>席</th>
+              <td>
+                <ul class="list-inline">
+                  <% current_shop.details.rooms.each do |room| %>
+                    <li><%= room.name %></li>
+                  <%- end %>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>喫煙・禁煙</th>
+              <td><%= @detail.smoking %></td>
+            </tr>
+            <tr>
+              <th>テーブル数</th>
+              <td><%= @detail.table %>人</td>
+            </tr>
+             <tr>
+              <th>席数</th>
+              <td><%= @detail.seat %>人</td>
+            </tr>
+            <tr>
+              <th>宴会可能数</th>
+              <td><%= @detail.party %>人</td>
+            </tr>
+            <tr>
+              <th>SNSアカウント</th>
+              <td><%= @detail.account %></td>
+            </tr>
+            <% unless current_shop.details.image.nil? %>
+            <tr>
+              <th>店舗トップ画像</th>
+              <td class="mypage-shop-detail-img"><%= image_tag @detail.image.url %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+      <%= link_to 'Edit', edit_mypages_detail_path(@detail) %> |
+      <%= link_to 'Back', mypages_shop_path(current_shop) %>
+    </div>
+  </div>
+</div>

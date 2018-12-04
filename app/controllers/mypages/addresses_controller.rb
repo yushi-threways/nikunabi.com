@@ -18,25 +18,21 @@ class Mypages::AddressesController < Mypages::ApplicationController
   # GET /addresses/new
   def new
     @address = Address.new
-    @shop = set_shop
   end
 
   # GET /addresses/1/edit
   def edit
-    @shop = set_shop
-    @address = set_address
   end
 
 
   # POST /addresses
   # POST /addresses.json
   def create
-    @shop = Shop.find(params[:shop_id])
-    @address = @shop.build_address(address_params)
-
+    shop = current_shop
+    @address = shop.build_address(address_params)
     respond_to do |format|
       if @address.save
-        format.html { redirect_to [:mypages, @address], notice: 'Address was successfully created.' }
+        format.html { redirect_to [:shops, @address], notice: 'アドレスを作成しました。' }
         format.json { render :show, status: :created, location: @address }
       else
         format.html { render :new }
@@ -50,7 +46,7 @@ class Mypages::AddressesController < Mypages::ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to [:mypages, @address], notice: 'Address was successfully updated.' }
+        format.html { redirect_to [:shops, @address], notice: 'アドレスを編集しました。' }
         format.json { render :show, status: :ok, location: @address }
       else
         format.html { render :edit }
@@ -75,19 +71,8 @@ class Mypages::AddressesController < Mypages::ApplicationController
       @address = Address.find(params[:id])
     end
 
-    def set_shop
-      @shop = Shop.where(:id => params[:shop_id]).first
-    end
-
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      #@user = User.find(params[:id])
-      @user = User.where(:id => params[:user_id]).first
-    end
-
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:shop_id, :zipcode, :street, :building, :station)
+      params.require(:address).permit(:area, :zipcode, :street, :station, :prefecture, :city, :full_address)
     end
 end

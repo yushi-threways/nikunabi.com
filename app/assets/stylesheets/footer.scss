@@ -1,0 +1,39 @@
+.footer {
+  padding: 0 0 30px;
+  &-inner {
+
+  }
+  &-nav {
+    border-top: 1px solid #f4f4f4;
+    padding: 30px 0 0;
+    &--unit {
+      display: inline-block;
+      padding: 0 10px 0;
+      border-right: 1px solid #eeece4;
+      vertical-align: top;
+      p {
+      }
+      ul {
+        list-style-type: none;
+        padding: 0 0 0 10px;
+        li {
+          font-size: 1.3rem;
+        }
+        
+      }
+      &-inner {
+        vertical-align: top;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.copy {
+  display: block;
+  text-align: right;
+}
+.footer-nikunabi-logo {
+  max-width: 80px;
+  vertical-align: bottom;
+}

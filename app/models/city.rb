@@ -1,4 +1,4 @@
 class City < ApplicationRecord
-  has_many :shops, :class_name => 'Shop', dependent: :destroy
-
+  has_many :addresses
+  has_many :shops, through: :addresses
 end

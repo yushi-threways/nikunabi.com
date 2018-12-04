@@ -1,52 +1,16 @@
-<% content_for :page_h1 do %>
-<h1>
-  店舗住所情報
-  <small>店舗住所情報</small>
-</h1>
-<ol class="breadcrumb">
-  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-  <li class="active">Here</li>
-</ol>
-<% end %>
+<p id="notice"><%= notice %></p>
+<div class="">
+  <div class="col-xs-12 col-md-2 ccol-sm-2">
+  </div>
 
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title">店舗住所情報</h3>
-      </div><!-- /.box-header -->
-      <div class="box-body no-padding">
-        <p id="notice"><%= notice %></p>
-
-        <table class="table table-striped">
-          <tbody>
-            <tr>
-              <th>Shop</th>
-              <td><%= @address.shop.id %></td>
-            </tr>
-            <tr>
-              <th>都道府県</th>
-              <td><%= @address.prefecturecode %></td>
-            </tr>
-            <tr>
-              <th>市区町村</th>
-              <td><%= @address.city %></td>
-            </tr>
-            <tr>
-              <th>番地</th>
-              <td><%= @address.street %></td>
-            </tr>
-            <tr>
-              <th>建物名</th>
-              <td><%= @address.building %></td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-      <%= link_to 'Edit', edit_address_path(@address) %> |
-      <%= link_to 'Back', shop_path(current_shop) %>
-    </div>
+  <div class="col-xs-12 col-md-10 ccol-sm-10">
+    <h1 class="h3"><%=  %>エリア店舗一覧</h1>
+    <article class="new_top_list">
+      <ul>
+        <% @shops.each do |shop| %>
+         <%= render :partial => "shops/shop_list", locals: { shop: shop } %>
+        <% end %>
+      </ul>
+    </article>
   </div>
 </div>

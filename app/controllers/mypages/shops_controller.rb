@@ -1,6 +1,5 @@
 class Mypages::ShopsController < Mypages::ApplicationController
   before_action :set_shop
-  before_action :authenticate_shop!, only: [:show, :edit, :update]
   layout "users", only: [:show, :edit, :update]
 
 

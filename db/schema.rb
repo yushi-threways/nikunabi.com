@@ -14,14 +14,19 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id"
-    t.string "street"
+    t.bigint "city_id"
+    t.bigint "area_id"
     t.string "zipcode"
-    t.string "building"
+    t.string "prefecture", default: "愛知県"
+    t.string "street"
     t.float "latitude"
     t.float "longitude"
+    t.string "full_address"
     t.string "station"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_addresses_on_area_id"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
     t.index ["shop_id", "created_at"], name: "index_addresses_on_shop_id_and_created_at"
     t.index ["shop_id"], name: "index_addresses_on_shop_id"
   end
@@ -36,6 +41,11 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "areacode"
+    t.string "name"
   end
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,14 +65,9 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
   end
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "prefecturecode"
-    t.string "prefecture"
-    t.string "prefecturekana"
-    t.string "citycode"
+    t.integer "citycode"
     t.string "city"
     t.string "citykana"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "detail_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -195,11 +200,9 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "city_id"
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
     t.string "telNumber", default: "", null: false
-    t.index ["city_id"], name: "index_shops_on_city_id"
     t.index ["confirmation_token"], name: "index_shops_on_confirmation_token", unique: true
     t.index ["email"], name: "index_shops_on_email", unique: true
     t.index ["reset_password_token"], name: "index_shops_on_reset_password_token", unique: true
@@ -226,6 +229,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "areas"
+  add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "shops"
   add_foreign_key "blogs", "admins"
   add_foreign_key "detail_rooms", "details"

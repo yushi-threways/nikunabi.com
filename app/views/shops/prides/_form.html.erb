@@ -1,0 +1,42 @@
+<%= form_with(model: [:mypages, @pride], url: (@pride.new_record? ? [:mypages, :shop, @pride]: [:mypages, @pride]), local: true) do |f| %>
+  <% if pride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pride.errors.count, "error") %> prohibited this detail from being saved:</h2>
+
+      <ul>
+      <% pride.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <b>こだわり追加</b>
+
+    <table class="table table-list">
+    <thead>
+      <tr>
+        <th>見出し</th>
+        <th>画像</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+
+    <tbody id='detail-association-insertion-point'>
+    <div class="form-group">
+      <tr class="nested-fields">
+      <td>
+      <%= f.text_field :title, class: 'form-control unit-price' %>
+      </td>
+      <td>
+      <%= f.file_field :image, class: 'form-control quantity' %>
+      </td>
+      <td>
+        <%= f.text_area :content, class: 'form-control subtotal'%>
+      </td>
+    </tr>
+    </div>
+    </tbody>
+    </table>
+    <%= f.submit '登録', class: 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,21 @@
+<% breadcrumb :feature, @feature %>
+<p id="notice"><%= notice %></p>
+<div class="">
+  <div class="col-xs-12 col-md-2 ccol-sm-2">
+  </div>
+
+  <div class="col-xs-12 col-md-10 ccol-sm-10">
+    <h2 class="nikunabi_shop_list_title"><%= @feature.name %>がある店舗一覧</h2>
+    <article class="new_top_list">
+      <ul >
+      <% if !@shops == 'nil' %>
+        <% @shops.each do |shop| %>
+         <%= render :partial => "shops/shop_list", locals: { shop: shop } %>
+        <% end %>
+      <% else %>
+        <p class="h5">現在、<%= @feature.name %>がある店舗の登録はございません。</p>
+      <% end %>
+      </ul>
+    </article>
+  </div>
+</div>

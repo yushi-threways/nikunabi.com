@@ -1,0 +1,55 @@
+<% content_for :page_h1 do %>
+<h1>
+  店舗住所情報
+  <small>店舗住所情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">店舗住所情報</h3>
+      </div><!-- /.box-header -->
+      <div class="box-body no-padding">
+        <p id="notice"><%= notice %></p>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>エリア</th>
+              <td><%= @address.area %></td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @address.zipcode %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= @address.prefecture %></td>
+            </tr>
+            <tr>
+              <th>市区町村</th>
+              <td><%= @address.city.city %></td>
+            </tr>
+            <tr>
+              <th>番地</th>
+              <td><%= @address.street %></td>
+            </tr>
+             <tr>
+              <th>最寄駅</th>
+              <td><%= @address.station %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <%= link_to 'Edit', edit_shops_address_url(@address) %> |
+      <%= link_to 'Back', :shops_root %>
+    </div>
+  </div>
+</div>

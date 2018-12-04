@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
+@import 'colors';
 
 .field {
   padding: 10px 0;
@@ -25,4 +26,25 @@
 
 article {
   margin: 0 auto 50px;
+}
+
+.btn-pink {
+  margin: 0 auto 10px;
+  background: $nikunabi_main__color;
+  color: #fff !important;
+  border: none;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  a {
+    color: #fff !important;
+  }
+}
+.btn-pink:hover, .btn-pink:focus {
+  background: $nikunabi_light_main__color;
+  color: #fff !important;
+}
+.btn-pink:active {
+  background: $nikunabi_dark_main__color;
+  color: #fff !important;
 }
