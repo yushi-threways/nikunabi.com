@@ -1,0 +1,49 @@
+<%= form_with(model: @address, url: ([:shops, @address]), local: true) do |form| %>
+  <% if address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% address.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :area, 'エリア' %>
+    <%= form.select :area, Address.areas.keys { |k, v| [t("enums.address.area.#{k}"), v] }, {prompt: "お店の近いエリアを選択してください"}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :zipcode, '郵便番号' %>
+    <%= form.text_field :zipcode, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :prefecture, '都道府県' %>
+    <%= form.text_field :prefecture, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :市区 %>
+    <%= form.collection_select( :city_id, City.all, :id, :city, {prompt: ""}, {class: "form-control"}) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :street, '町村' %>
+    <%= form.text_field :street, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :最寄り駅 %>
+    <%= form.text_field :station, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary btn-block' %>
+  </div>
+  </div>
+<% end %>

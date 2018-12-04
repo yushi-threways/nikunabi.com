@@ -7,20 +7,12 @@
     <h1 class="h5 nikunabi_title">なごや焼肉情報サイト ~ ニクナビ ~</h1>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ヘルプ", help_path %></li>
-        <li><%= link_to "ニクナビとは？", about_path %></li>
-        <% if shop_signed_in? %>
-        <li><%= link_to current_shop.name, mypages_shop_path(current_shop) %></li>
-        <li><%= link_to 'ログアウト', destroy_shop_session_path, method: :delete %></li>
-        <% else %>
-        <li><%= link_to '店舗を登録する', new_shop_registration_path %></li>
-        <li><%= link_to 'ログイン', new_shop_session_path %></li>
-        <% end %>
+        <li>sns</li>
+        <li>sns</li>
+        <li>sns</li>       
       </ul>
     </nav>
   </div>
-
-	
 
   <nav class="navbar navbar-default <% if current_page?(root_path) %>mb-0<% end %>">
 			<div class="container">

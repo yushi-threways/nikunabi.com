@@ -1,0 +1,18 @@
+<% content_for :page_h1 do %>
+<h1>
+  店舗メニュー編集
+  <small>メニュー編集</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+<div class="box box-primary">
+  <div class="row">
+      <div class="panel-body">
+        <%= render 'form', menu: @menu %>
+      </div>
+  </div>
+</div>

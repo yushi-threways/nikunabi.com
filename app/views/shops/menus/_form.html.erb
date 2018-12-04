@@ -1,0 +1,60 @@
+<%= form_with(model: [:mypages, @menu], url: (@menu.new_record? ? [:mypages, :shop, @menu]: [:mypages, @menu]), local: true) do |f| %>
+<% if @menu.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(menu.errors.count, "error") %> prohibited this detail from being saved:</h2>
+
+    <ul>
+    <% menu.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<b>メニュー追加</b>
+
+  <table class="table table-list">
+  <thead>
+    <tr>
+      <th>メニュー名</th>
+      <th>メニュー画像</th>
+      <th>価格</th>
+      <th>数量</th>
+      <th>食べ方</th>
+      <th>味付け</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+
+  <tbody id='detail-association-insertion-point'>
+  <div class="form-group">
+    <tr class="nested-fields">
+    <td>
+    <%= f.text_field :name, class: 'form-control unit-price' %>
+    </td>
+    <td>
+    <%= f.file_field :image, class: 'form-control quantity' %>
+    </td>
+    <td>
+      <div class="input-group">
+        <span class="input-group-addon">¥</span>
+        <%= f.text_field :price, class: 'form-control subtotal'%>
+      </div>
+    </td>
+    <td>
+    <%= f.text_field :quantity, class: 'form-control unit-price' %>
+    </td>
+    <td>
+    <%= f.text_field :bake, class: 'form-control unit-price' %>
+    </td>
+    <td>
+    <%= f.text_field :taste, class: 'form-control unit-price' %>
+    </td>
+    <td>
+    <%= f.text_area :comment, class: 'form-control unit-price' %>
+    </td>
+  </tr>
+  </div>
+  </tbody>
+  </table>
+  <%= f.submit '登録', class: 'btn btn-primary' %>
+  <% end %>

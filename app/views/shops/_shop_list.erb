@@ -4,9 +4,12 @@
             <div class="clearfix">
                 <p class="col-xs-10">
                   <span class="new-open-name"><%= shop.name  %></span>　<span class="new-open-strc">
-                  <%= link_to shop.city[:city], shops_city_path(:id => shop.city_id) %></span></p>
+                  <% shop.areas.each do |sa| %>
+                  <%= link_to "#{ sa.name }エリア", area_url(:areacode => sa.areacode) %></span>
+                </p>   
                 <p class="col-xs-2">
-                <%= link_to "詳細を見る", shops_city_shop_path(:city_id => shop.city_id, :id => shop.id) %>
+                  <%= link_to "詳細を見る", area_shop_url(:area_areacode => sa.areacode, :id => shop) %>
+                  <% end %>
                 </p>
             </div>
           </div>
@@ -25,18 +28,7 @@
                 <% unless shop.details.nil? %>
                 <p>営業時間：<%= shop.details.open %></p>
                 <p>定休日：<%= shop.details.holiday %></p>
-                <p>
-                アクセス：<%= shop.details.access %><br>
-                </p>
-                <p>エリア： <%= shop.city[:city] %><%= shop.address.street %><%= shop.address.building %></p>
-                <% unless shop.details.rooms.nil? %>
-                 <ul class="list-inline">
-                 <li>席：</li>
-                  <% shop.details.rooms.each do |room| %>
-                    <li><%= room.name %></li>
-                  <%- end %>
-                 </ul>
-                 <% end %>
+                <p>アクセス：<%= shop.details.access %><br></p>
                 <p>喫煙・禁煙：<%= shop.details.smoking %></p>
                 <p>お支払い方法：<%= shop.details.payment %></p>
                 <% end %>

@@ -1,9 +1,13 @@
 class StaticPagesController < ApplicationController
   def home
-    @newShops = Shop.limit(5).includes([:address, :details, :city, :recommends, :features]).order(created_at: :desc)
+    @newShops = Shop.where( 'id >= ?', rand(Shop.first.id..Shop.last.id) ).includes([:details, :recommends, :features, :addresses, :areas]).first
     @firstblog = Blog.order(created_at: :desc).first
     @homeblogs = Blog.where.not(id: 1).limit(3)
-    @newinformations = Blog.order(created_at: :desc).limit(5)
+    @newinformations = Information.order(created_at: :desc).limit(2)
+    @recommends = Recommend.all
+    @features = Feature.all
+    @areas = Area.all
+    @address = Address.all
   end
 
   def help

@@ -1,4 +1,4 @@
-<% breadcrumb :show_shop, @shop %>
+<%# breadcrumb :area_shop, @shop %>
 <div class="col-xs-12 col-md-8 col-sm-8">
   <div class="shop-detail">
     <article class="new_top_list">
@@ -9,7 +9,6 @@
            <%= image_tag @shop.details.image.url %>
         <% end %>
       </div>
-
 
       <div class="nikunabi_shop_tag">
         <ul class="nikunabi_shop_tag-recommend">
@@ -26,18 +25,19 @@
 
       <p class="detail-shop-name-desc"><%= @shop.description %></p>
       <h1 class="detail-shop-name"><%= @shop.name %></h1>
+      <% @shop.addresses.each do |csa| %>
       <div class="shop-detail-top-info">
-        <% unless @shop.address.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：<%= @shop.address[:station] %> ｜<% end %>
+        <% unless @shop.addresses.nil? %><span><%= fa_icon("subway", text: "  最寄駅") %></span>：<%= csa.station %> ｜<% end %>
         <% unless @shop.details.nil? %> <span><%= fa_icon("mixcloud", text: "  イメージ") %>：</span><%= @shop.details.concept %><br><% end %>
         <% unless @shop.details.nil? %><span><%= fa_icon("calendar-times-o", text: "  定休日") %>：</span><%= @shop.details.holiday %><% end %>
       </div>
       <div class="shop-detail-top-map">
-      <% unless @shop.address.nil? %>
-        <p><%= fa_icon("map-marker") %> <%= @shop.city[:city]%><%= @shop.address[:street] %><%= @shop.address[:building] %></p>
-        <span><%= link_to "MAPを見る" %></span>
+      <% unless csa.nil? %>
+        <p><%= fa_icon("map-marker") %> <%= csa.prefecture + csa.city[:city] + csa.street %></p>
+        <span><%= link_to "MAPを見る", "https://maps.google.co.jp/maps/search/#{ csa.prefecture + csa.city[:city] + csa.street }", { :target => "_blank" } %></span>
         <% end %>
       </div>
-
+      <% end %>
       <% unless @shop.prides.nil? %>
       <div class="shop-detail-pride">
         <hr>
@@ -139,108 +139,6 @@
         </div>
         <% end %>
       <% end %>
-
-      <% unless @shop.details.nil? %>
-      <hr>
-      <h2>店舗詳細情報</h2>
-      <table class="table table-striped">
-        <% unless @shop.details.open.nil? %>
-        <tr>
-          <td>営業時間</td>
-          <td><%= @shop.details.open %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.holiday.nil? %>
-        <tr>
-          <td>定休日</td>
-          <td><%= @shop.details.holiday %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.access.nil? %>
-        <tr>
-          <td>アクセス</td>
-          <td><%= @shop.details.access %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.party.nil? %>
-        <tr>
-          <td>宴会可能人数</td>
-          <td><%= @shop.details.party %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.smoking.nil? %>
-        <tr>
-          <td>喫煙・禁煙</td>
-          <td><%= @shop.details.smoking %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.parking.nil? %>
-        <tr>
-          <td>駐車場</td>
-          <td><%= @shop.details.parking %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.payment.nil? %>
-        <tr>
-          <td>お支払い方法</td>
-          <td><%= @shop.details.payment %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.account.nil? %>
-        <tr>
-          <td>アカウント</td>
-          <td><%= @shop.details.account %></td>
-        </tr>
-        <% end %>
-      </table>
-
-      <hr>
-      <h2>店舗内装・設備</h2>
-      <table class="table table-striped">
-        <% unless @shop.details.scenes.nil? %>
-        <tr>
-          <td>おすすめシーン</td>
-          <td>
-            <ul class="list-inline">
-              <% @shop.details.scenes.each do |scene| %>
-                <li><%= scene.name %></li>
-              <%- end %>
-            </ul>
-          </td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.vibe.nil? %>
-        <tr>
-          <td>雰囲気</td>
-          <td><%= @shop.details.vibe %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.light.nil? %>
-        <tr>
-          <td>内装照明</td>
-          <td><%= @shop.details.light %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.facility.nil? %>
-        <tr>
-          <td>設備</td>
-          <td><%= @shop.details.facility %></td>
-        </tr>
-        <% end %>
-        <% unless @shop.details.rooms.nil? %>
-        <tr>
-          <td>席</td>
-          <td>
-            <ul class="list-inline">
-              <% @shop.details.rooms.each do |room| %>
-                <li><%= room.name %></li>
-              <%- end %>
-            </ul>
-          </td>
-        </tr>
-        <% end %>
-      </table>
-      <% end %>
     </article>
   </div>
 </div>
@@ -248,4 +146,5 @@
 <div class="col-xs-12 col-md-3 col-sm-3">
   <%= render 'layouts/shop_detail_sidebar' %>
   <%= render 'layouts/sidebar' %>
+  <%#= render 'layouts/shop_feature_sidebar' %>
 </div>

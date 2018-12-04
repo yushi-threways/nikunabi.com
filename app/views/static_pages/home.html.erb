@@ -58,33 +58,89 @@
       <hr>
       <% end %>
   <% else %>
-  <p>まだニクナビタイムズの投稿はございません。</p>
+  <p class="h5">ニクナビタイムズの投稿はございません。</p>
   <% end %>
   </article>
   <hr>
 
 <div class="clearfix">
 <div class="col-xs-12 col-md-9">
-<article class="new_top_list">
-    <h3>新着店一覧</h3>
-    <ul >
-      <% @newShops.each do |shop| %>
-          <%= render :partial => "shops/shop_list", locals: { shop: shop } %>
-      <% end %>
-    </ul>
 
-    
-    <%= link_to '全てのショップを見る', shops_path, class: "nikunabi_home-btn" %>
-  </article>
+<div class="home-areas">
+<h3 class="home-part--title">エリアから探す</h3>
+<div class="home-area--inner">
+<% @areas.each do |area| %>
+<div class="btn btn-pink">
+<%= link_to area_url(:areacode => area.areacode) do %>
+<%= area.name %>エリア
+<% end %>
+</div>
+<% end %>
+</div>
 </div>
 
-
-<div class="col-xs-12 col-md-3">
-  <div class="side_news nikunabi-side">
-    <h4>肉ナビからのお知らせ</h4>
-    
-    <hr>
+<div class="home-recommends">
+ <h3 class="home-part--title">こだわり部位から探す</h3>
+  <div class="home-recommends--inner clearfix">
+    <%= render :partial => "recommend_harami" %>
+    <%= render :partial => "recommend_hatsu" %>
+    <%= render :partial => "recommend_hire" %>
+    <%= render :partial => "recommend_horumon" %>
+    <%= render :partial => "recommend_kainomi" %>
+    <%= render :partial => "recommend_karubi" %>
+    <%= render :partial => "recommend_mino" %>
+    <%= render :partial => "recommend_misuzi" %>
+    <%= render :partial => "recommend_ranpu" %>
+    <%= render :partial => "recommend_reba" %>
+    <%= render :partial => "recommend_sa-roin" %>
+    <%= render :partial => "recommend_sagari" %>
+    <%= render :partial => "recommend_sankaku" %>
+    <%= render :partial => "recommend_senmai" %>
+    <%= render :partial => "recommend_sotomomo" %>
+    <%= render :partial => "recommend_syato" %>
+    <%= render :partial => "recommend_tan" %>
+    <%= render :partial => "recommend_urute" %>
+    <%= render :partial => "recommend_zabuton" %>
   </div>
 </div>
 
+<div class="home-area">
+  
 </div>
+
+<div class="new_top_list">
+    <h3 class="home-part--title">ニクナビPR店舗</h3>
+    <ul>
+      <%= render :partial => "shops/shop_list", locals: { shop: @newShops } %>
+    </ul>
+</div>
+</div>
+
+<div class="col-xs-12 col-md-3">
+  <div class="side_news nikunabi-side">
+    <h4>お知らせ</h4>
+      <% @newinformations.each do |information| %>
+        <hr>
+        <%= render :partial => "information_list", locals: { information: information } %>
+      <% end %>
+  </div>
+</div>
+</div>
+
+<div class="home-feature">
+<h3 class="home-part--title">サービスで探す</h3>
+<ul class="list-inline home-feature">
+  <li><%= link_to '高級肉', feature_url(:id => 1) %></li>
+  <li><%= link_to '写真映えメニュー', feature_url(:id => 2) %></li>
+  <li><%= link_to 'デカ盛りメニュー', feature_url(:id => 3) %></li>
+  <li><%= link_to 'ヘルシーメニュー', feature_url(:id => 4) %></li>
+  <li><%= link_to '激辛メニュー', feature_url(:id => 5) %></li>
+  <li><%= link_to '韓国系メニュー', feature_url(:id => 6) %></li>
+  <li><%= link_to '食べ放題コース', feature_url(:id => 7) %></li>
+  <li><%= link_to '飲み放題コース', feature_url(:id => 8) %></li>
+  <li><%= link_to '食事コース', feature_url(:id => 9) %></li>
+</ul>
+</div>
+</div>
+
+
