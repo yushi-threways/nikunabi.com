@@ -17,17 +17,17 @@
   <nav class="navbar navbar-default <% if current_page?(root_path) %>mb-0<% end %>">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
            <%= link_to image_tag('nikunabi_logo.png', { :border => '0', :alt => 'logp'}), root_path, id: "logo", class: "nikunabi-logo" %>
 				</div>
 		
 				<div class="navbar-collapse collapse" id="navbarEexample" aria-expanded="false" style="height: 1px;">
-				
+        <dl class="searchbox navbar-right">
+            <%= search_form_for(@search, url: search_shops_path, method: :get) do |f| %>
+              <dt><%= f.collection_select :areas_id_in, Area.all, :id, :name, { :include_blank => "エリア選択" } %></dt>
+              <dt><%= f.collection_select :recommends_id_in, Recommend.all, :id, :name ,{ :include_blank	=> "お好きな部位を選択" } %></dt>
+              <dd><%= f.submit ("検索") , class: 'search-btn btn-pink'%></dd>
+            <% end %>
+          </dl>
 				</div>
 			</div>
 		</nav>

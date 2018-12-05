@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.string "zipcode"
     t.string "prefecture", default: "愛知県"
     t.string "street"
+    t.string "full_address"
     t.float "latitude"
     t.float "longitude"
-    t.string "full_address"
     t.string "station"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

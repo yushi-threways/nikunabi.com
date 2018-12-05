@@ -135,16 +135,62 @@ html {
 }
 
 // searchform
+
+.shop_search {
+  &::after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 dl.searchbox{
   width: 350px;
   position:relative;
   background-color:#fff;
-  border:1px solid #aaa;
-  border-radius:6px;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 dl.searchbox dt{
   padding:3px;
+  position:relative;
+  float: left;
+  &::before {
+    position: absolute;
+    top: 0.9em;
+    right: 0.3em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid $nikunabi_main__color;
+    pointer-events: none;
+  }
+  select {
+    width: 100%;
+    padding: 3px 1.6rem 3px 3px;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-weight: normal;
+    &:hover {
+      background-color: $nikunabi_high_light_main__color;
+    }
+    &::-ms-expand {
+      display: none;
+    }
+  }
 }
+
 dl.searchbox dt input{
   width:70%;
   height:30px;
@@ -154,23 +200,16 @@ dl.searchbox dt input{
 }
 dl.searchbox dd{
   position:absolute;
-  top:1px;
-  right:1px;
+  top: 0 ;
+  right: 0;
   width:30%;
 }
 .search-btn{
   display:block;
-  background:#5fad35;
   width:100%;
-  height:36px;
-  line-height:36px;
-  border:none;
-  border-radius: 0 6px 6px 0;
+  height:30px;
+  line-height:30px;
   color:#FFF;
-}
-
-.search-btn:hover {
-  background:#228B22;
 }
 
 .nikunabi-unit {
@@ -182,4 +221,112 @@ dl.searchbox dd{
   padding: 0 0 3px;
   font-size: 1.8rem;
   margin: 10px auto 20px;
+}
+
+.nikunabi_check_box {
+  .label_list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin: auto;
+    padding-bottom: 20px;
+    max-width: 900px;
+    line-height: 1.3;
+  }
+  .label_list::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  .label_list_item {
+    display: inline;
+    float: left;
+    margin: 0 auto 10px;
+  }
+  .label_list_item label {
+    position: relative;
+    display: block;
+    word-break: break-all;
+  }
+  .label_list_item label input[type="checkbox"] + span,
+  .label_list_item label input[type="radio"] + span {
+    position: relative;
+    padding: 2px 10px 0 30px;
+  }
+  .label_list label input[type="checkbox"] + span::before {
+    border-color: $nikunabi_main__color;
+  }
+  .label_list label input[type="checkbox"]:checked + span::before {
+    background-color: $nikunabi_main__color;
+  }
+  label span {
+    display: inline-block;
+  }
+  label input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  label input[type="checkbox"] + span::before, label input[type="checkbox"] + span::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    content: '';
+    box-sizing: border-box;
+  }
+  label input[type="checkbox"] + span::before {
+    z-index: 0;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 2px #616161 solid;
+    border-radius: 5px;
+  }
+   label input[type="checkbox"] + span::after {
+    z-index: 1;
+    margin: 4px 7px;
+    width: 6px;
+    height: 9px;
+  }
+  label input[type="checkbox"]:checked + span::before {
+    background-color: $nikunabi_main__color;
+  }
+  label input[type="checkbox"]:checked + span::after {
+    border: 2px solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  
+  .label_list label input[type="radio"] + span::before {
+    border-color: $nikunabi_main__color;
+  }
+  label input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  label input[type="radio"] + span::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    box-sizing: border-box;
+    border-radius: 22px;
+  }
+  label input[type="radio"] + span::before {
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 2px #78909c solid;
+  }
+  label input[type="radio"]:checked + span::before {
+    border-width: 6px;
+  }
 }

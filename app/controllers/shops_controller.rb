@@ -6,12 +6,12 @@ class ShopsController < ApplicationController
     @search_recommends = Recommend.all
     @search_features = Feature.all
     @q = Shop.ransack(params[:q])
-    @shops = @q.result.includes(:city, :address, :details, :recommends, :features)
+    @shops = @q.result.includes(:area, :addresses, :details, :recommends, :features)
   end
 
   def search
-    @q = Shop.search(search_params)
-    @shops = @q.result.includes(:city, :address, :details, :recommends, :features)
+    @search = Shop.ransack(params[:q])
+    @shops = @search.result.includes(:area, :addresses, :details, :recommends, :features)
   end
 
   def show
@@ -48,6 +48,10 @@ class ShopsController < ApplicationController
 
 
 private
+
+  def call_a_protected_method
+    search_params
+  end
 
   def shop_params
   params.require(:shop).permit()

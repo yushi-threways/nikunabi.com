@@ -204,6 +204,9 @@ admins = Admin.order(:created_at)
     title: title,
     content: content,
     image: File.open("./app/assets/images/nikunabi_def.jpg")
+    second_title: title,
+    second_content: content,
+    second_image: File.open("./app/assets/images/nikunabi_def.jpg")
     )}
 end
 

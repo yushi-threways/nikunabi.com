@@ -10,7 +10,7 @@ class RecommendsController < ApplicationController
   # GET /recommends/1
   # GET /recommends/1.json
   def show
-    @shops = @recommend.shops
+    @shops = @recommend.shops.includes(:areas, :addresses, :details, :recommends, :features)
   end
 
   # GET /recommends/new
