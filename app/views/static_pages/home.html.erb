@@ -111,7 +111,7 @@
 <div class="new_top_list">
     <h3 class="home-part--title">ニクナビPR店舗</h3>
     <ul>
-      <%= render :partial => "shops/shop_list", locals: { shop: @newShops } %>
+      <%= render :partial => "static_pages/shop_list", locals: { shop: @newShop } %>
     </ul>
 </div>
 </div>
@@ -125,6 +125,11 @@
       <% end %>
   </div>
 </div>
+</div>
+
+<div class="home-serch-form">
+<h3 class="home-part--title">もっと詳しく検索する</h3>
+<%= render :partial => "search/search_form" %>
 </div>
 
 <div class="home-feature">

@@ -1,20 +1,64 @@
 <% breadcrumb :recommend, @recommend %>
 <p id="notice"><%= notice %></p>
 <div class="">
-  <div class="col-xs-12 col-md-2 ccol-sm-2">
+<div class="recommend-show-detail clearfix">
+  <% if @recommend.id == 21 %> 
+  <%= render :partial => "recommend_harami" %>
+  <% elsif @recommend.id == 20 %>
+  <%= render :partial => "recommend_horumon" %>
+  <% elsif @recommend.id == 19 %>
+  <%= render :partial => "recommend_reba" %>
+  <% elsif @recommend.id == 18 %>
+  <%= render :partial => "recommend_senmai" %>
+  <% elsif @recommend.id == 17 %>
+  <%= render :partial => "recommend_mino" %>
+  <% elsif @recommend.id == 16 %>
+  <%= render :partial => "recommend_sagari" %>
+  <% elsif @recommend.id == 15 %>
+  <%= render :partial => "recommend_harami" %>
+  <% elsif @recommend.id == 14 %>
+  <%= render :partial => "recommend_hatsu" %>
+  <% elsif @recommend.id == 13 %>
+  <%= render :partial => "recommend_urute" %>
+  <% elsif @recommend.id == 12 %>
+  <%= render :partial => "recommend_tomo" %>
+  <% elsif @recommend.id == 11 %>
+  <%= render :partial => "recommend_sotomomo" %>
+  <% elsif @recommend.id == 10 %>
+  <%= render :partial => "recommend_ranpu" %>
+  <% elsif @recommend.id == 9 %>
+  <%= render :partial => "recommend_syato" %>
+  <% elsif @recommend.id == 8 %>
+  <%= render :partial => "recommend_hire" %>
+  <% elsif @recommend.id == 7 %>
+  <%= render :partial => "recommend_kainomi" %>
+  <% elsif @recommend.id == 6 %>
+  <%= render :partial => "recommend_karubi" %>
+  <% elsif @recommend.id == 5 %>
+  <%= render :partial => "recommend_sa-roin" %>
+  <% elsif @recommend.id == 4 %>
+  <%= render :partial => "recommend_sankaku" %>
+  <% elsif @recommend.id == 3 %>
+  <%= render :partial => "recommend_misuzi" %>
+  <% elsif @recommend.id == 2 %>
+  <%= render :partial => "recommend_zabuton" %>
+  <% elsif @recommend.id == 1 %>
+  <%= render :partial => "recommend_tan" %>
+  <% end %>
+
+</div>
+  <div class="col-xs-12 col-md-3 ccol-sm-2">
+  <%= render :partial => "search/search_form" %>
   </div>
 
-  <div class="col-xs-12 col-md-10 ccol-sm-10">
+  <div class="col-xs-12 col-md-9 ccol-sm-10">
     <h2 class="nikunabi_shop_list_title">こだわり部位<%= @recommend.name %>の店舗一覧</h2>
     <article class="new_top_list">
       <ul >
-      <% if !@shops == 'nil' %>
         <% @shops.each do |shop| %>
          <%= render :partial => "shops/shop_list", locals: { shop: shop } %>
         <% end %>
-      <% else %>
-        <p class="h5">現在、こだわり部位<%= @recommend.name %>の店舗の登録はございません。</p>
-      <% end %>
+  
       </ul>
     </article>
   </div>

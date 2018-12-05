@@ -7,9 +7,9 @@ class AddColumnToAddress < ActiveRecord::Migration[5.2]
       t.string :zipcode
       t.string :prefecture, default: '愛知県'
       t.string :street
+      t.string :full_address
       t.float :latitude
       t.float :longitude
-      t.string :full_address
       t.string :station
 
       t.timestamps

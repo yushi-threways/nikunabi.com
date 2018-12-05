@@ -74,7 +74,7 @@ Shop.delete_all
                email: email,
                telNumber: tel,
                password:              password,
-               password_confirmation: password,
+               password_confirmation: password
              )
   shop.skip_confirmation!
   shop.save!
@@ -84,15 +84,15 @@ Address.delete_all
 10.times do |n|
   zipcode = "460-0022"
   street = "金山3丁目15-18"
-  city_id = rand(1..10)
-  area_id = rand(1..20)
+  city_id = rand(1..20)
+  area_id = rand(1..8)
   shop_id = "#{n + 1}"
   station = "栄"
   address = Address.create!(
                zipcode: zipcode,
                street: street,
-               city_id: 23106,
-               area_id: 231060005,
+               city_id: city_id,
+               area_id: area_id,
                shop_id: shop_id,
                station: station
              )
@@ -125,7 +125,7 @@ end
 shops = Shop.order(:created_at)
 5.times do |n|
   shop_id = "#{n + 1}"
-  feature_id = rand(0..7)
+  feature_id = rand(1..7)
   shops.each { |shop| shop.shop_features.create!(
     shop_id: shop_id,
     feature_id: feature_id
@@ -134,7 +134,7 @@ end
 
 5.times do |n|
   shop_id = "#{n + 1}"
-  recommend_id = rand(0..12)
+  recommend_id = rand(1..12)
   shops.each { |shop| shop.shop_recommends.create!(
     shop_id: shop_id,
     recommend_id: recommend_id
@@ -142,6 +142,19 @@ end
 end
 
 admins = Admin.order(:created_at)
+3.times do |n|
+  title = "タイトルが入ります"
+  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
+  admins.each { |admin| admin.blogs.create!(
+    title: title,
+    content: content,
+    image: File.open("./app/assets/images/nikunabi_def.jpg"),
+    secondtitle: title,
+    secondcontent: content,
+    secondimage: File.open("./app/assets/images/nikunabi_def.jpg")
+    )}
+end
+
 3.times do |n|
   title = "タイトルが入ります"
   content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"

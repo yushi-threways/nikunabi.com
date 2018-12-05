@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get  '/help', to: 'static_pages#help'
   get  '/about', to: 'static_pages#about'
-  get 'search', to: 'shops#search'
   
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -41,17 +40,15 @@ Rails.application.routes.draw do
   end
 
   resources :blogs, only: [:index, :show]
-  resources :recommends, only: [:show] do
-    resources :shops, only: [:show]
+  resource :shops, only: [:index] do
+    get '/search', to: 'shops#search'
   end
-  resources :features, only: [:show] do
-    resources :shops, only: [:show]
-  end
-  resources :areas, param: :areacode, path: '/', only: [:show] do
-    resources :shops, only: [:show]
-  end
-  
-  
+  resources :recommends, only: [:show] 
+    resources :features, only: [:show] 
+    resources :areas, param: :areacode, path: '/', only: [:show] do
+      resources :shops, only: [:show]
+    end
+      
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

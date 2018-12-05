@@ -1,30 +1,61 @@
-<%= search_form_for(@q, url:search_path, method: :get, local: true) do |form| %>
+<%= search_form_for(@search, url: search_shops_path, method: :get) do |form| %>
 
-
-<div class="form-group">
-  <%= form.label :city_id_in, '検索地域', class: "label-control" %><br />
-  <div class="checkbox-inline">
-  <%= form.collection_check_boxes :city_id_in, @search_cities, :id, :city, include_hidden: false %>
-  </div>
+<div class="nikunabi_check_box">
+<p>エリア検索</p>
+<ul class="label_list">
+<%= form.collection_check_boxes(:areas_id_in, Area.all, :id, :name, include_hidden: false) do |r| %>
+<li class="label_list_item">
+  <%= r.label(class: "nikunabi_check_box--label") do %>
+      <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+    <% end %>
+</li>
+<% end %>
+</ul>
 </div>
 
-<div class="form-group">
-  <%= form.label :recommends_id_eq_all, 'こだわり検索', class: "label-control" %><br />
-  <div class="checkbox-inline">
-  <%= form.collection_check_boxes :recommends_id_eq_all, @search_recommends, :id, :name, include_hidden: false %>
-  </div>
+<div class="nikunabi_check_box">
+<p>こだわり部位検索</p>
+<ul class="label_list">
+<%= form.collection_check_boxes(:recommends_id_eq_all, Recommend.all, :id, :name, include_hidden: false) do |r| %>
+<li class="label_list_item">
+  <%= r.label(class: "nikunabi_check_box--label") do %>
+      <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+    <% end %>
+</li>
+<% end %>
+</ul>
 </div>
 
-<div class="form-group">
-  <%= form.label :features_id_eq_all, '詳細検索', class: "label-control" %><br />
-  <div class="checkbox-inline">
-  <%= form.collection_check_boxes :features_id_eq_all, @search_features, :id, :name, include_hidden: false %>
-  </div>
+<div class="nikunabi_check_box">
+<p>サービス検索</p>
+<ul class="label_list">
+<%= form.collection_check_boxes(:features_id_eq_all, Feature.all, :id, :name, include_hidden: false) do |r| %>
+<li class="label_list_item">
+  <%= r.label(class: "nikunabi_check_box--label") do %>
+      <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+    <% end %>
+</li>
+<% end %>
+</ul>
 </div>
+
+<div class="nikunabi_check_box">
+<p>シーン検索</p>
+<ul class="label_list">
+<%= form.collection_radio_buttons(:details_scenes_id_in, Scene.all, :id, :name, include_hidden: false) do |r| %>
+<li class="label_list_item">
+  <%= r.label(class: "nikunabi_check_box--label") do %>
+      <%= r.radio_button(autocomplete: "off") %> <span><%= r.object.name %></span>
+    <% end %>
+</li>
+<% end %>
+</ul>
+</div>
+
 
   <div class="form-group">
   <div class="actions">
-    <%= form.submit class: 'btn btn-primary btn-block' %>
+    <%= form.submit class: 'btn btn-pink btn-block' %>
   </div>
   </div>
 
