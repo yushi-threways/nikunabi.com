@@ -84,7 +84,7 @@ Address.delete_all
 10.times do |n|
   zipcode = "460-0022"
   street = "金山3丁目15-18"
-  city_id = rand(1..20)
+  city_id = rand(1..10)
   area_id = rand(1..8)
   shop_id = "#{n + 1}"
   station = "栄"
