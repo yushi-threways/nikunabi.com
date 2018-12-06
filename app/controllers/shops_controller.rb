@@ -16,6 +16,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = set_shop
+    @otherblogs = Blog.order(created_at: :desc).limit(2)
   end
 
   # GET /shops/new

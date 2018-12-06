@@ -47,7 +47,7 @@
         <% unless @shop.details.account.nil? %>
         <tr>
           <td>アカウント</td>
-          <td><%= @shop.details.account %></td>
+          <td><%= link_to 'SNSアカウントを見る', "#{@shop.details.account}" %></td>
         </tr>
         <% end %>
       </table>

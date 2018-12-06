@@ -28,6 +28,7 @@ gem 'geocoder'
 gem "rails-observers"
 gem 'sassc-rails'
 gem 'meta-tags'
+gem 'cropper-rails'
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'
