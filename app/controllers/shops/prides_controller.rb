@@ -1,6 +1,5 @@
 class Shops::PridesController < Shops::ApplicationController
   before_action :set_pride, only: [:edit, :update, :destroy]
-  before_action :authenticate_shop!	,only: [:show, :edit, :update, :destroy]
   layout "users", only: [:index, :show, :edit, :new]
 
   # GET /prides
@@ -26,13 +25,11 @@ class Shops::PridesController < Shops::ApplicationController
   # POST /prides
   # POST /prides.json
   def create
-    @shop = Shop.find(params[:shop_id])
-    @pride = Pride.new(pride_params)
-    @pride.shop = @shop
-
+    @pride = Pride.new
+    @pride = current_shop.prides.build(pride_params)
     respond_to do |format|
       if @pride.save
-        format.html { redirect_to [:mypages, @pride], notice: 'こだわり情報を作成しました。' }
+        format.html { redirect_to [:shops, @pride], notice: 'こだわり情報を作成しました。' }
         format.json { render :show, status: :created, location: @pride }
       else
         format.html { render :new }
@@ -46,7 +43,7 @@ class Shops::PridesController < Shops::ApplicationController
   def update
     respond_to do |format|
       if @pride.update(pride_params)
-        format.html { redirect_to [:mypages, @pride], notice: 'こだわり情報を更新しました。' }
+        format.html { redirect_to [:shops, @pride], notice: 'こだわり情報を更新しました。' }
         format.json { render :show, status: :ok, location: @pride }
       else
         format.html { render :edit }

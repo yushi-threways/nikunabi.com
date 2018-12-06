@@ -1,6 +1,5 @@
 class Shops::MenusController < Shops::ApplicationController
   before_action :set_menu, only: [:edit, :update, :destroy]
-  before_action :authenticate_shop!	,only: [:show, :edit, :update, :destroy]
   layout "users", only: [:index, :show, :edit, :new]
 
 
@@ -27,24 +26,25 @@ class Shops::MenusController < Shops::ApplicationController
   # POST /menus
   # POST /menus.json
   def create
-    @shop = Shop.find(params[:shop_id])
-    @menu = Menu.new(menu_params)
-    @menu.shop = @shop
-
+    @menu = Menu.new
+    @menu = current_shop.menus.build(menu_params)
+    respond_to do |format|
     if @menu.save
-      redirect_to [:mypages, @menu], notice: "#{@shop.menus.size}件の商品を登録しました。"
+      format.html { redirect_to [:shops, @menu], notice: "メニュー#{ @menu.name }を作成しました。" }
+      format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to [:mypages, @menu], notice: 'Menu was successfully updated.' }
+        format.html { redirect_to [:shops, @menu], notice: "メニュー#{ @menu.name }を更新しました。" }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }

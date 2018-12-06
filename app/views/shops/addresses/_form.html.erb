@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :area, 'エリア' %>
-    <%= form.select :area, Address.areas.keys { |k, v| [t("enums.address.area.#{k}"), v] }, {prompt: "お店の近いエリアを選択してください"}, {class: 'form-control'} %>
+    <%= form.label :area_id, 'エリア' %>
+    <%= form.collection_select( :area_id, Area.all, :id, :name, {prompt: "店舗の近いエリアを選択して下さい"}, {class: "form-control"}) %>
   </div>
 
   <div class="form-group">

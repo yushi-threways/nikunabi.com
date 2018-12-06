@@ -1,31 +1,57 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "店舗メニュー情報") %>
 
-<h1>Menus</h1>
+<% content_for :page_h1 do %>
+<h1>
+  店舗メニュー情報
+  <small>店舗メニュー情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Images</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">店舗メニュー情報</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+          <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @menus.each do |menu| %>
-      <tr>
-        <td><%= menu.name %></td>
-        <td><%= menu.images %></td>
-        <td><%= menu.price %></td>
-        <td><%= link_to 'Show', menu %></td>
-        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>メニュー名</th>
+                <th>メニュー画像</th>
+                <th>価格</th>
+                <th>数量</th>
+                <th>食べ方</th>
+                <th>焼き方</th>
+                <th>コメント</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<br>
-
-<%= link_to 'New Menu', new_menu_path %>
+            <tbody>
+              <% current_shop.menus.each do |menu| %>
+                <tr>
+                  <td><%= menu.name %></td>
+                  <td class="mypage-shop-menu-img"><%= image_tag menu.image.url %></td>
+                  <td><%= menu.price %></td>
+                  <td><%= menu.quantity %></td>
+                  <td><%= menu.bake %></td>
+                  <td><%= menu.taste %></td>
+                  <td><%= menu.comment %></td>
+                  <td><%= link_to '編集', edit_shops_menu_url(menu), class: "btn btn-primary" %></td>
+                  <td><%= link_to '削除', shops_menu_url(current_shop.menus), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>

@@ -29,7 +29,6 @@ class Shops::MenuBooksController < Shops::ApplicationController
     @shop = Shop.find(params[:shop_id])
     @menu_book = MenuBook.new(menu_book_params)
     @menu_book.shop = @shop
-
     respond_to do |format|
       if @menu_book.save
         format.html { redirect_to [@menu_book], notice: 'Menu book was successfully created.' }
