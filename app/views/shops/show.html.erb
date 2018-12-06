@@ -139,12 +139,14 @@
         </div>
         <% end %>
       <% end %>
+
+      <%= render :partial => 'show_detail' %>
+
     </article>
   </div>
 </div>
 
 <div class="col-xs-12 col-md-3 col-sm-3">
   <%= render 'layouts/shop_detail_sidebar' %>
-  <%= render 'layouts/sidebar' %>
-  <%#= render 'layouts/shop_feature_sidebar' %>
+  <%= render :partial => 'blogs/show_blogs_sidebar' %>
 </div>

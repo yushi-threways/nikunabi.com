@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'colors';
+@import 'mixin';
 
 /** font **/
 @font-face {
@@ -42,13 +44,12 @@
     &-toptitle {
         letter-spacing: 2px;
         font-weight: bold;
-        font-size: 80px;
+        font-size: 6rem;
         padding: 15px 0;
         margin: 0 auto;
         border-bottom: 2px solid #898989;
         position: relative;
         font-family:'Kaushan Script';
-        font-size:750%;
         &::after {
             content: '';
             width: 100%;
@@ -58,22 +59,31 @@
             bottom: 3px;
             left: 0;
         }
+        @include media-down('sm') {
+            font-size: 3rem;
+        }
     }
     &-title {
         letter-spacing: 2px;
         font-weight: bold;
-        font-size: 45px;
+        font-size: 4rem;
         padding: 20px 0 0;
         margin: 0 auto 30px;
         border-bottom: 3px double #898989;   
         font-family:'Kaushan Script';
+        @include media-down('sm') {
+            font-size: 2rem;
+        }
     }
     &-subtitle {
         margin: 0 auto 10px;
-        font-size: 20px;
+        font-size: 1.8rem;
         font-weight: bold;
-        color: #C30D23;
+        color: $nikunabi_main__color;
         letter-spacing: 2px;
+        @include media-down('sm') {
+            font-size: 1.6rem;
+        }
     }
     &-created {
         padding: 30px 0 0;
@@ -87,16 +97,27 @@
         &-left {
             float: left;
             padding: 0 15px 0 0;
+            @include media-down('sm') {
+                float: none;
+                padding: 0;
+            }
         }
         &-right {
             float: right;
             padding: 0 0 0 15px;
+            @include media-down('sm') {
+                float: none;
+                padding: 0;
+            }
         }
         &-content {
             width: 65%;
             line-height: 1.6;
             padding: 0;
             margin: 0;
+            @include media-down('sm') {
+                width: 100%;
+            }
             p {
                 line-height: 1.8;
             }
@@ -104,6 +125,9 @@
         &-image {
             width: 35%;
             overflow: hidden;
+            @include media-down('sm') {
+                width: 100%;
+            }
             img {
                 vertical-align: bottom;
                 width: 100%;
@@ -118,9 +142,9 @@
     margin: 0 auto 30px;
     h3 {
         margin: 0 auto 10px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #C30D23;
+        font-size: 1.8rem;
+        font-weight: normal;
+        color: $nikunabi_main__color;
         letter-spacing: 2px;
     }
     p {
@@ -152,8 +176,8 @@
         font-size: 13px;
         margin: 0 auto 5px;
         padding: 3px;
-        color: #C30D23;
-        border-bottom: 1px solid #C30D23; 
+        color: $nikunabi_main__color;
+        border-bottom: 1px solid $nikunabi_main__color; 
       }
       &--title {
         font-family:'Kaushan Script';

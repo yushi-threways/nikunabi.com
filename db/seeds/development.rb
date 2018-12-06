@@ -144,12 +144,15 @@ end
 admins = Admin.order(:created_at)
 3.times do |n|
   title = "タイトルが入ります"
+  subtitle = "サブタイトル"
   content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
   admins.each { |admin| admin.blogs.create!(
     title: title,
+    subtitle: subtitle,
     content: content,
     image: File.open("./app/assets/images/nikunabi_def.jpg"),
     secondtitle: title,
+    secondsubtitle: subtitle,
     secondcontent: content,
     secondimage: File.open("./app/assets/images/nikunabi_def.jpg")
     )}
