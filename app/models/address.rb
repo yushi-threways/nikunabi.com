@@ -4,8 +4,8 @@ class Address < ApplicationRecord
   before_save :geocode, if: :full_address_changed?
 
   belongs_to :shop, optional: true
-  belongs_to :city
-  belongs_to :area
+  belongs_to :city, optional: true
+  belongs_to :area, optional: true
 
   validates :zipcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
   validates :prefecture, presence: true

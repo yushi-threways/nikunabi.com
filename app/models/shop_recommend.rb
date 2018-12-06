@@ -1,4 +1,4 @@
 class ShopRecommend < ApplicationRecord
-  belongs_to :shop
-  belongs_to :recommend
+  belongs_to :shop, optional: true
+  belongs_to :recommend, optional: true
 end
