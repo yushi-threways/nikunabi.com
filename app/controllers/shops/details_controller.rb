@@ -1,6 +1,5 @@
 class Shops::DetailsController < Shops::ApplicationController
   before_action :set_detail, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_shop!	,only: [:show, :edit, :update, :destroy]
   layout "users", only: [:index, :show, :edit, :new]
 
   # GET /details
@@ -12,6 +11,7 @@ class Shops::DetailsController < Shops::ApplicationController
   # GET /details/1
   # GET /details/1.json
   def show
+    @shop = @detail.shop
   end
 
   # GET /details/new
@@ -26,11 +26,10 @@ class Shops::DetailsController < Shops::ApplicationController
   # POST /details
   # POST /details.json
   def create
-    @shop = current_shop
-    @detail = @shop.build_details(detail_params)
+    @detail = Detail.new(detail_params)
     respond_to do |format|
       if @detail.save
-        format.html { redirect_to [:mypages, @detail], notice: 'Detail was successfully created.' }
+        format.html { redirect_to [:shops, @detail], notice: '店舗詳細情報を作成しました。' }
         format.json { render :show, status: :created, location: @detail }
       else
         format.html { render :new }
@@ -44,7 +43,7 @@ class Shops::DetailsController < Shops::ApplicationController
   def update
     respond_to do |format|
       if @detail.update(detail_params)
-        format.html { redirect_to [:mypages, @detail], notice: 'Detail was successfully updated.' }
+        format.html { redirect_to [:shops, @detail], notice: '店舗詳細情報を更新しました。' }
         format.json { render :show, status: :ok, location: @detail }
       else
         format.html { render :edit }

@@ -78,22 +78,33 @@
 
   <div class="clearfix">
     <div class="col-md-6 col-xm-10 col-xm-offset-1">
-      <div class="mypage-regi-btn">
-          <p class="h5">こだわり商品</p>
-          <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
-            <%= r.label(class: "checkbox-inline") do %>
-              <%= r.check_box(autocomplete: "off") %> <%= r.object.name %>
-            <% end %>
-          <% end %>
-      </div>
+
+    <div class="nikunabi_check_box">
+    <p>こだわり商品選択</p>
+    <ul class="label_list">
+    <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
+    <li class="label_list_item">
+      <%= r.label(class: "nikunabi_check_box--label") do %>
+          <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+        <% end %>
+    </li>
+    <% end %>
+    </ul>
+    </div>
     </div>
     <div class="col-md-6 col-xm-10 col-xm-offset-1">
-      <p class="h5">来店ポイント</p>
-          <%= collection_check_boxes(:shop, :feature_ids, Feature.all, :id, :name) do |r| %>
-            <%= r.label(class:"checkbox-inline") do %>
-                <%= r.check_box(class: "check_box", autocomplete: "off") %><%= r.object.name %>
-              <% end %>
-          <% end %>
+    <div class="nikunabi_check_box">
+    <p>店舗サービス選択</p>
+    <ul class="label_list">
+    <%= collection_check_boxes(:shop, :feature_ids, Feature.all, :id, :name) do |r| %>
+    <li class="label_list_item">
+      <%= r.label(class: "nikunabi_check_box--label") do %>
+          <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+        <% end %>
+    </li>
+    <% end %>
+    </ul>
+    </div>
     </div>
   </div>
 

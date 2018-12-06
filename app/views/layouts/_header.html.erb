@@ -1,15 +1,9 @@
 <header class="nikunabi_header">
-  <span class="color-test main-color"></span><span class="color-test dark-main-color"></span>
-  <span class="color-test sub-color"></span><span class="color-test dark-sub-color"></span>
-  <span class="color-test red-color"></span><span class="color-test dark-red-color"></span>
-  <span class="color-test pink-color"></span><span class="color-test dark-pink-color"></span>
   <div class="nikunabi_sub_nav container">
     <h1 class="h5 nikunabi_title">なごや焼肉情報サイト ~ ニクナビ ~</h1>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li>sns</li>
-        <li>sns</li>
-        <li>sns</li>       
+        <li></li>
       </ul>
     </nav>
   </div>
@@ -20,7 +14,7 @@
            <%= link_to image_tag('nikunabi_logo.png', { :border => '0', :alt => 'logp'}), root_path, id: "logo", class: "nikunabi-logo" %>
 				</div>
 		
-				<div class="navbar-collapse collapse" id="navbarEexample" aria-expanded="false" style="height: 1px;">
+				<div class="navbar-collapse">
         <dl class="searchbox navbar-right">
             <%= search_form_for(@search, url: search_shops_path, method: :get) do |f| %>
               <dt><%= f.collection_select :areas_id_in, Area.all, :id, :name, { :include_blank => "エリア選択" } %></dt>

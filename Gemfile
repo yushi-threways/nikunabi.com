@@ -27,6 +27,7 @@ gem "gmaps4rails"
 gem 'geocoder'
 gem "rails-observers"
 gem 'sassc-rails'
+gem 'meta-tags'
 
 source 'https://rails-assets.org/' do
   gem 'rails-assets-adminlte'

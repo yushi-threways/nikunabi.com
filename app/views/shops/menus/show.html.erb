@@ -28,7 +28,7 @@
                 <th>価格</th>
                 <th>数量</th>
                 <th>食べ方</th>
-                <th>味付け</th>
+                <th>焼き方</th>
                 <th>コメント</th>
                 <th colspan="3"></th>
               </tr>
@@ -44,8 +44,8 @@
                   <td><%= menu.bake %></td>
                   <td><%= menu.taste %></td>
                   <td><%= menu.comment %></td>
-                  <td><%= link_to '編集', edit_mypages_menu_path(menu), class: "btn btn-primary" %></td>
-                  <td><%= link_to '削除', mypages_menu_url(current_shop.menus), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                  <td><%= link_to '編集', edit_shops_menu_url(menu), class: "btn btn-primary" %></td>
+                  <td><%= link_to '削除', shops_menu_url(current_shop.menus), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "btn btn-danger" %></td>
                 </tr>
               <% end %>
             </tbody>

@@ -43,8 +43,8 @@
       </ul>
     </li>
     <li>
-      <% if current_shop.address %>
-        <%= link_to edit_shops_address_url(current_shop.address)  do %>
+      <% if current_shop.addresses %>
+        <%= link_to edit_shops_address_path(current_shop.addresses[0])  do %>
         <i class="fa fa-link"></i> <span>アクセス情報編集</span></a>
         <% end %>
       <% else %>
@@ -55,7 +55,7 @@
     </li>
     <li>
       <% if current_shop.details %>
-        <%= link_to edit_mypages_detail_path(current_shop.details) do %>
+        <%= link_to edit_shops_detail_path(current_shop.details) do %>
         <i class="fa fa-link"></i> <span>詳細情報編集</span></a>
         <% end %>
       <% else %>

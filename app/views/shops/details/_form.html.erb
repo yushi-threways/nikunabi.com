@@ -1,4 +1,4 @@
-<%= form_with(model: [:mypages, @detail], url: (@detail.new_record? ? [:mypages ,:shop, @detail]: [:mypages, @detail]), local: true) do |form| %>
+<%= form_with(model: @detail, url: ([:shops, @detail]), local: true) do |form| %>
   <% if detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(detail.errors.count, "error") %> prohibited this detail from being saved:</h2>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :scnee, 'シーン' %><br />
+    <%= form.label :scnee, 'シーン' %>
     <%= collection_check_boxes(:detail, :scene_ids, Scene.all, :id, :name) do |r| %>
         <%= r.label(class: "checkbox-inline") do %>
           <%= r.check_box %> <%= r.object.name %>
@@ -76,7 +76,7 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :room, '席' %><br />
+    <%= form.label :room, '席' %>
     <%= collection_check_boxes(:detail, :room_ids, Room.all, :id, :name) do |r| %>
         <%= r.label(class: "checkbox-inline") do %>
           <%= r.check_box %> <%= r.object.name %>

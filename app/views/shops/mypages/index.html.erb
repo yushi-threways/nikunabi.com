@@ -60,37 +60,39 @@
           <h3 class="box-title">店舗アクセス情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-         <% unless current_shop.address.nil? %>
+         <% unless current_shop.addresses.nil? %>
+          <% current_shop.addresses.each do | address | %>
               <table class="table table-striped">
                 <tbody>
                   <tr>
                     <th>エリア</th>
-                    <td><%= current_shop.address.area %></td>
+                    <td><%= address.area.name %>エリア</td>
                   </tr>
                   <tr>
                     <th>郵便番号</th>
-                    <td><%= current_shop.address.zipcode %></td>
+                    <td><%= address.zipcode %></td>
                   </tr>
                   <tr>
                     <th>都道府県</th>
-                    <td><%= current_shop.address.prefecture %></td>
+                    <td><%= address.prefecture %></td>
                   </tr>
                   <tr>
                     <th>市区町村</th>
-                    <td><%= current_shop.address.city.city %></td>
+                    <td><%= address.city.city %></td>
                   </tr>
                   <tr>
                     <th>市区町村以下</th>
-                    <td><%= current_shop.address.street %></td>
+                    <td><%= address.street %></td>
                   </tr>
                    <tr>
                     <th>最寄駅</th>
-                    <td><%= current_shop.address.station %></td>
+                    <td><%= address.station %></td>
                   </tr>
               </tbody>
             </table>
+            <% end %>
               <div class="box-body text-right">
-                <%= link_to edit_shops_address_url(current_shop.address) do %>
+                <%= link_to edit_shops_address_url(current_shop.addresses) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -106,7 +108,7 @@
 
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">店舗こだわり条件</h3>
+          <h3 class="box-title">店舗こだわり商品</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
           <% unless current_shop.recommends.empty? %>
@@ -116,7 +118,7 @@
              <% end %>
              </ul>
              <div class="box-body text-right">
-                <%= link_to edit_mypages_recommend_path(current_shop.recommends) do %>
+                <%= link_to edit_shops_recommend_path(current_shop.recommends) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -142,7 +144,7 @@
                  <li><%= feature.name %></li>
              <% end %>
              <div class="box-body text-right">
-                <%= link_to edit_mypages_feature_path(current_shop.features) do %>
+                <%= link_to edit_shops_feature_path(current_shop.features) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -267,7 +269,7 @@
               </tbody>
             </table>
               <div class="box-body text-right">
-                <%= link_to edit_mypages_detail_url(current_shop.details) do %>
+                <%= link_to edit_shops_detail_url(current_shop.details) do %>
                     編集する</a>
                 <% end %>
               </div>

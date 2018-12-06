@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="">
   <div class="col-xs-12 col-md-3 ccol-sm-2">
+  <button class="search-hidden-btn" type="button" class="hidden-bin">細かく検索する</button> 
+  <div class="hidden-form" style="display: none">
   <%= render :partial => "search/search_form" %>
+  </div>
   </div>
 
 <div class="col-xs-12 col-md-9 ccol-sm-10">

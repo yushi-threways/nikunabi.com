@@ -7,7 +7,7 @@
                   <% shop.areas.each do |sa| %>
                   <%= link_to "#{ sa.name }エリア", area_url(:areacode => sa.areacode) %></span>
                 </p>   
-                <p class="col-xs-2">
+                <p class="new-open-link col-xs-2">
                   <%= link_to "詳細を見る", area_shop_url(:area_areacode => sa.areacode, :id => shop) %>
                   <% end %>
                 </p>

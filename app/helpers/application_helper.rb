@@ -14,4 +14,29 @@ module ApplicationHelper
   def shallow_args(parent, child)
   child.try(:new_record?) ? [parent, child] : child
   end
+
+  def default_meta_tags
+    {
+      title:       "ニクナビ 完全無料なごや焼肉情報サイト",
+      description: "description",
+      keywords:    "焼肉,焼き肉,なごや,名古屋,ニクナビ,肉,栄焼肉,錦焼肉",
+      icon: [
+        { href: image_url('favicon.ico') },
+        { href: image_url('touch_icon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+      ],
+      noindex: ! Rails.env.production?, # production環境以外はnoindex
+    canonical: request.original_url,  # 優先されるurl
+      charset: "UTF-8",
+      # OGPの設定をしておくとfacebook, twitterなどの投稿を見た目よくしてくれます。
+      og: {
+        title: :title, #上のtitleと同じ値とするなら「:title」とする
+        description: :description, #上のdescriptionと同じ値とするなら「:description」とする
+        type: "website",
+        url: request.original_url,
+        image: image_url("touch_icon.png"),
+        site_name: "ニクナビ",
+        locale: "ja_JP"
+      }
+    }
+  end
 end

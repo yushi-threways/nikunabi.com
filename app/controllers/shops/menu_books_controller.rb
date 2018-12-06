@@ -1,6 +1,5 @@
 class Shops::MenuBooksController < Shops::ApplicationController
   before_action :set_menu_book, only: [:edit, :update, :destroy]
-  before_action :authenticate_shop!	,only: [:show, :edit, :update, :destroy]
   layout "users", only: [:index, :show, :edit, :new]
 
   # GET /menu_books
@@ -12,7 +11,6 @@ class Shops::MenuBooksController < Shops::ApplicationController
   # GET /menu_books/1
   # GET /menu_books/1.json
   def show
-    @menu_books = MenuBook.all
   end
 
   # GET /menu_books/new
@@ -27,13 +25,11 @@ class Shops::MenuBooksController < Shops::ApplicationController
   # POST /menu_books
   # POST /menu_books.json
   def create
-    @shop = Shop.find(params[:shop_id])
-    @menu_book = MenuBook.new(menu_book_params)
-    @menu_book.shop = @shop
-
+    @menu_book = MenuBook.new
+    @menu_book = current_shop.menu_books.build(menu_book_params)
     respond_to do |format|
       if @menu_book.save
-        format.html { redirect_to [:mypages, @menu_book], notice: 'Menu book was successfully created.' }
+        format.html { redirect_to [:shops, @menu_book], notice: 'メニュー表の写真を追加しました。' }
         format.json { render :show, status: :created, location: @menu_book }
       else
         format.html { render :new }
@@ -47,7 +43,7 @@ class Shops::MenuBooksController < Shops::ApplicationController
   def update
     respond_to do |format|
       if @menu_book.update(menu_book_params)
-        format.html { redirect_to [:mypages, @menu_book], notice: 'Menu book was successfully updated.' }
+        format.html { redirect_to [:mypages, @menu_book], notice: 'メニュー表の写真を更新しました。' }
         format.json { render :show, status: :ok, location: @menu_book }
       else
         format.html { render :edit }

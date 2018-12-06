@@ -1,4 +1,5 @@
-<%= form_with(model: [:mypages, @pride], url: (@pride.new_record? ? [:mypages, :shop, @pride]: [:mypages, @pride]), local: true) do |f| %>
+<%= form_with(model: @pride, url: ([:shops, @pride]), local: true) do |f| %>
+
   <% if pride.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pride.errors.count, "error") %> prohibited this detail from being saved:</h2>
