@@ -1,5 +1,6 @@
 require "csv"
 
+Area.delete_all
 City.delete_all
 Scene.delete_all
 Room.delete_all
@@ -7,6 +8,17 @@ Recommend.delete_all
 Feature.delete_all
 Admin.delete_all
 Blog.delete_all
+
+Area.delete_all
+CSV.foreach('db/areas.csv') do |row|
+  record = {
+    :areacode        => row[0],
+    :name            => row[1]
+  }
+  p record
+  Area.create!(record)
+end
+
 
 CSV.foreach('db/cities.csv') do |row|
   record = {
@@ -55,7 +67,7 @@ Feature.create(name: '食べ放題コース')
 Feature.create(name: '飲み放題コース')
 Feature.create(name: '食事コース')
 
-admin = Admin.create!(password: 'password', email: 'test@admin.jp')
+admin = Admin.create!(password: 'nikunabi_threways_adm', email: 'seki@threways.co.jp')
 admin.save!
 
 

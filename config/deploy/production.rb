@@ -42,7 +42,7 @@ server "133.167.104.12", user: "threwaysuser", roles: %w{app db web}, port: 5710
 # Global options
 # --------------
   set :ssh_options, {
-    keys: %w(/Users/yushiseki/.ssh/id_rsa),
+    keys: %w(/home/vagrant/.ssh/sakura/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }
