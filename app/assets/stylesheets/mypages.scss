@@ -42,3 +42,14 @@
 .mypage-registrations {
   margin: 0 0 30px;
 }
+
+.mypage-registrations-agreement {
+  text-align: center;
+  a {
+    margin: 0 0 0 5px;
+    text-decoration: underline;
+  }
+  .field_with_errors {
+    display: inline-block;
+  }
+}

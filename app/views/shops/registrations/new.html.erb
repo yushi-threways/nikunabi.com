@@ -2,45 +2,45 @@
   <h2>無料店舗アカウント登録</h2>
   <p class="h5" style="margin: 20px 0;">
       貴店の情報をご入力ください。
-      店の詳細情報は本登録後設定可能です。
+      ここでの登録情報、焼肉店舗の詳細情報は本登録後変更可能です。
   </p>
    <hr />
-
    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <div class="clearfix">
   <%= devise_error_messages! %>
   <div class="col-md-6 col-xm-10 col-xm-offset-1">
 
       <div class="form-group">
-        <%= f.label :店舗名 %>
+        <%= f.label :name %>
         <%= f.text_field :name, :placeholder => "ニクナビ焼肉", autofocus: true, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :店舗名サブタイトル %>
-        <%= f.text_field :description, :placeholder => "ニクナビ焼肉王道焼肉", autofocus: true, class: 'form-control' %>
+        <%= f.label :description %>
+        <%= f.text_field :description, :placeholder => "ニクナビ王道焼肉", autofocus: true, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :電話番号 %>
-        <%= f.text_field :telNumber, :placeholder => "0520000000", autofocus: true, class: 'form-control' %>
+        <%= f.label :telNumber %>
+        <em>半角数字ハイフン付きで入力してください。</em>
+        <%= f.text_field :telNumber, autofocus: true, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :メールアドレス %>
+        <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :パスワード %>
+        <%= f.label :password %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :パスワード確認用 %>
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
       </div>
       </div>
@@ -48,7 +48,7 @@
       <div class="col-md-6 col-xm-10 col-xm-offset-1">
       <%= f.fields_for :addresses, Address.new do |address| %>
       <div class="form-group">
-        <%= address.label :エリア %>
+        <%= address.label :area, 'エリア' %>
         <%= address.collection_select( :area_id, Area.all, :id, :name, {prompt: "店舗の近いエリアを選択して下さい"}, {class: "form-control"}) %>
       </div>
        
@@ -58,19 +58,19 @@
       </div>
 
       <div class="form-group">
-        <%= address.label :市区 %>
+        <%= address.label :city, '市・区' %>
         <%= address.collection_select( :city_id, City.all, :id, :city, {prompt: ""}, {class: "form-control"}) %>
       </div>
 
       <div class="form-group">
-        <%= address.label :street, '町村、建物名' %>
+        <%= address.label :street, '町村・建物名' %>
         <%= address.text_field :street, class: 'form-control'%>
       </div>
 
       <div class="form-group">
         <%= address.label :station, '最寄駅' %>
-        <em>（駅）は入力しないでください。</em>
-        <%= address.text_field :station, class: 'form-control'%>
+        <em>駅まで入力してください。</em>
+        <%= address.text_field :station, :placeholder => "〜駅", class: 'form-control'%>
       </div>
       <% end %>
       </div>
@@ -80,7 +80,7 @@
     <div class="col-md-6 col-xm-10 col-xm-offset-1">
 
     <div class="nikunabi_check_box">
-    <p>こだわり商品選択</p>
+    <p>こだわり商品選択<br><small>最大４つまで選択可能です。</small></p>
     <ul class="label_list">
     <%= collection_check_boxes(:shop, :recommend_ids, Recommend.all, :id, :name) do |r| %>
     <li class="label_list_item">
@@ -106,6 +106,11 @@
     </ul>
     </div>
     </div>
+  </div>
+  
+  <div class="actions mypage-registrations-agreement">
+    <%= f.check_box :agreement, :as => :boolean, checked:false %>
+    <%= link_to '利用規約とプライバシーポリシー', :documents_agreement, { target:"blank" } %>に同意する
   </div>
 
   <div class="actions">

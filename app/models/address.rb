@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  before_validation :create_full_address
+  # after_validation :create_full_address
   geocoded_by :full_address
   before_save :geocode, if: :full_address_changed?
 
@@ -12,8 +12,8 @@ class Address < ApplicationRecord
   validates :street, presence: true
   validates :station, presence: true
 
-  def create_full_address
-    full_address = [prefecture, self.city.city, street]
-    self.full_address = full_address.join
-  end
+  # def create_full_address
+  #   full_address = [prefecture, self.city.city, street]
+  #   self.full_address = full_address.join
+  # end
 end

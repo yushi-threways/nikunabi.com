@@ -1,9 +1,15 @@
 ja:
   activerecord:
     models:
-      user: ユーザー
+      shop: 店舗
+      address: アドレス
+      detail: 詳細
+      reccomend: こだわり商品
+      featrue: 特徴
+      area: エリア
+      city: 市・区
     attributes:
-      user:
+      shop:
         id: ID
         created_at: 登録日時
         updated_at: 更新日時
@@ -11,3 +17,28 @@ ja:
         email: メールアドレス
         salon_id: サロン
         password: パスワード
+        password_confirmation: パスワード確認用
+        name: 店舗名
+        description: 店舗キャッチフレーズ
+        telNumber: 電話番号
+        agreement: 利用規約
+        recommends: 店舗こだわり商品
+      addresses: 
+        zipcode: 郵便番号
+        street: 町村、建物名
+        station: 最寄駅
+        area: エリア
+        city: 市・区
+      address:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        zipcode: 郵便番号
+        street: 町村、建物名
+        station: 最寄駅
+      reccomend:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        name: こだわり商品名
+

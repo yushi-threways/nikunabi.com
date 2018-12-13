@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       :name,
       :telNumber,
       :description,
+      :agreement,
       [:addresses_attributes => [:zipcode, :street, :station, :prefecture, :city_id, :area_id,:full_address, :latitude, :longitude]], 
       {:area_ids => []},
       {:city_ids => []},

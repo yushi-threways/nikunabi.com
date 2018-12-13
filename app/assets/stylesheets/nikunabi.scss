@@ -348,6 +348,17 @@ dl.searchbox dd{
   background-color: transparent;
 }
 
+.search-hidden-home-btn {
+  width: 100%;
+  margin: 0 auto 20px;
+  color: $nikunabi_main__color;
+  border: 2px solid $nikunabi_main__color;
+  text-align: center;
+  display: block;
+  padding: 3px;
+  background-color: transparent;
+}
+
 .hidden-form {
   @include media-up('lg') {
     display: block !important;

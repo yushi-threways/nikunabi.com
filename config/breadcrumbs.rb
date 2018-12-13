@@ -2,6 +2,10 @@ crumb :root do
   link "ニクナビ", root_path
 end
 
+crumb :agreement do
+  link "ニクナビ店舗会員規約及び個人情報の取り扱いについて", documents_agreement_path
+end
+
 crumb :recommend do |recommend|
   link "こだわり部位#{ recommend.name }の店舗", recommend_path(recommend)
   parent :root
