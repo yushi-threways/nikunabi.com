@@ -19,15 +19,12 @@ CSV.foreach('db/areas.csv') do |row|
   Area.create!(record)
 end
 
-
+City.delete_all
 CSV.foreach('db/cities.csv') do |row|
   record = {
-    :prefecturecode  => row[0],
-    :prefecture      => row[1],
-    :prefecturekana  => row[2],
-    :citycode        => row[3],
-    :city            => row[4],
-    :citykana        => row[5]
+    :citycode        => row[0],
+    :city            => row[1],
+    :citykana        => row[2]
   }
   p record
   City.create!(record)

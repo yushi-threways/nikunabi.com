@@ -1,14 +1,21 @@
 require "csv"
 
+Area.delete_all
+CSV.foreach('db/areas.csv') do |row|
+  record = {
+    :areacode        => row[0],
+    :name            => row[1]
+  }
+  p record
+  Area.create!(record)
+end
+
 City.delete_all
 CSV.foreach('db/cities.csv') do |row|
   record = {
-    :prefecturecode  => row[0],
-    :prefecture      => row[1],
-    :prefecturekana  => row[2],
-    :citycode        => row[3],
-    :city            => row[4],
-    :citykana        => row[5]
+    :citycode        => row[0],
+    :city            => row[1],
+    :citykana        => row[2]
   }
   p record
   City.create!(record)
@@ -56,42 +63,44 @@ admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
 
 Shop.delete_all
-20.times do |n|
+10.times do |n|
   name = "ショップ名#{n + 1}"
   email = "test-#{n+1}@nikunabi.jp"
   password = "password"
   tel = Faker::PhoneNumber.cell_phone
-  city_id = rand(1..17)
   shop = Shop.create!(
                name:  name,
-               description: "オシャレ空間×王道焼肉＝みつ星",
+               description: "オシャレ空間×王道焼肉",
                email: email,
                telNumber: tel,
                password:              password,
-               password_confirmation: password,
-               city_id: city_id
+               password_confirmation: password
              )
   shop.skip_confirmation!
   shop.save!
 end
 
 Address.delete_all
-20.times do |n|
+10.times do |n|
   zipcode = "460-0022"
-  street = "金山３丁目15-18"
-  building = ""
+  street = "金山3丁目15-18"
+  city_id = rand(1..10)
+  area_id = rand(1..8)
   shop_id = "#{n + 1}"
+  station = "栄"
   address = Address.create!(
                zipcode: zipcode,
                street: street,
-               building: building,
-               shop_id: shop_id
+               city_id: city_id,
+               area_id: area_id,
+               shop_id: shop_id,
+               station: station
              )
   address.save!
 end
 
 Detail.delete_all
-20.times do |n|
+10.times do |n|
   shop_id = "#{n + 1}"
   account = "https://www.instagram.com/explore/locations/577535749246800/?hl=ja"
   party = rand(10..20)
@@ -114,107 +123,42 @@ Detail.delete_all
 end
 
 shops = Shop.order(:created_at)
-3.times do |n|
-  title = "タイトルが入ります"
-  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
-  shops.each { |shop| shop.prides.create!(
-    title: title,
-    content: content,
-    image: File.open("./app/assets/images/nikunabi_def.jpg")
-    )}
-end
-
-
 5.times do |n|
-  name = "メニュー名#{n + 1}"
-  price = rand(1000...6000)
-  quantity = "数量が入ります"
-  bake = "焼き方が入ります"
-  taste = "味つけが入ります"
-  comment = "コメントが入ります"
-  shops.each { |shop| shop.menus.create!(
-    name: name,
-    price: price,
-    quantity: quantity,
-    bake: bake,
-    taste: taste,
-    comment: comment,
-    image: File.open("./app/assets/images/nikunabi_def.jpg")
+  shop_id = "#{n + 1}"
+  feature_id = rand(1..7)
+  shops.each { |shop| shop.shop_features.create!(
+    shop_id: shop_id,
+    feature_id: feature_id
   ) }
 end
 
-ShopRecommend.delete_all
-30.times do |n|
-  shop_id = rand(1..20)
-  recommend_id = rand(1..15)
-  shoprecommend = ShopRecommend.create!(
-               shop_id: shop_id,
-               recommend_id: recommend_id
-             )
-  shoprecommend.save!
+5.times do |n|
+  shop_id = "#{n + 1}"
+  recommend_id = rand(1..12)
+  shops.each { |shop| shop.shop_recommends.create!(
+    shop_id: shop_id,
+    recommend_id: recommend_id
+  ) }
 end
-
-DetailScene.delete_all
-30.times do |n|
-  detail_id = rand(1..20)
-  scene_id = rand(1..4)
-  shopscene = DetailScene.create!(
-               detail_id: detail_id,
-               scene_id: scene_id
-             )
-  shopscene.save!
-end
-
-DetailRoom.delete_all
-30.times do |n|
-  detail_id = rand(1..20)
-  room_id = rand(1..4)
-  shoproom = DetailRoom.create!(
-               detail_id: detail_id,
-               room_id: room_id
-             )
-  shoproom.save!
-end
-
-ShopFeature.create(shop_id: 1, feature_id: 1)
-ShopFeature.create(shop_id: 1, feature_id: 2)
-ShopFeature.create(shop_id: 1, feature_id: 3)
-ShopFeature.create(shop_id: 1, feature_id: 4)
-ShopFeature.create(shop_id: 2, feature_id: 1)
-ShopFeature.create(shop_id: 3, feature_id: 1)
-ShopFeature.create(shop_id: 4, feature_id: 1)
-ShopFeature.create(shop_id: 5, feature_id: 6)
-ShopFeature.create(shop_id: 5, feature_id: 7)
-
-ShopRecommend.create(shop_id: 1, recommend_id: 1)
-ShopRecommend.create(shop_id: 1, recommend_id: 2)
-ShopRecommend.create(shop_id: 1, recommend_id: 3)
-ShopRecommend.create(shop_id: 1, recommend_id: 4)
-ShopRecommend.create(shop_id: 2, recommend_id: 1)
-ShopRecommend.create(shop_id: 3, recommend_id: 1)
-ShopRecommend.create(shop_id: 4, recommend_id: 1)
-ShopRecommend.create(shop_id: 5, recommend_id: 6)
-ShopRecommend.create(shop_id: 5, recommend_id: 7)
 
 admins = Admin.order(:created_at)
-3.times do |n|
-  title = "タイトルが入ります"
-  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
+1.times do |n|
+  admin_id = 1
+  title = "RICE is BEAUTIFUL !!!"
+  subtitle = "お米と肉のコラボ"
+  content = "日本の心、伝統と食を結びつけるものを語ろうと思えば、お米の存在を避けては通れません。日本のお米は、もっちりと柔らかく噛みしめるとお米本来の旨味を感じられます。日本のお米のおいしさは水にあるといえます。日本は世界の中で一番と言っても過言ではないほど、水の綺麗な国であります。清らかな水を使って育てられ、収穫され、炊かれたお米は、日本特有の伝統品となりました。日本のお米の良さは主張しない主食、何にでも合わせる事の出来るまさにカメレオン的な存在といえるでしょう。焼肉店において米の存在は欠かせません。お米が美味しくない焼肉店は流行らないと言われているほど、重要です。タレに付けられたお肉をさっと炙り、お米と一緒に頂きます。甘辛いタレが輝く真っ白なお米と絶妙にマッチしています。お米の良さは栄養バランスにあります。お米は栄養素の中で炭水化物に含まれ、分解され糖として体内に吸収されます。その為、炭水化物が肥満の原因とされた事がありました。しかし、お米の成分の中には、炭水化物と同等くらいタンパク質も含んでいます。タンパク質は筋肉を作り、筋肉は脂肪燃焼に役立つので、タンパク質の摂取はダイエットに繋がります。実は、炭水化物の中でお米というのはダイエット食となるのです。そして、お肉こそ貴重なタンパク源、焼肉ではお肉を網で焼くことで余分な脂を落とします。野菜も一緒に頂くことで、身体の基盤を作る良い食事が出来るといえます。"
+  secondtitle = "We grew up with “和” that is mind of JAPAN."
+  secondsubtitle = "和の心を知り、日本を知る"
+  secondcontent = "焼肉には長年培われていた伝統があります。明治天皇の時代に食肉が解放され、早150年の月日が経ちました。焼肉のルーツを辿ると昭和20年、東京は「明日館」大阪は「食堂園」というお店に着きます。昭和55年には株式会社シンポが無煙ロースターを開発し、焼肉の悩みであった煙の臭いが軽減されました。このような歴史の中で、焼肉は海外の方から日本食と呼ばれる中の１つのジャンルになっているといえます。そして、日本のレストランにはいたるところに和の作法が見られます。和の作法とは「奥ゆかしさ」（＝深い心遣い）と言われます。飲食店の接客１つにしても和の作法は現れてきます。深々と頭を下げる挨拶、海外から日本に来られた方は驚くことが多いと思います。お店に来ていただいた方々に感謝の気持ちを示すものだと感じてください。これは余談となりますが、和と焼肉がコラボした面白いものがあります。それは焼肉一首です。日本には百人一首という札遊びがあります。読み手が5・7・5のリズムで書かれた札を読み、それに当てはまる札を相手よりも早く取る競技です。焼肉一首ではお互いに箸を持ち、読み手が読み上げた肉の部位の特徴を聞き、その部位を箸で取り合うゲームとなっています。日本でもあまり知られていないお遊戯ではありますが、日本の食肉ブームを感じさせるユーモアに溢れた競技です。"
   admins.each { |admin| admin.blogs.create!(
+    admin_id: admin_id,
     title: title,
+    subtitle: subtitle,
     content: content,
-    image: File.open("./app/assets/images/nikunabi_def.jpg")
-    second_title: title,
-    second_content: content,
-    second_image: File.open("./app/assets/images/nikunabi_def.jpg")
-    )}
-end
-
-3.times do |n|
-  title = "タイトルが入ります"
-  content = "内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります内容が入ります"
-  admins.each { |admin| admin.informations.create!(
-    title: title,
-    content: content
+    image: File.open("./app/assets/images/kome.jpg"),
+    secondtitle: secondtitle,
+    secondsubtitle: secondsubtitle,
+    secondcontent: secondcontent,
+    secondimage: File.open("./app/assets/images/meet.jpg")
     )}
 end

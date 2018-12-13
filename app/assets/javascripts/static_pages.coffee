@@ -5,3 +5,7 @@
 $(document).on 'turbolinks:load', ->
   $(".search-hidden-btn").on "click" , ->
     $(".hidden-form").toggle()
+
+$(document).on 'turbolinks:load', ->
+  $(".search-hidden-home-btn").on "click" , ->
+    $(".hidden-form-home").toggle()

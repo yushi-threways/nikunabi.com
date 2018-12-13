@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @newShop = Shop.where( 'id >= ?', rand(Shop.first.id..Shop.last.id) ).includes([:details, :recommends, :features, :addresses, :areas]).first
+    # @newShop = Shop.where( 'id >= ?', rand(Shop.first.id..Shop.last.id) ).includes([:details, :recommends, :features, :addresses, :areas]).first
     @firstblog = Blog.order(created_at: :desc).first
     @homeblogs = Blog.where.not(id: 1).limit(3)
     @newinformations = Information.order(created_at: :desc).limit(2)
@@ -15,7 +15,9 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+  end
 
+  def agreement
   end
 
   private
