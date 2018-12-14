@@ -51,13 +51,9 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "admin_id"
     t.string "title"
-    t.string "secondtitle"
     t.string "subtitle"
-    t.string "secondsubtitle"
     t.text "content"
-    t.text "secondcontent"
     t.string "image"
-    t.string "secondimage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id", "created_at"], name: "index_blogs_on_admin_id_and_created_at"

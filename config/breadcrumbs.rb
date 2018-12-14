@@ -26,9 +26,14 @@ crumb :area_shop do |shop|
   parent :area, area
 end
 
+crumb :blogs do
+  link 'ニクナビタイムズ', blogs_path
+  parent :root
+end
+
 crumb :show_blog do |blog|
   link blog.title, blog_path(blog)
-  parent :root
+  parent :blogs
 end
 
 # crumb :issue do |issue|

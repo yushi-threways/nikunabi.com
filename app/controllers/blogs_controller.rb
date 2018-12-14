@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @otherblogs = Blog.where.not(id: set_blog)
+    @otherblogs = Blog.where.not(id: set_blog).order("RAND()").limit(4)
   end
 
   private
