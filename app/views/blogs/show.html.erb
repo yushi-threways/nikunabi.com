@@ -5,33 +5,24 @@
 <small class="blog_show-desc">なごや焼肉情報誌 ニクナビ通信</small>
 <h2 class="blog_show-toptitle">NIKUNABI TIMES!!<h2>
 <div class="clearfix">
-<div class="col-sm-9">
 <div class="blog_show">
 <h3 class="blog_show-title"><%= @blog.title %></h3>
 <div class="blog_show-unit clearfix">
+<div class="blog_show-unit-image blog_show-unit-left">
+<%= image_tag @blog.image.url %>
+</div>
 <div class="blog_show-unit-content blog_show-unit-right">
 <h4 class="blog_show-subtitle"><%= @blog.subtitle %></h4>
 <p><%= @blog.content %>
 </p>
 </div>
-<div class="blog_show-unit-image blog_show-unit-left">
-<%= image_tag @blog.image.url %>
 </div>
 </div>
-<h3 class="blog_show-title"><%= @blog.secondtitle %></h3>
-<div class="blog_show-unit clearfix">
-<div class="blog_show-unit-content blog_show-unit-left">
-<h4 class="blog_show-subtitle"><%= @blog.secondsubtitle %></h4>
-<p>
-<%= @blog.secondcontent %>
-</p>
-</div>
-<div class="blog_show-unit-image blog_show-unit-right">
-<%= image_tag @blog.secondimage.url %>
-</div>
-</div>
-</div>
-<hr>
+<p class="blog_show-created"><%= @blog.created_at.strftime('%Y/%m/%d(%a)') %></p>
+
+<%
+=begin
+%>
 <div class="blog_show-fixcontent">
 <div class="blog_show-unit clearfix">
 <div class="blog_show-unit-content blog_show-unit-right">
@@ -47,7 +38,7 @@
 </div>
 </div>
 </div>
-</div>
+
 <div class="col-sm-3">
 <% if Blog.exists?(:id => @blog.id) %>
 <%= render :partial => 'show_blogs_sidebar' %>
@@ -55,8 +46,38 @@
 <p>過去のニュースはございません。</p>
 <% end %>
 </div>
+<%
+=end
+%>
 </div>
-<hr>
-<p class="blog_show-created"><%= @blog.created_at.strftime("%Y.%B.%d (%a)") %></p>
 </div>
+</div>
+
+<div class="blog_show-other--blogs">
+<%= link_to 'ニクナビタイムズ一覧を見る', :blogs, class: "btn btn-pink" %>
+</div>
+
+<div class="blog_show-other clearfix">
+<p class="blog_show-other--maintitle">過去のおすすめ記事</p>
+<% @otherblogs.each do |otherblog| %>
+<div class="blog_show-other--inner">
+     <%= link_to blog_path(otherblog) do %>
+     <div class="blog_show-other--image">
+     <%= image_tag otherblog.image.url %>
+     </div>
+     <div class="blog_show-other--content">
+     <p class="blog_show-other--time">
+     <time><%= otherblog.created_at.strftime('%Y年%m月%d日') %></time>
+     </p>
+     <p class="blog_show-other--title">
+     <%= otherblog.title %>
+     </p>
+     </div>
+     </a>
+     <% end %>
+</div>
+<% end %>
+</div>
+<div class="blog_show-other--blogs">
+<%= link_to 'ニクナビタイムズ一覧を見る', :blogs, class: "btn btn-pink" %>
 </div>

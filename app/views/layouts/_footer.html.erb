@@ -3,6 +3,10 @@
   <div class="container">
     <div class="footer-nav">
     <div class="footer-nav--unit">
+    <p>
+    <a>メイン</a>
+    </p>
+    <div>
     <ul>
     <li><%= link_to 'トップ', :root %></li>
     <li><%= link_to 'ニクナビタイムズ', :blogs %></li>
@@ -10,23 +14,23 @@
     <li><%= link_to '店舗登録', :new_shop_registration %></li>
     </ul>
     </div>
+    </div>
     <div class="footer-nav--unit">
     <p>エリア</p>
     <div class="footer-nav--unit-inner">
     <ul>
-    <li><%= link_to area_url(:areacode => 231010012) do %>錦エリア<% end %></li>
-    <li><%= link_to area_url(:areacode => 231020006) do %>大曽根エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231010065) do %>千種区エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231020000) do %>東区エリア<% end %></li>
     <li><%= link_to area_url(:areacode => 231050107) do %>名駅エリア<% end %></li>
     <li><%= link_to area_url(:areacode => 231060004) do %>大須エリア<% end %></li>
-    <li><%= link_to area_url(:areacode => 231060005) do %>金山エリア<% end %></li>
     </ul>
     </div>
     <div class="footer-nav--unit-inner">
     <ul>
+    <li><%= link_to area_url(:areacode => 231060005) do %>金山エリア<% end %></li>
     <li><%= link_to area_url(:areacode => 231060008) do %>栄エリア<% end %></li>
     <li><%= link_to area_url(:areacode => 231060010) do %>新栄エリア<% end %></li>
-    <li><%= link_to area_url(:areacode => 231060014) do %>錦エリア<% end %></li>
-    <li><%= link_to area_url(:areacode => 231060023) do %>丸の内エリア<% end %></li>
+    <li><%= link_to area_url(:areacode => 231060014) do %>伏見エリア<% end %></li>
     </ul>
     </div>
     </div>

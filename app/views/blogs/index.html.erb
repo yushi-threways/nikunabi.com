@@ -1,31 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% breadcrumb :blogs %>
+<small class="blog_show-desc">なごや焼肉情報誌 ニクナビ通信</small>
+<h2 class="blog_show-toptitle">NIKUNABI TIMES!!<h2>
 
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <td class="mypage-shop-menu-img"><%= image_tag blog.image.url %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to '編集', edit_admins_blog_url(blog) %></td>
-        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '削除してもよろしいでしょうか?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_admins_blog_path %>
+<div class="blogs-area clearfix">
+<% @blogs.each do |blog| %>
+<article class="blogs-areas">
+<div class="blogs-areas-image"><%= image_tag blog.image.url %></div>
+<h3 class="blogs-areas-title"><%= blog.title %></h3>
+<p class="blogs-areas-subtitle"><%= blog.subtitle %> <time class="blogs-areas-time"><%= blog.created_at.strftime('%Y年%m月%d日') %></p>
+<p class="blogs-areas-content">
+  <% if blog.content.length > 96 %>
+    <%= truncate(blog.content, length: 96 ) %>
+    <%= link_to '続きをみる', '', class: "read-more-text read-more-#{blog.id}" %>
+    <script>
+      $('.read-more-<%= blog.id %>').on('click', function(e) {
+        e.preventDefault()
+        $(this).parent().html('<%= escape_javascript blog.content %>')
+      })
+    </script>
+  <% else %>
+    <%= blog.content %>
+  <% end %>
+<p>
+</article>
+<% end %>
+</div>

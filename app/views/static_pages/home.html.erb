@@ -61,18 +61,16 @@
   <p class="h5">ニクナビタイムズの投稿はございません。</p>
   <% end %>
   </article>
-  <hr>
 
 <div class="clearfix">
 <div class="col-xs-12 col-md-9">
-
 <div class="home-areas">
 <h3 class="home-part--title">エリアから探す</h3>
 <div class="home-area--inner">
 <% @areas.each do |area| %>
 <div class="btn btn-pink">
 <%= link_to area_url(:areacode => area.areacode) do %>
-<%= area.name %>エリア
+<%= area.name %>
 <% end %>
 </div>
 <% end %>
