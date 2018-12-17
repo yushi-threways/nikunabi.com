@@ -173,7 +173,6 @@
 .home-blog {
   margin: 30 auto 30px;
   position: relative;
-  font-family:'Kaushan Script';
   &_padding {
     padding: 0 !important;
   }
@@ -199,7 +198,6 @@
         text-align: right;
       }
       &--title {
-        font-family:'Kaushan Script';
         font-weight: normal;
         font-size: 2.2rem;
         margin: 0 auto 20px;
@@ -223,13 +221,11 @@
   float: left;
   padding: 0 15px 0 0;
   position: relative;
-  font-family:'Kaushan Script';
   @include media-down() {
     width: 100%;
     float: left;
     max-height: 125px;
     padding: 5px 0;
-    font-family:'Kaushan Script';
     }
   &::after {
     content: '';
@@ -291,12 +287,10 @@
     &--title {
       font-weight: normal;
       font-size: 16px;
-      font-family:'Kaushan Script';
       margin: 0 auto 20px;
         @include media-down() {
         padding: 0 0 5px;
         margin: 0 auto 5px;
-        font-family:'Kaushan Script';
         font-size: 16px;
         position: relative;
           &::after {
@@ -329,7 +323,6 @@
   float: left;
   max-height: 125px;
   padding: 0 0 10px 15px;
-  font-family:'Kaushan Script';
   @include media-down() {
     width: 100%;
     padding: 5px 0;
@@ -367,7 +360,6 @@
     &--title {
       padding: 0 0 15px;
       margin: 0 auto 15px;
-      font-family:'Kaushan Script';
       font-size: 16px;
       position: relative;
       @include media-down() {
@@ -402,7 +394,6 @@
   float: left;
   max-height: 125px;
   padding: 0 0 10px 15px;
-  font-family:'Kaushan Script';
   @include media-down() {
     width: 100%;
     padding: 5px 0;
@@ -440,7 +431,6 @@
     &--title {
       padding: 0 0 15px;
       margin: 0 auto 15px;
-      font-family:'Kaushan Script';
       font-size: 16px;
       position: relative;
       @include media-down() {

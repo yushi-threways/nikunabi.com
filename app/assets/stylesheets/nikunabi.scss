@@ -44,18 +44,6 @@ html {
 .nikunabi-main-bc {
   background-color: $nikunabi_main__color;
 }
-.nikunabi-logo {
-  width: 100%;
-  img {
-    padding: 5px 0 0;
-    max-width: 120px;
-    vertical-align: bottom;
-    @include media-down() {
-        max-width: 90px;
-        padding: 5px 0 5px 20px;
-    }
-  }
-}
 
 .nikunabi_btn {
   display: inline-block;

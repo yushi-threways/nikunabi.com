@@ -3,20 +3,29 @@
   <div class="container">
     <div class="footer-nav">
     <div class="footer-nav--unit">
-    <p>
-    <a>メイン</a>
-    </p>
     <div>
-    <ul>
+    <ul class="list-inline">
     <li><%= link_to 'トップ', :root %></li>
     <li><%= link_to 'ニクナビタイムズ', :blogs %></li>
-    <li><%= link_to '店舗ログイン', :shop_session %></li>
+    <li><%= link_to '利用規約', :documents_agreement %></li>
+    </ul>
+    <ul class="list-inline">
+    <% if !shop_signed_in? %>
+    <li><%= link_to 'マイページ', shops_root_url(current_shop) %></li>
+    <li><%= link_to "ログアウト", destroy_shop_session_path, method: :delete %></li>  
+    <% else %>
     <li><%= link_to '店舗登録', :new_shop_registration %></li>
+    <li><%= link_to '店舗ログイン', :shop_session %></li>
+    <% end %>
     </ul>
     </div>
     </div>
+<%
+=begin    
+%>
     <div class="footer-nav--unit">
-    <p>エリア</p>
+    <p class="nikunai-accordion-area">エリア</p>
+    <div class="nikunai-accordion-menu nikunai-accordion-menu--area">
     <div class="footer-nav--unit-inner">
     <ul>
     <li><%= link_to area_url(:areacode => 231010065) do %>千種区エリア<% end %></li>
@@ -34,8 +43,10 @@
     </ul>
     </div>
     </div>
+    </div>
     <div class="footer-nav--unit">
-    <p>サービス</p>
+    <p class="nikunai-accordion-service">サービス</p>
+    <div class="nikunai-accordion-menu nikunai-accordion-menu--service">
     <div class="footer-nav--unit-inner">
     <ul>
     <li><%= link_to '高級肉', feature_url(:id => 1) %></li>
@@ -54,8 +65,10 @@
     </ul>
     </div>
     </div>
+    </div>
     <div class="footer-nav--unit">
-    <p>こだわり</p>
+    <p class="nikunai-accordion-recommend">こだわり</p>
+    <div class="nikunai-accordion-menu nikunai-accordion-menu--recommend">
     <div class="footer-nav--unit-inner">
     <ul>
     <li><%= link_to 'タン', recommend_url(:id => 1) %></li>
@@ -91,13 +104,19 @@
     </div>
     </div>
     </div>
+
+
+<%
+=end
+%>
+    </div>
     <hr>
     <div class="clearfix">
-    <div class="col-xs-6">
+    <div class="col-xs-4">
     <%= image_tag 'nikunabi_logo.png', :alt => 'フッターロゴ', class: "footer-nikunabi-logo" %>
     </div>
-    <div class="col-xs-6">
-    <small class="copy">Copyright (c) Nikunabi, Inc. All Rights Reserved. 無断転載禁止;</small>
+    <div class="col-xs-8">
+    <small class="copy">Copyright (c) Nikunabi, Inc. All Rights Reserved. 無断転載禁止</small>
     </div>
   </div>
   </div>
