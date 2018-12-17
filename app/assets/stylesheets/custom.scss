@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import 'colors';
+@import 'mixin';
 
 .field {
   padding: 10px 0;
@@ -47,4 +48,10 @@ article {
 .btn-pink:active {
   background: $nikunabi_dark_main__color;
   color: #fff !important;
+}
+
+.sp-only {
+  @include media-up() {
+    display: none;
+  }
 }

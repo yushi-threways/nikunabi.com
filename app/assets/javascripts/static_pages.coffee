@@ -6,6 +6,17 @@ $(document).on 'turbolinks:load', ->
   $(".search-hidden-btn").on "click" , ->
     $(".hidden-form").toggle()
 
-$(document).on 'turbolinks:load', ->
   $(".search-hidden-home-btn").on "click" , ->
     $(".hidden-form-home").toggle()
+  
+  $(".nikunai-accordion-main").on "click" , ->
+    $(".nikunai-accordion-menu--main").toggle()
+
+  $(".nikunai-accordion-area").on "click" , ->
+    $(".nikunai-accordion-menu--area").toggle()
+
+  $(".nikunai-accordion-service").on "click" , ->
+    $(".nikunai-accordion-menu--service").toggle()
+
+  $(".nikunai-accordion-recommend").on "click" , ->
+    $(".nikunai-accordion-menu--recommend").toggle()

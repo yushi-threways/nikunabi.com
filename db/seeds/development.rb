@@ -58,6 +58,87 @@ Feature.create(name: '食べ放題コース')
 Feature.create(name: '飲み放題コース')
 Feature.create(name: '食事コース')
 
+Shop.delete_all
+10.times do |n|
+  name = "ショップ名#{n + 1}"
+  email = "test-#{n+1}@nikunabi.jp"
+  password = "password"
+  tel = Faker::PhoneNumber.cell_phone
+  shop = Shop.create!(
+               name:  name,
+               agreement:  "1",
+               description: "オシャレ空間×王道焼肉",
+               email: email,
+               telNumber: tel,
+               password:              password,
+               password_confirmation: password
+             )
+  shop.skip_confirmation!
+  shop.save!
+end
+
+Address.delete_all
+10.times do |n|
+  zipcode = "460-0022"
+  street = "金山3丁目15-18"
+  city_id = rand(1..10)
+  area_id = rand(1..8)
+  shop_id = "#{n + 1}"
+  station = "栄"
+  address = Address.create!(
+               zipcode: zipcode,
+               street: street,
+               city_id: city_id,
+               area_id: area_id,
+               shop_id: shop_id,
+               station: station
+             )
+  address.save!
+end
+
+Detail.delete_all
+10.times do |n|
+  shop_id = "#{n + 1}"
+  account = "https://www.instagram.com/explore/locations/577535749246800/?hl=ja"
+  party = rand(10..20)
+  detail = Detail.create!(
+               open: "午前10:00~22:00",
+               holiday: "毎週火曜日",
+               access: "金山駅から徒歩3分",
+               parking: "駐車場有り",
+               facility: "無縁ロースター",
+               concept: "高級焼肉",
+               light: "明るい",
+               account: account,
+               party: party,
+               payment: "カード可（VISA、MASTER、JCB、AMEX、Diners）",
+               smoking: "喫煙",
+               image: File.open("./app/assets/images/nikunabi_def.jpg"),
+               shop_id: shop_id
+             )
+  detail.save!
+end
+
+shops = Shop.order(:created_at)
+5.times do |n|
+  shop_id = "#{n + 1}"
+  feature_id = rand(1..7)
+  shops.each { |shop| shop.shop_features.create!(
+    shop_id: shop_id,
+    feature_id: feature_id
+  ) }
+end
+
+5.times do |n|
+  shop_id = "#{n + 1}"
+  recommend_id = rand(1..12)
+  shops.each { |shop| shop.shop_recommends.create!(
+    shop_id: shop_id,
+    recommend_id: recommend_id
+  ) }
+end
+
+
 Admin.delete_all
 admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
