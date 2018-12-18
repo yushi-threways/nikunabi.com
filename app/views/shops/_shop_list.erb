@@ -17,7 +17,7 @@
             <div class="nikunabi_new-open-left nikunabi_new-ope-left-img">
               <div class="nikunabi_new-open-img">
               <% unless shop.details.nil? %>
-                <%= image_tag shop.details.image.url, :size => "150x150" %>
+                <%= image_tag shop.details.image.url(:thumb) %>
               <% else %>
                 <%= image_tag 'nikunabi_def.jpg', :size => "150x150" %>
               <% end %>

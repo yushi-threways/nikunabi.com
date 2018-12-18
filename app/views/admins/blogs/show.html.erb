@@ -3,58 +3,21 @@
 <div class="admin_blog_show-inner">
 <small class="blog_show-desc">なごや焼肉情報誌 ニクナビ通信</small>
 <h2 class="blog_show-toptitle">NIKUNABI TIMES!!<h2>
-<div class="clearfix">
-<div class="col-sm-9">
 <div class="blog_show">
 <h3 class="blog_show-title"><%= @blog.title %></h3>
 <div class="blog_show-unit clearfix">
+<div class="blog_show-unit-image blog_show-unit-left">
+<%= image_tag @blog.image.url %>
+</div>
+
 <div class="blog_show-unit-content blog_show-unit-right">
 <h4 class="blog_show-subtitle"><%= @blog.subtitle %></h4>
 <p><%= @blog.content %>
 </p>
 </div>
-<div class="blog_show-unit-image blog_show-unit-left">
-<%= image_tag @blog.image.url %>
 </div>
 </div>
-<h3 class="blog_show-title"><%= @blog.secondtitle %></h3>
-<div class="blog_show-unit clearfix">
-<div class="blog_show-unit-content blog_show-unit-left">
-<h4 class="blog_show-subtitle"><%= @blog.secondsubtitle %></h4>
-<p>
-<%= @blog.secondcontent %>
-</p>
-</div>
-<div class="blog_show-unit-image blog_show-unit-right">
-<%= image_tag @blog.secondimage.url %>
-</div>
-</div>
-</div>
-<hr>
-<div class="blog_show-fixcontent">
-<div class="blog_show-unit clearfix">
-<div class="blog_show-unit-content blog_show-unit-right">
-<h3>なごやの焼肉情報サイト～ニクナビ～とは？</h3>
-<p>
-国民食のように愛されている焼肉店。しかし、焼肉は最終工程の調理する作業がお客様に投げられています。
-お客様にもっと美味しい“焼肉”を知っていただくために、
-生まれ故郷である“なごや”のさらに狭い地域から焼肉の情報をお届けするのがニクナビです。
-</p>
-</div>
-<div class="blog_show-unit-image blog_show-unit-left">
-<%= image_tag 'blog_show_fix.jpg' %>
-</div>
-</div>
-</div>
-</div>
-<div class="col-sm-3">
-<p>サイドバーが入ります。</p>
 </div>
 </div>
 
-</div>
-</div>
-
-
-<%= link_to 'Edit', edit_admins_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<%= link_to '編集', edit_admins_blog_path(@blog) %> |

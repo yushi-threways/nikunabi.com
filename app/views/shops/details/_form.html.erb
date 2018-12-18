@@ -120,13 +120,16 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :店舗トップ画像 %><br>
-    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    <%= form.label :image, '店舗トップ画像' %>
+    <%= form.file_field :image, title: "ファイルを選択する" %>
+    <p><%= form.check_box :remove_img %>画像を削除する</p>
+    <%= image_tag @detail.image.url(:thumb), class: :preview if @detail.image? %>
   </div>
 
   <div class="box-footer">
     <div class="actions">
-      <%= form.submit class: 'btn btn-primary btn-block' %>
+      <%= form.submit class: 'btn btn-pink btn-block' %>
     </div>
   </div>
 <% end %>
