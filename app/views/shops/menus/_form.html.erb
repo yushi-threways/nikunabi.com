@@ -32,7 +32,11 @@
     <%= f.text_field :name, class: 'form-control unit-price' %>
     </td>
     <td>
-    <%= f.file_field :image, class: 'form-control quantity' %>
+    <%= f.hidden_field :image_cache %>
+    <%= f.label :image, 'メニュー画像' %>
+    <%= f.file_field :image, title: "ファイルを選択する" %>
+    <p><%= f.check_box :remove_img %>画像を削除する</p>
+    <%= image_tag @menu.image.url(:thumb), class: :preview if @menu.image? %>
     </td>
     <td>
       <div class="input-group">
@@ -56,5 +60,5 @@
   </div>
   </tbody>
   </table>
-  <%= f.submit '登録', class: 'btn btn-primary' %>
+  <%= f.submit '登録', class: 'btn btn-pink' %>
   <% end %>

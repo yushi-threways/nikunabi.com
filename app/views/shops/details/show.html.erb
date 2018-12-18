@@ -104,7 +104,7 @@
             <% unless current_shop.details.image.nil? %>
             <tr>
               <th>店舗トップ画像</th>
-              <td class="mypage-shop-detail-img"><%= image_tag @detail.image.url %></td>
+              <td class="mypage-shop-detail-img"><%= image_tag @detail.image.url(:thumb) %></td>
             </tr>
             <% end %>
           </tbody>

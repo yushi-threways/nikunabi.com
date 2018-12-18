@@ -27,33 +27,14 @@
   </div>
 
   <div class="field">
+    <%= form.hidden_field :image_cache %>
     <%= form.label :image, '画像' %>
-    <%= form.file_field :image, class: 'form-control' %>
-  </div>
-
-  <hr>
-
-    <div class="form-group">
-    <%= form.label :secondtitle, 'タイトル' %>
-    <%= form.text_field :secondtitle, class: 'form-control' %>
-  </div>
-  
-    <div class="form-group">
-    <%= form.label :secondsubtitle, 'サブタイトル' %>
-    <%= form.text_field :secondsubtitle, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :secondcontent, 'コンテンツ' %>
-    <%= form.text_area :secondcontent, class: 'form-control', :size => "20x10" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :secondimage, '画像' %>
-    <%= form.file_field :secondimage, class: 'form-control' %>
+    <%= form.file_field :image, title: "ファイルを選択する" %>
+    <p><%= form.check_box :remove_img %>画像を削除する</p>
+    <%= image_tag @blog.image.url(:thumb), class: :preview if @blog.image? %>
   </div>
 
   <div class="actions">
-    <%= form.submit class: 'btn btn-primary btn-block' %>
+    <%= form.submit class: 'btn btn-pink btn-block' %>
   </div>
 <% end %>
