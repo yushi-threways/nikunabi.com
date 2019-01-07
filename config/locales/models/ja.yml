@@ -8,6 +8,7 @@ ja:
       featrue: 特徴
       area: エリア
       city: 市・区
+      shop_event: イベント
     attributes:
       shop:
         id: ID
@@ -41,4 +42,21 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
         name: こだわり商品名
-
+      shop_event:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        title: 見出し
+        content: 内容
+        images: イベント画像
+        published_at: 開始日時
+        closed_at: 終了日時
+        published: 公開状況
+      admin:
+        id: ID
+        created_at: 登録日時
+        updated_at: 更新日時
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認用
+        name: 管理者名

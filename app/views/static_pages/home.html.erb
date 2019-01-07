@@ -62,6 +62,21 @@
   <% end %>
   </article>
 
+<% unless  @shop_events.empty? %>
+<div class="flexslider">
+<ul class="slides">
+<% @shop_events.each do |shop_event| %>
+<li>
+<%= image_tag shop_event.image.url %>
+<p class="flex-caption">
+<%= shop_event.title %>
+</p>
+</li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
 <div class="clearfix">
 <div class="col-xs-12 col-md-9">
 <div class="home-areas">

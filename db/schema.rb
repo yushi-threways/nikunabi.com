@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_064015) do
+ActiveRecord::Schema.define(version: 2018_12_19_100254) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id"
@@ -165,6 +165,20 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
     t.string "name"
   end
 
+  create_table "shop_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.string "title"
+    t.text "content"
+    t.string "image"
+    t.date "closed_at"
+    t.date "published_at"
+    t.boolean "published", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id", "created_at"], name: "index_shop_events_on_shop_id_and_created_at"
+    t.index ["shop_id"], name: "index_shop_events_on_shop_id"
+  end
+
   create_table "shop_features", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id"
     t.bigint "feature_id"
@@ -238,6 +252,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_064015) do
   add_foreign_key "menu_books", "shops"
   add_foreign_key "menus", "shops"
   add_foreign_key "prides", "shops"
+  add_foreign_key "shop_events", "shops"
   add_foreign_key "shop_features", "features"
   add_foreign_key "shop_features", "shops"
   add_foreign_key "shop_recommends", "recommends"

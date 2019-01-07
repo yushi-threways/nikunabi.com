@@ -1,0 +1,66 @@
+<% provide(:title, "店舗イベント情報") %>
+
+<% content_for :page_h1 do %>
+<h1>
+  店舗イベント情報
+  <small>店舗イベント情報</small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+  <li class="active">Here</li>
+</ol>
+<% end %>
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">店舗メニュー情報</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body no-padding">
+          <p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>見出し</th>
+      <th>内容</th>
+      <th>画像</th>
+      <th>開始日時</th>
+      <th>終了日時</th>
+      <th>公開状況</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shop_events.each do |shop_event| %>
+      <tr>
+        <td><%= shop_event.title %></td>
+        <td><%= shop_event.content %></td>
+        <td><%= image_tag shop_event.image.url(:sm_thumb) %></td>
+        <td><%= shop_event.published_at %></td>
+        <td><%= shop_event.closed_at %></td>
+        <td>
+        <% if shop_event.published %>
+        公開中
+        <% else %>
+        未公開
+        <% end %>
+        </td>
+        <td><%= link_to '編集する', edit_shops_shop_event_path(shop_event) %></td>
+        <td><%= link_to '削除する', shops_shop_event_path(shop_event), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規イベント作成する', :new_shops_shop_event %>
+
+    </div>
+          </div>
+      </div>
+    </div>
+  </div>

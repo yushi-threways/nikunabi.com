@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shop Events</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Images</th>
+      <th>Closed at</th>
+      <th>Published</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shop_events.each do |shop_event| %>
+      <tr>
+        <td><%= shop_event.title %></td>
+        <td><%= shop_event.content %></td>
+        <td><%= shop_event.images %></td>
+        <td><%= shop_event.closed_at %></td>
+        <td><%= shop_event.published %></td>
+        <td><%= link_to 'Show', shop_event %></td>
+        <td><%= link_to 'Edit', edit_shop_event_path(shop_event) %></td>
+        <td><%= link_to 'Destroy', shop_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shop Event', new_shop_event_path %>

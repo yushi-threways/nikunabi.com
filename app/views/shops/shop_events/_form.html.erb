@@ -1,0 +1,48 @@
+<%= form_with(model: shop_event, url: ([:shops, shop_event]), local: true) do |form| %>
+
+  <% if shop_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shop_event.errors.count, "error") %> prohibited this shop_event from being saved:</h2>
+
+      <ul>
+      <% shop_event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control'  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control'  %>
+  </div>
+
+   <div class="form-group">
+    <%= form.hidden_field :image_cache %>
+    <%= form.label :image %>
+    <%= form.file_field :image, title: "ファイルを選択する" %>
+    <p><%= form.check_box :remove_image %>画像を削除する</p>
+    <%= image_tag shop_event.image.url(:thumb), class: :preview if shop_event.image? %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_at %>
+    <%= form.date_select :published_at %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :closed_at %>
+    <%= form.date_select :closed_at %>
+  </div>
+
+  <div class="form-group">
+    <div class="actions">
+      <%= form.submit class: 'btn btn-pink btn-block' %>
+    </div>
+  </div>
+<% end %>

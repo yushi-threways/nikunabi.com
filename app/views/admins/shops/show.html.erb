@@ -2,8 +2,8 @@
 
 <% content_for :page_h1 do %>
 <h1>
-  店舗登録情報
-  <small>店舗登録情報</small>
+  <%= @shop.name %>店舗情報
+  <small><%= @shop.name %>情報</small>
 </h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -11,39 +11,38 @@
 </ol>
 <% end %>
 
-  <div class="row">
     <div class="col-md-12">
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">店舗登録情報</h3>
+          <h3 class="box-title"><%= @shop.name %>店舗登録情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
               <table class="table table-striped">
                 <tbody>
                   <tr>
                     <th>id</th>
-                    <td><%= current_shop.id %></td>
+                    <td><%= @shop.id %></td>
                   </tr>
                   <tr>
                     <th>店名</th>
-                    <td><%= current_shop.name %></td>
+                    <td><%= @shop.name %></td>
                   </tr>
                   <tr>
                     <th>店名サブタイトル</th>
-                    <td><%= current_shop.description %></td>
+                    <td><%= @shop.description %></td>
                   </tr>
                   <tr>
                     <th>メールアドレス</th>
-                    <td><%= current_shop.email %></td>
+                    <td><%= @shop.email %></td>
                   </tr>
                   <tr>
                     <th>電話番号</th>
-                    <td><%= current_shop.telNumber %></td>
+                    <td><%= @shop.telNumber %></td>
                   </tr>
               </tbody>
             </table>
               <div class="box-body text-right">
-                <%= link_to edit_shop_registration_path(current_shop) do %>
+                <%= link_to edit_admins_shop_url(@shop) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -60,8 +59,8 @@
           <h3 class="box-title">店舗アクセス情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-         <% unless current_shop.addresses.nil? %>
-          <% current_shop.addresses.each do | address | %>
+         <% unless @shop.addresses.nil? %>
+          <% @shop.addresses.each do | address | %>
               <table class="table table-striped">
                 <tbody>
                   <tr>
@@ -92,7 +91,7 @@
             </table>
             <% end %>
               <div class="box-body text-right">
-                <%= link_to edit_shops_address_url(current_shop.addresses) do %>
+                <%= link_to edit_admins_shop_url(@shop) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -111,14 +110,14 @@
           <h3 class="box-title">店舗こだわり商品</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-          <% unless current_shop.recommends.empty? %>
+          <% unless @shop.recommends.empty? %>
              <ul class="mypages_shop_recommend-list">
-             <% current_shop.recommends.each do |recommend| %>
+             <% @shop.recommends.each do |recommend| %>
                  <li><%= recommend.name %></li>
              <% end %>
              </ul>
              <div class="box-body text-right">
-                <%= link_to edit_shops_recommend_path(current_shop.recommends) do %>
+                <%= link_to edit_admins_shop_url(@shop) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -138,13 +137,13 @@
           <h3 class="box-title">店舗各種情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-          <% unless current_shop.features.empty? %>
+          <% unless @shop.features.empty? %>
              <ul class="mypages_shop_recommend-list">
-             <% current_shop.features.each do |feature| %>
+             <% @shop.features.each do |feature| %>
                  <li><%= feature.name %></li>
              <% end %>
              <div class="box-body text-right">
-                <%= link_to edit_shops_feature_path(current_shop.features) do %>
+                <%= link_to edit_admins_shop_url(@shop) do %>
                     編集する</a>
                 <% end %>
               </div>
@@ -167,109 +166,109 @@
           <h3 class="box-title">店舗詳細情報</h3>
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
-            <% unless current_shop.details.nil? %>
+            <% unless @shop.details.nil? %>
               <table class="table table-striped">
                 <tbody>
-                  <% unless current_shop.details.open.nil? %>
+                  <% unless @shop.details.open.nil? %>
                   <tr>
                     <th>営業時間</th>
-                    <td><%= current_shop.details.open %></td>
+                    <td><%= @shop.details.open %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.holiday.nil? %>
+                  <% unless @shop.details.holiday.nil? %>
                   <tr>
                     <th>定休日</th>
-                    <td><%= current_shop.details.holiday %></td>
+                    <td><%= @shop.details.holiday %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.access.nil? %>
+                  <% unless @shop.details.access.nil? %>
                   <tr>
                     <th>アクセス</th>
-                    <td><%= current_shop.details.access %></td>
+                    <td><%= @shop.details.access %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.parking.nil? %>
+                  <% unless @shop.details.parking.nil? %>
                   <tr>
                     <th>駐車場</th>
-                    <td><%= current_shop.details.parking %></td>
+                    <td><%= @shop.details.parking %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.rooms.nil? %>
+                  <% unless @shop.details.rooms.nil? %>
                   <tr>
                     <th>席</th>
                     <td>
                     <ul class="list-inline">
-                      <% current_shop.details.rooms.each do |room| %>
+                      <% @shop.details.rooms.each do |room| %>
                         <li><%= room.name %></li>
                       <%- end %>
                     </ul>
                     </td>
                   </tr>
                   <% end %>
-                   <% unless current_shop.details.scenes.nil? %>
+                   <% unless @shop.details.scenes.nil? %>
                   <tr>
                     <th>シーン</th>
                     <td>
                     <ul class="list-inline">
-                      <% current_shop.details.scenes.each do |scene| %>
+                      <% @shop.details.scenes.each do |scene| %>
                         <li><%= scene.name %></li>
                       <%- end %>
                     </ul>
                     </td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.concept.nil? %>
+                  <% unless @shop.details.concept.nil? %>
                   <tr>
                     <th>店舗タイプ</th>
-                    <td><%= current_shop.details.concept %></td>
+                    <td><%= @shop.details.concept %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.light.nil? %>
+                  <% unless @shop.details.light.nil? %>
                   <tr>
                     <th>店内の明るさ</th>
-                    <td><%= current_shop.details.light %></td>
+                    <td><%= @shop.details.light %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.facility.nil? %>
+                  <% unless @shop.details.facility.nil? %>
                   <tr>
                     <th>店内設備</th>
-                    <td><%= current_shop.details.facility %></td>
+                    <td><%= @shop.details.facility %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.vibe.nil? %>
+                  <% unless @shop.details.vibe.nil? %>
                   <tr>
                     <th>雰囲気</th>
-                    <td><%= current_shop.details.vibe %></td>
+                    <td><%= @shop.details.vibe %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.party.nil? %>
+                  <% unless @shop.details.party.nil? %>
                   <tr>
                     <th>シーン</th>
-                    <td>宴会可能人数<%= current_shop.details.party %>まで</td>
+                    <td>宴会可能人数<%= @shop.details.party %>まで</td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.smoking.nil? %>
+                  <% unless @shop.details.smoking.nil? %>
                   <tr>
                     <th>禁煙・喫煙</th>
-                    <td><%= current_shop.details.smoking %></td>
+                    <td><%= @shop.details.smoking %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.payment.nil? %>
+                  <% unless @shop.details.payment.nil? %>
                   <tr>
                     <th>お支払い方法</th>
-                    <td><%= current_shop.details.payment %></td>
+                    <td><%= @shop.details.payment %></td>
                   </tr>
                   <% end %>
-                  <% unless current_shop.details.image.nil? %>
+                  <% unless @shop.details.image.nil? %>
                   <tr>
                     <th>店舗トップ画像</th>
-                    <td class="mypage-shop-detail-img"><%= image_tag current_shop.details.image.url(:thumb) %></td>
+                    <td class="mypage-shop-detail-img"><%= image_tag @shop.details.image.url(:thumb) %></td>
                   </tr>
                   <% end %>
               </tbody>
             </table>
               <div class="box-body text-right">
-                <%= link_to edit_shops_detail_url(current_shop.details) do %>
+                <%= link_to edit_admins_shop_url(@shop) do %>
                     編集する</a>
                 <% end %>
               </div>

@@ -21,4 +21,14 @@
 //= require underscore
 //= require gmaps/google
 //= require cropper
+//= require jquery.flexslider-min
+
+$(document).on("turbolinks:load", function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    itemWidth: 375,
+    itemMargin: 5,
+    minItems: 1
+  });
+});
 

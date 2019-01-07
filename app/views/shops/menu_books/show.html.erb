@@ -30,7 +30,7 @@
           <tbody>
             <% current_shop.menu_books.each do |menu_book| %>
               <tr>
-                <td class="mypage-shop-menu-img"><%= image_tag menu_book.images.url %></td>
+                <td class="mypage-shop-menu-img"><%= image_tag menu_book.images.url(:sm_thumb) %></td>
                 <td><%= link_to 'Edit', edit_shops_menu_book_url(menu_book) %></td>
                 <td><%= link_to 'Destroy', shops_menu_book_path, method: :delete, data: { confirm: '本当に削除してもよろしいですか?' } %></td>
               </tr>

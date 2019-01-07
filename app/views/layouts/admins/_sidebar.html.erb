@@ -23,6 +23,44 @@
     <!-- /.search form -->
     <ul class="sidebar-menu">
     <li class="treeview">
+      <a href="#"><i class="fa fa-link"></i> <span>店舗一覧</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to :admins_shops do %>
+          <%= fa_icon 'fa-link', text: ' 店舗一覧' %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to :new_admins_shop do %>
+          <%= fa_icon 'fa-link', text: ' 店舗作成' %>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+     <li class="treeview">
+      <a href="#"><i class="fa fa-link"></i> <span>店舗イベント一覧</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <%= link_to :admins_shop_events do %>
+          <%= fa_icon 'fa-link', text: ' 店舗イベント一覧' %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to :new_admins_shop do %>
+          <%= fa_icon 'fa-link', text: ' 店舗イベント作成' %>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li class="treeview">
       <a href="#"><i class="fa fa-link"></i> <span>お知らせ</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>

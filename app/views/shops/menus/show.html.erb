@@ -38,7 +38,7 @@
               <% current_shop.menus.each do |menu| %>
                 <tr>
                   <td><%= menu.name %></td>
-                  <td class="mypage-shop-menu-img"><%= image_tag menu.image.url %></td>
+                  <td class="mypage-shop-menu-img"><%= image_tag menu.image.url(:sm_thumb) %></td>
                   <td><%= menu.price %></td>
                   <td><%= menu.quantity %></td>
                   <td><%= menu.bake %></td>
