@@ -19,6 +19,8 @@ class Shop < ApplicationRecord
   has_many :recommends, through: :shop_recommends
   has_many :shop_features
   has_many :features, through: :shop_features
+  has_many :shop_events, dependent: :destroy
+
 
   validates_acceptance_of :agreement, allow_nil: false, on: :create
   validates :name, presence: true

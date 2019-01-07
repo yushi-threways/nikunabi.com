@@ -24,7 +24,10 @@ Rails.application.routes.draw do
 
   namespace :admins, shallow: true do
     root 'top#index'
-    resources :shops
+    resources :shops do
+      resources :shop_events
+    end
+    get '/shop_events', to: 'shops#event'
     resources :blogs
     resources :informations
   end
@@ -38,6 +41,7 @@ Rails.application.routes.draw do
     resources :prides
     resources :recommends
     resources :features
+    resources :shop_events
   end
 
   resources :blogs, only: [:index, :show]

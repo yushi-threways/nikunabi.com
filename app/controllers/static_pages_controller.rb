@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     @features = Feature.all
     @areas = Area.all
     @address = Address.all
+    @shop_events = ShopEvent.all
   end
 
   def help

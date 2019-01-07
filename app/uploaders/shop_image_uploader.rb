@@ -29,7 +29,11 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_fit => [800,450]
+  process :resize_to_limit => [800,450]
+
+  version :sm_thumb do
+    process resize_to_fit: [100, 100]
+  end
   
   version :thumb do
     process resize_to_fit: [315, 315]

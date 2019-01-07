@@ -33,7 +33,7 @@
             <% current_shop.prides.each do |pride| %>
               <tr>
                 <td><%= pride.title %></td>
-                <td class="mypage-shop-menu-img"><%= image_tag pride.image.url %></td>
+                <td class="mypage-shop-menu-img"><%= image_tag pride.image.url(:sm_thumb) %></td>
                 <td><%= pride.content %></td>
                 <td><%= link_to '編集', edit_shops_pride_path(pride), class: "btn btn-primary" %></td>
                 <td><%= link_to '削除', shops_pride_url(pride), method: :delete, data: { confirm: '本当に削除してもよろしいでしょうか?' }, class: "btn btn-danger" %></td>

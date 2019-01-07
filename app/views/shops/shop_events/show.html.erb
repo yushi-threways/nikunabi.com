@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>見出し:</strong>
+  <%= @shop_event.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @shop_event.content %>
+</p>
+
+<p>
+  <strong>画像:</strong>
+  <%= image_tag @shop_event.image.url(:sm_thumb) %>
+</p>
+
+<p>
+  <strong>開始日時:</strong>
+  <%= @shop_event.published_at %>
+</p>
+
+<p>
+  <strong>終了日時:</strong>
+  <%= @shop_event.closed_at %>
+</p>
+
+<%= link_to '編集', edit_shops_shop_event_path(@shop_event) %> |
