@@ -6,6 +6,7 @@ class Admins::ShopEventsController < Admins::ApplicationController
   # GET /shop_events.json
   def index
     @shop_events = ShopEvent.all
+    ajax_action unless params[:ajax_handler].blank?
   end
 
   # GET /shop_events/1
@@ -61,6 +62,14 @@ class Admins::ShopEventsController < Admins::ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def ajax_action
+    if params[:ajax_handler] == 'handle_name1'
+      # Ajaxの処理
+      @shop_event.toggle!(published)
+    end
+  end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.

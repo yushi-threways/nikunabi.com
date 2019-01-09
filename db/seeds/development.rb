@@ -140,11 +140,15 @@ end
 
 2.times do |n|
   shop_id = "#{n + 1}"
+  published = rand(0..1)
   shops.each { |shop| shop.shop_events.create!(
     shop_id: shop_id,
     title: "イベントの見出しが入ります。",
     content: "イベントの内容が入ります",
-    image: File.open("./app/assets/images/kome.jpg")
+    image: File.open("./app/assets/images/kome.jpg"),
+    closed_at: "2019-1-25 08:46:09",
+    published_at: "2019-1-2 08:46:09",
+    published: published
   ) }
 end
 
@@ -158,7 +162,7 @@ end
   ) }
 end
 
-5.times do |n|
+3.times do |n|
   shop_id = "#{n + 1}"
   shops.each { |shop| shop.menus.create!(
     shop_id: shop_id,
@@ -178,7 +182,7 @@ admin.save!
 
 
 admins = Admin.order(:created_at)
-7.times do |n|
+4.times do |n|
   admin_id = 1
   title = "RICE is BEAUTIFUL !!!"
   subtitle = "お米と肉のコラボ"
@@ -188,6 +192,6 @@ admins = Admin.order(:created_at)
     title: title,
     subtitle: subtitle,
     content: content,
-    image: File.open("./app/assets/images/kome.jpg")
+    image: File.open("./app/assets/images/meet.jpg")
     )}
 end
