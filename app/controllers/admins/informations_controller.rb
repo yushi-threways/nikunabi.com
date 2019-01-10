@@ -46,10 +46,8 @@ class Admins::InformationsController < Admins::ApplicationController
   # DELETE /information/1.json
   def destroy
     @information.destroy
-    respond_to do |format|
-      format.html { redirect_to @information, notice: '新着情報を削除しました。' }
-      format.json { head :no_content }
-    end
+    flash.notice = 'お知らせを削除しました。'
+    redirect_to :admins_informations
   end
 
   private

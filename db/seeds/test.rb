@@ -156,3 +156,44 @@ admins = Admin.order(:created_at)
     )}
 end
 
+
+
+10.times do |n|
+  zipcode = "460-0022"
+  street = "金山3丁目15-18"
+  city_id = rand(1..10)
+  area_id = rand(1..8)
+  shop_id = "#{n + 1}"
+  station = "金山総合駅"
+  address = Address.create!(
+               zipcode: zipcode,
+               street: street,
+               city_id: city_id,
+               area_id: area_id,
+               shop_id: shop_id,
+               station: station
+             )
+  address.save!
+end
+
+10.times do |n|
+  shop_id = "#{n + 1}"
+  account = "https://www.instagram.com/explore/locations/577535749246800/?hl=ja"
+  party = rand(10..20)
+  detail = Detail.create!(
+               open: "午前10:00~22:00",
+               holiday: "毎週火曜日",
+               access: "金山駅から徒歩3分",
+               parking: "駐車場有り",
+               facility: "無縁ロースター",
+               concept: "高級焼肉",
+               light: "明るい",
+               account: account,
+               party: party,
+               payment: "カード可（VISA、MASTER、JCB、AMEX、Diners）",
+               smoking: "喫煙",
+               image: File.open("./app/assets/images/nikunabi_def.jpg"),
+               shop_id: shop_id
+             )
+  detail.save!
+end
