@@ -1,15 +1,5 @@
 require "csv"
 
-Area.delete_all
-City.delete_all
-Scene.delete_all
-Room.delete_all
-Recommend.delete_all
-Feature.delete_all
-Admin.delete_all
-Blog.delete_all
-
-Area.delete_all
 CSV.foreach('db/areas.csv') do |row|
   record = {
     :areacode        => row[0],
@@ -19,7 +9,6 @@ CSV.foreach('db/areas.csv') do |row|
   Area.create!(record)
 end
 
-City.delete_all
 CSV.foreach('db/cities.csv') do |row|
   record = {
     :citycode        => row[0],
@@ -80,20 +69,5 @@ admins = Admin.order(:created_at)
     subtitle: subtitle,
     content: content,
     image: File.open("./app/assets/images/kome.jpg")
-    )}
-end
-
-admins = Admin.order(:created_at)
-1.times do |n|
-  admin_id = 1
-  title = "お米と焼肉のコラボ"
-  subtitle = "日本の伝統"
-  content = "日本の心、伝統と食を結びつけるものを語ろうと思えば、お米の存在を避けては通れません。日本のお米のおいしさは水にあるといえます。日本は世界の中で一番と言って過言ではないほど、水の綺麗な国であります。清らかな水を使って育てられ、収穫され、炊かれたお米は、日本特有の伝統品となりました。焼肉店においても米の存在は欠かせません。お米が美味しくない焼肉店は流行らないと言われているほど、重要です。お米の良さは栄養バランスにあります。お米は栄養素の中で炭水化物に含まれ、分解されると糖として体内に吸収されます。その為、炭水化物が肥満の原因とよく言われています。しかし、お米には、タンパク質も多く含んでいます。タンパク質は筋肉を作る働きがあり、筋肉が多いほど脂肪を燃焼します。ダイエットにはタンパク質の摂取が欠かせないのです。実はお米は炭水化物の中で、肥満の原因になりにくいものだったのです。"
-  admins.each { |admin| admin.blogs.create!(
-    admin_id: admin_id,
-    title: title,
-    subtitle: subtitle,
-    content: content,
-    image: File.open("./app/assets/images/meet.jpg")
     )}
 end
