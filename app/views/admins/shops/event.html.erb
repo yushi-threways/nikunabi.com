@@ -40,9 +40,9 @@
   <td><%= shop_event.closed_at.strftime('%Y年%m月%d日') %></td>
   <td>
   <% if shop_event.published %>公開中<% else %>未公開<% end %>
-  <%= form_tag({:controller => ShopEventsController, :action => 'index'}, :remote => true, :class => 'form-ajax') do %>
-  <%= hidden_field_tag :ajax_handler, 'handle_name1' %>
-  <%= submit_tag('Start Ajax', :class => 'btn btn-primary btn-sm') %>
+  <%= form_with model: [:admins, shop_event], local: true do |form| %>
+  <%= form.check_box :published, { class:"custom-checkbox" }, "true", "false" %>
+  <%= form.submit("変更") %>
   <% end %>
 
   </td>

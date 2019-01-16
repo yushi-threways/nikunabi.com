@@ -10,7 +10,7 @@
     <li><%= link_to '利用規約', :documents_agreement %></li>
     </ul>
     <ul class="list-inline">
-    <% if !shop_signed_in? %>
+    <% if shop_signed_in? %>
     <li><%= link_to 'マイページ', shops_root_url(current_shop) %></li>
     <li><%= link_to "ログアウト", destroy_shop_session_path, method: :delete %></li>  
     <% else %>

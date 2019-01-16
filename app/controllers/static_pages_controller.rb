@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
     @features = Feature.all
     @areas = Area.all
     @address = Address.all
-    @shop_events = ShopEvent.where(["published_at <= ? and published = ?", Date.today, true]).order(published_at: :ASC).limit(5)
+    @shop_events = ShopEvent.where(["published_at <= ? and closed_at >= ? and published = ?", Date.today, Date.today, true]).order(published_at: :ASC).limit(5)
   end
 
   def help
@@ -22,6 +22,5 @@ class StaticPagesController < ApplicationController
   end
 
   private
-
 
 end

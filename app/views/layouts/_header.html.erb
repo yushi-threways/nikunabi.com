@@ -23,8 +23,6 @@
           <% if shop_signed_in? %>
             <li><%= link_to "マイページ", shops_root_url(current_shop) %></li>
             <li><%= link_to "ログアウト", destroy_shop_session_path, method: :delete %></li>  
-          <% else %>
-            <li><%= link_to '店舗ログイン', :shop_session %></li>
           <% end %>
         </ul>
       </div>
