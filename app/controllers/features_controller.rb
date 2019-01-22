@@ -10,6 +10,7 @@ class FeaturesController < ApplicationController
   # GET /features/1
   # GET /features/1.json
   def show
+    @shops = @feature.shops.includes(:areas, :addresses, :details, :recommends, :features)
   end
 
   # GET /features/new

@@ -17,7 +17,7 @@ crumb :area do |area|
 end
 
 crumb :feature do |feature|
-  link "#{ faeture.name }がある店舗", feature_path(feature)
+  link "#{ feature.name }がある店舗", feature_path(feature)
   parent :root
 end
 
