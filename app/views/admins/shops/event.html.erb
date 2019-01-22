@@ -28,19 +28,26 @@
 </thead>
 <% @shops.each do |shop| %>
 <% unless shop.shop_events.empty? %>
+<% shop.shop_events.each do |shop_event| %>
 <tr>
-<td><%= shop.id %></td>
-<td><%= shop.name %></td>
-  <% shop.shop_events.each do |shop_event| %>
+  <td><%= shop_event.shop.id %></td>
+  <td><%= shop_event.shop.name %></td>
   <td><%= shop_event.title %></td>
   <td><%= shop_event.content %></td>
   <td><%= image_tag shop_event.image.url(:sm_thumb) %></td>
-  <td><%= shop_event.created_at %></td>
-  <td><%= shop_event.published_at %></td>
-  <td><%= shop_event.closed_at %></td>
-  <td><% if shop_event.published %>公開中<% else %>未公開<% end %></td>
+  <td><%= shop_event.created_at.strftime('%Y年%m月%d日') %></td>
+  <td><%= shop_event.published_at.strftime('%Y年%m月%d日') %></td>
+  <td><%= shop_event.closed_at.strftime('%Y年%m月%d日') %></td>
+  <td>
+  <% if shop_event.published %>公開中<% else %>未公開<% end %>
+  <%= form_with model: [:admins, shop_event], local: true do |form| %>
+  <%= form.check_box :published, { class:"custom-checkbox" }, "true", "false" %>
+  <%= form.submit("変更") %>
   <% end %>
+
+  </td>
 </tr>
+<% end %>
 <% end %>
 <% end %>
 </table>

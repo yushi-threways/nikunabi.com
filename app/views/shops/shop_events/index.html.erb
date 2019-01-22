@@ -34,7 +34,7 @@
   </thead>
 
   <tbody>
-    <% @shop_events.each do |shop_event| %>
+    <% current_shop.shop_events.each do |shop_event| %>
       <tr>
         <td><%= shop_event.title %></td>
         <td><%= shop_event.content %></td>

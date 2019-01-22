@@ -1,6 +1,20 @@
 require "csv"
 
+Pride.delete_all
+Detail.delete_all
+Menu.delete_all
+Address.delete_all
 Area.delete_all
+City.delete_all
+Scene.delete_all
+Room.delete_all
+Blog.delete_all
+Admin.delete_all
+ShopFeature.delete_all
+ShopRecommend.delete_all
+ShopEvent.delete_all
+Shop.delete_all
+
 CSV.foreach('db/areas.csv') do |row|
   record = {
     :areacode        => row[0],
@@ -10,7 +24,6 @@ CSV.foreach('db/areas.csv') do |row|
   Area.create!(record)
 end
 
-City.delete_all
 CSV.foreach('db/cities.csv') do |row|
   record = {
     :citycode        => row[0],
@@ -21,7 +34,6 @@ CSV.foreach('db/cities.csv') do |row|
   City.create!(record)
 end
 
-Scene.delete_all
 CSV.foreach('db/detail_scenes.csv') do |row|
   record = {
     :name => row[0]
@@ -30,7 +42,6 @@ CSV.foreach('db/detail_scenes.csv') do |row|
   Scene.create!(record)
 end
 
-Room.delete_all
 CSV.foreach('db/detail_rooms.csv') do |row|
   record = {
     :name => row[0]
@@ -39,7 +50,6 @@ CSV.foreach('db/detail_rooms.csv') do |row|
   Room.create!(record)
 end
 
-Recommend.delete_all
 CSV.foreach('db/recommends.csv') do |row|
   record = {
     :name => row[0]
@@ -58,7 +68,7 @@ Feature.create(name: '食べ放題コース')
 Feature.create(name: '飲み放題コース')
 Feature.create(name: '食事コース')
 
-Shop.delete_all
+
 10.times do |n|
   name = "ショップ名#{n + 1}"
   email = "test-#{n+1}@nikunabi.jp"
@@ -77,7 +87,6 @@ Shop.delete_all
   shop.save!
 end
 
-Address.delete_all
 10.times do |n|
   zipcode = "460-0022"
   street = "金山3丁目15-18"
@@ -96,7 +105,6 @@ Address.delete_all
   address.save!
 end
 
-Detail.delete_all
 10.times do |n|
   shop_id = "#{n + 1}"
   account = "https://www.instagram.com/explore/locations/577535749246800/?hl=ja"
@@ -119,6 +127,8 @@ Detail.delete_all
   detail.save!
 end
 
+
+
 shops = Shop.order(:created_at)
 5.times do |n|
   shop_id = "#{n + 1}"
@@ -138,13 +148,16 @@ end
   ) }
 end
 
-2.times do |n|
+1.times do |n|
   shop_id = "#{n + 1}"
   shops.each { |shop| shop.shop_events.create!(
     shop_id: shop_id,
     title: "イベントの見出しが入ります。",
     content: "イベントの内容が入ります",
-    image: File.open("./app/assets/images/kome.jpg")
+    image: File.open("./app/assets/images/kome.jpg"),
+    closed_at: "2019-1-25 08:46:09",
+    published_at: "2019-1-2 08:46:09",
+    published: false
   ) }
 end
 
@@ -158,7 +171,7 @@ end
   ) }
 end
 
-5.times do |n|
+3.times do |n|
   shop_id = "#{n + 1}"
   shops.each { |shop| shop.menus.create!(
     shop_id: shop_id,
@@ -172,13 +185,11 @@ end
   ) }
 end
 
-Admin.delete_all
 admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
 
-
 admins = Admin.order(:created_at)
-7.times do |n|
+4.times do |n|
   admin_id = 1
   title = "RICE is BEAUTIFUL !!!"
   subtitle = "お米と肉のコラボ"
@@ -188,6 +199,6 @@ admins = Admin.order(:created_at)
     title: title,
     subtitle: subtitle,
     content: content,
-    image: File.open("./app/assets/images/kome.jpg")
+    image: File.open("./app/assets/images/meet.jpg")
     )}
 end

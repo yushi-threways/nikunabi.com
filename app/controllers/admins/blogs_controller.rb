@@ -1,6 +1,6 @@
 class Admins::BlogsController < Admins::ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  layout "admins", only: [:index, :show, :edit, :new]
+  layout "admins"
 
   # GET /blogs
   # GET /blogs.json
@@ -56,10 +56,8 @@ class Admins::BlogsController < Admins::ApplicationController
   # DELETE /blogs/1.json
   def destroy
     @blog.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_blog_url, notice: 'ブログを削除しました。' }
-      format.json { head :no_content }
-    end
+    flash.notice = 'ブログを削除しました。'
+    redirect_to :admins_blogs
   end
 
   private
@@ -67,6 +65,7 @@ class Admins::BlogsController < Admins::ApplicationController
     def set_blog
       @blog = Blog.find(params[:id])
     end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :subtitle, :content, :image, :image_cache, :remove_image)

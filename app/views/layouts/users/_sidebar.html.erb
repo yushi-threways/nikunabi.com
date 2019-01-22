@@ -30,7 +30,7 @@
         </li>
         <li>
       <% if current_shop.addresses %>
-        <%= link_to edit_shops_address_path(current_shop.addresses[0])  do %>
+        <%= link_to edit_shops_address_path(current_shop.addresses)  do %>
         <i class="fa fa-link"></i> <span>アクセス情報編集</span></a>
         <% end %>
       <% else %>

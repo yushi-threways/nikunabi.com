@@ -10,6 +10,7 @@
     <li><%= link_to '利用規約', :documents_agreement %></li>
     </ul>
     <ul class="list-inline">
+
     <% if !shop_signed_in? %>
     <li><%= link_to '店舗登録', :new_shop_registration %></li>
     <li><%= link_to '店舗ログイン', :shop_session %></li>

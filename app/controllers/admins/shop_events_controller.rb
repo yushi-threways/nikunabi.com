@@ -5,7 +5,7 @@ class Admins::ShopEventsController < Admins::ApplicationController
   # GET /shop_events
   # GET /shop_events.json
   def index
-    @shop_events = ShopEvent.all
+    @shop_events = ShopEvent.where(["closed_at >= ?", Date.today]).order(published_at: :ASC)
   end
 
   # GET /shop_events/1
@@ -18,10 +18,7 @@ class Admins::ShopEventsController < Admins::ApplicationController
     @shop_event = ShopEvent.new
   end
 
-  # GET /shop_events/1/edit
-  def edit
-  end
-
+  
   # POST /shop_events
   # POST /shop_events.json
   def create
@@ -29,7 +26,7 @@ class Admins::ShopEventsController < Admins::ApplicationController
 
     respond_to do |format|
       if @shop_event.save
-        format.html { redirect_to [:shops, @shop_event], notice: 'イベントを作成しました。' }
+        format.html { redirect_to :admins_shop_events, notice: 'イベントを作成しました。' }
         format.json { render :show, status: :created, location: @shop_event }
       else
         format.html { render :new }
@@ -41,10 +38,11 @@ class Admins::ShopEventsController < Admins::ApplicationController
   # PATCH/PUT /shop_events/1
   # PATCH/PUT /shop_events/1.json
   def update
+    @shop_event.update_attributes(shop_event_params)
     respond_to do |format|
-      if @shop_event.update(shop_event_params)
-        format.html { redirect_to [:shops, @shop_event], notice: 'イベントを更新しました。' }
-        format.json { render :show, status: :ok, location: @shop_event }
+      if @shop_event.save(validate: false)
+        format.html { redirect_to :admins_shop_events, notice: 'イベントを更新しました。' }
+        format.json { render :show, status: :ok, location: [:admins, @shop_event] }
       else
         format.html { render :edit }
         format.json { render json: @shop_event.errors, status: :unprocessable_entity }
@@ -52,15 +50,29 @@ class Admins::ShopEventsController < Admins::ApplicationController
     end
   end
 
+  def published_edit
+    respond_to do |format|
+      if @shop_event.update_columns(:published)
+        format.html { redirect_to :admins_shop_events, notice: '公開状況を変更しました。' }
+        format.json { render :show, status: :ok, location: [:admins, @shop_event] }
+      else
+        format.html { render :edit }
+        format.json { render json: @shop_event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # DELETE /shop_events/1
   # DELETE /shop_events/1.json
   def destroy
     @shop_event.destroy
     respond_to do |format|
-      format.html { redirect_to shop_events_url, notice: 'イベントを削除しましt。' }
+      format.html { redirect_to [:admins, admins_shop_events_url], notice: 'イベントを削除しましt。' }
       format.json { head :no_content }
     end
   end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.

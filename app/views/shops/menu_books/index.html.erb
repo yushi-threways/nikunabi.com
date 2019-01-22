@@ -31,8 +31,8 @@
             <% current_shop.menu_books.each do |menu_book| %>
               <tr>
                 <td class="mypage-shop-menu-img"><%= image_tag menu_book.images.url(:sm_thumb) %></td>
-                <td><%= link_to 'Edit', edit_menu_book_path(menu_book) %></td>
-                <td><%= link_to 'Destroy', menu_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to '編集', edit_menu_book_path(menu_book) %></td>
+                <td><%= link_to '削除', [:shops, menu_book], method: :delete, data: { confirm: '削除してよろしいですか？' } %></td>
               </tr>
             <% end %>
           </tbody>

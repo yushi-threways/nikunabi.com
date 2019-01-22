@@ -55,12 +55,17 @@ class Shops::MenusController < Shops::ApplicationController
 
   # DELETE /menus/1
   # DELETE /menus/1.json
+  #def destroy
+  #  @menu.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to action: 'show', notice: 'Menu was successfully destroyed.' }
+  #    format.json { head :no_content }
+  #  end
+  #end
   def destroy
     @menu.destroy
-    respond_to do |format|
-      format.html { redirect_to action: 'show', notice: 'Menu was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash.notice = "メニュー(#{ menu.name })を削除しました。"
+    redirect_to :shops_menus
   end
 
 

@@ -22,7 +22,7 @@
         <td class="mypage-shop-menu-img"><%= image_tag blog.image.url(:thumb) %></td>
         <td><%= link_to '確認', admins_blog_url(blog) %></td>
         <td><%= link_to '編集', edit_admins_blog_url(blog) %></td>
-        <td><%= link_to '削除', blog, method: :delete, data: { confirm: '削除してもよろしいでしょうか?' } %></td>
+        <td><%= link_to '削除', [:admins, blog], method: :delete, data: { confirm: '削除してもよろしいでしょうか?' } %></td>
       </tr>
     <% end %>
   </tbody>
