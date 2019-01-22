@@ -1,15 +1,5 @@
 require "csv"
 
-Area.delete_all
-City.delete_all
-Scene.delete_all
-Room.delete_all
-Recommend.delete_all
-Feature.delete_all
-Admin.delete_all
-Blog.delete_all
-
-Area.delete_all
 CSV.foreach('db/areas.csv') do |row|
   record = {
     :areacode        => row[0],
@@ -19,7 +9,6 @@ CSV.foreach('db/areas.csv') do |row|
   Area.create!(record)
 end
 
-City.delete_all
 CSV.foreach('db/cities.csv') do |row|
   record = {
     :citycode        => row[0],
@@ -71,14 +60,14 @@ admin.save!
 admins = Admin.order(:created_at)
 1.times do |n|
   admin_id = 1
-  title = "RICE is BEAUTIFUL !!!"
-  subtitle = "お米と肉のコラボ"
-  content = "日本の心、伝統と食を結びつけるものを語ろうと思えば、お米の存在を避けては通れません。日本のお米は、もっちりと柔らかく噛みしめるとお米本来の旨味を感じられます。日本のお米のおいしさは水にあるといえます。日本は世界の中で一番と言っても過言ではないほど、水の綺麗な国であります。清らかな水を使って育てられ、収穫され、炊かれたお米は、日本特有の伝統品となりました。日本のお米の良さは主張しない主食、何にでも合わせる事の出来るまさにカメレオン的な存在といえるでしょう。焼肉店において米の存在は欠かせません。お米が美味しくない焼肉店は流行らないと言われているほど、重要です。タレに付けられたお肉をさっと炙り、お米と一緒に頂きます。甘辛いタレが輝く真っ白なお米と絶妙にマッチしています。お米の良さは栄養バランスにあります。お米は栄養素の中で炭水化物に含まれ、分解され糖として体内に吸収されます。その為、炭水化物が肥満の原因とされた事がありました。しかし、お米の成分の中には、炭水化物と同等くらいタンパク質も含んでいます。タンパク質は筋肉を作り、筋肉は脂肪燃焼に役立つので、タンパク質の摂取はダイエットに繋がります。実は、炭水化物の中でお米というのはダイエット食となるのです。そして、お肉こそ貴重なタンパク源、焼肉ではお肉を網で焼くことで余分な脂を落とします。野菜も一緒に頂くことで、身体の基盤を作る良い食事が出来るといえます。"
+  title = "焼肉のオススメの焼き方"
+  subtitle = "冷凍肉とチルド肉"
+  content = "焼肉店でお肉を焼く前にそのお肉が冷凍であるかチルド肉（冷凍をかけていないもの）であるかを見極めましょう。冷凍肉の場合は、常温に戻す作業が必要です。焼き方ですが、薄い肉は基本的に何度もひっくり返さない事をオススメします。特に赤身の冷凍肉は要注意。焼いている際、ひっくり返せば返すほど、旨味が逃げていきます。①チルド肉は強火で片面ずつサッと②冷凍肉は中火でゆっくり片面ずつ③冷凍肉で厚切りの場合はすぐに焼かず、まずはそのまま置いておき常温に戻す炭火の場合、火力調整が難しいので、冷凍肉の場合は網の端の方でゆっくり焼くのがポイントです。特に脂の多い肉は炭火での焼き方は難しいです。網の中心部は避け、端すぎないところに置くのが一番かと思います。炭火で焼く際はひっくり返す際に焼く場所をズラしましょう、ススが付きにくくなります。"
   admins.each { |admin| admin.blogs.create!(
     admin_id: admin_id,
     title: title,
     subtitle: subtitle,
     content: content,
-    image: File.open("./app/assets/images/meet.jpg")
+    image: File.open("./app/assets/images/kome.jpg")
     )}
 end
