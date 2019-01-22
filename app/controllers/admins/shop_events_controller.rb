@@ -5,7 +5,7 @@ class Admins::ShopEventsController < Admins::ApplicationController
   # GET /shop_events
   # GET /shop_events.json
   def index
-    @shop_events = ShopEvent.all
+    @shop_events = ShopEvent.where(["closed_at >= ?", Date.today]).order(published_at: :ASC)
   end
 
   # GET /shop_events/1
@@ -38,8 +38,9 @@ class Admins::ShopEventsController < Admins::ApplicationController
   # PATCH/PUT /shop_events/1
   # PATCH/PUT /shop_events/1.json
   def update
+    @shop_event.update_attributes(shop_event_params)
     respond_to do |format|
-      if @shop_event.update(shop_event_params)
+      if @shop_event.save(validate: false)
         format.html { redirect_to :admins_shop_events, notice: 'イベントを更新しました。' }
         format.json { render :show, status: :ok, location: [:admins, @shop_event] }
       else

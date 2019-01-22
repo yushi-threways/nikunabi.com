@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :shops do
       resources :shop_events
     end
+    patch '/shop_events/:id(.:format)', to: 'shop_events#published_edit', as: 'shop_event_published'
     get '/shop_events', to: 'shops#event'
     resources :blogs
     resources :informations
