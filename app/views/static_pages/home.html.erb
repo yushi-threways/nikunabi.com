@@ -32,7 +32,7 @@
 
      <% if @homeblogs.exists? %>  
      <div class="clearfix">
-     <% @homeblogs.each.with_index do |blog, i| %>
+     <% @homeblogs[1..-1].each.with_index do |blog, i| %>
      <div class="home-blog_<%= i %>">
      <div class="home-blog_<%= i %>-inner">
      <%= link_to blog_url(blog) do %>
