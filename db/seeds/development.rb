@@ -141,23 +141,10 @@ end
 
 5.times do |n|
   shop_id = "#{n + 1}"
-  recommend_id = rand(1..12)
+  recommend_id = rand(1..9)
   shops.each { |shop| shop.shop_recommends.create!(
     shop_id: shop_id,
     recommend_id: recommend_id
-  ) }
-end
-
-1.times do |n|
-  shop_id = "#{n + 1}"
-  shops.each { |shop| shop.shop_events.create!(
-    shop_id: shop_id,
-    title: "イベントの見出しが入ります。",
-    content: "イベントの内容が入ります",
-    image: File.open("./app/assets/images/kome.jpg"),
-    closed_at: "2019-1-25 08:46:09",
-    published_at: "2019-1-2 08:46:09",
-    published: false
   ) }
 end
 
@@ -189,7 +176,7 @@ admin = Admin.create!(password: 'password', email: 'test@admin.jp')
 admin.save!
 
 admins = Admin.order(:created_at)
-4.times do |n|
+1.times do |n|
   admin_id = 1
   title = "RICE is BEAUTIFUL !!!"
   subtitle = "お米と肉のコラボ"
