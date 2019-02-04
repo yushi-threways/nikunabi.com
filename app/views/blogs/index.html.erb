@@ -15,11 +15,11 @@
     <script>
       $('.read-more-<%= blog.id %>').on('click', function(e) {
         e.preventDefault()
-        $(this).parent().html('<%= escape_javascript simple_format(@blog.content) %>')
+        $(this).parent().html('<%= escape_javascript @blog.content %>')
       })
     </script>
   <% else %>
-    <%= blog.content %>
+    <%= simple_format(blog.content) %>
   <% end %>
 <p>
 </article>
