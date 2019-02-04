@@ -14,7 +14,7 @@
 </div>
 <div class="blog_show-unit-content blog_show-unit-right">
 <h4 class="blog_show-subtitle"><%= @blog.subtitle %></h4>
-<p><%= @blog.content %>
+<p><%= simple_format(@blog.content) %>
 </p>
 </div>
 </div>
