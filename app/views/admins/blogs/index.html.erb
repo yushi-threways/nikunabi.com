@@ -5,10 +5,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th>タイトル</th>
-      <th>サブタイトル</th>
-      <th>コンテンツ</th>
-      <th>画像</th>
+      <th>トップタイトル</th>
+      <th>トップコンテンツ</th>
+      <th>サムネイル</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,13 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.subtitle %></td>
-        <td><%= blog.content %></td>
-        <td class="mypage-shop-menu-img"><%= image_tag blog.image.url(:thumb) %></td>
+        <td><%= blog.main_title %></td>
+        <td><%= blog.main_content.truncate(20) %></td>
+        <td class="mypage-shop-menu-img">
+        <% if blog.main_image.url %>
+          <%= image_tag blog.main_image.url(:thumb) %>
+        </td>
+        <% end %>
         <td><%= link_to '確認', admins_blog_url(blog) %></td>
         <td><%= link_to '編集', edit_admins_blog_url(blog) %></td>
         <td><%= link_to '削除', [:admins, blog], method: :delete, data: { confirm: '削除してもよろしいでしょうか?' } %></td>

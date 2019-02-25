@@ -1,0 +1,57 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "../variables/*";
+@import "../mixins/*";
+
+.field {
+  padding: 10px 0;
+}
+
+// 共通
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.nikunabi_main_img {
+  img {
+    max-width: 100%;
+  }
+}
+
+.nikunabi_btn_white {
+  a {
+    color: #fff;
+  }
+}
+
+article {
+  margin: 0 auto 50px;
+}
+
+.btn-pink {
+  margin: 0 auto 10px;
+  background: $nikunabi_main__color;
+  color: #fff !important;
+  border: none;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  a {
+    color: #fff !important;
+  }
+}
+.btn-pink:hover, .btn-pink:focus {
+  background: $nikunabi_light_main__color;
+  color: #fff !important;
+}
+.btn-pink:active {
+  background: $nikunabi_dark_main__color;
+  color: #fff !important;
+}
+
+.sp-only {
+  @include media-up() {
+    display: none;
+  }
+}

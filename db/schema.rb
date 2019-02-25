@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_100254) do
+ActiveRecord::Schema.define(version: 2019_02_18_065235) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shop_id"
@@ -48,12 +48,31 @@ ActiveRecord::Schema.define(version: 2018_12_19_100254) do
     t.string "name"
   end
 
+  create_table "blog_pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "blog_id"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_blog_pictures_on_blog_id"
+  end
+
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "admin_id"
-    t.string "title"
-    t.string "subtitle"
-    t.text "content"
-    t.string "image"
+    t.string "main_title"
+    t.string "title_01"
+    t.string "title_02"
+    t.string "title_03"
+    t.string "title_04"
+    t.text "main_content"
+    t.text "content_01"
+    t.text "content_02"
+    t.text "content_03"
+    t.text "content_04"
+    t.string "main_image"
+    t.string "image_01"
+    t.string "image_02"
+    t.string "image_03"
+    t.string "image_04"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id", "created_at"], name: "index_blogs_on_admin_id_and_created_at"
@@ -242,6 +261,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_100254) do
   add_foreign_key "addresses", "areas"
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "shops"
+  add_foreign_key "blog_pictures", "blogs"
   add_foreign_key "blogs", "admins"
   add_foreign_key "detail_rooms", "details"
   add_foreign_key "detail_rooms", "rooms"

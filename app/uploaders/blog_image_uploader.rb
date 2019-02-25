@@ -1,4 +1,4 @@
-class ShopImageUploader < CarrierWave::Uploader::Base
+class BlogImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -22,6 +22,7 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
+  process :resize_to_limit => [800,450]
   # process scale: [200, 300]
   #
   # def scale(width, height)
@@ -29,26 +30,32 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_limit => [800,450]
-  
   version :thumb do
     process resize_to_fit: [315, 315]
   end
 
-  version :sm_thumb, from_version: :thumb do
-    process resize_to_fit: [100, 100]
-  end
-
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg png)
   end
-
+  
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  # ファイル名は日本語が入ってくると嫌なので、下記のようにしてみてもいい。
+  # 日付(20131001.jpgみたいなファイル名)で保存する
+  protected
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
 end

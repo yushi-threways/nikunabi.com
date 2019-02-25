@@ -1,0 +1,84 @@
+
+@import "../variables/*";
+@import "../mixins/*";
+
+
+.recommend-show-detail {
+  margin: 0 auto 30px;
+}
+
+.recommends {
+  &--box {
+    margin: 0 auto 30px;
+  }
+  &--unit {
+    &-img {
+      @include media-down() {
+        margin: 0 auto 10px;
+      }
+      img {
+        max-width: 100%;
+        vertical-align: bottom;
+      }
+    }
+    &-left {
+      width: 40%;
+      float: left;
+      @include media-down() {
+        width: 100%;
+        float: none;
+      }
+    }
+    &-text {
+      padding: 0 0 0 20px;
+      @include media-down() {
+        padding: 0;
+      }
+      table {
+        line-height: 25px;
+        width: 100%;
+        tr {
+          border: 1px solid #b1b1b1;
+          th {
+            border: 1px solid #b1b1b1;
+            padding: 5px;
+            font-weight: normal;
+            font-size: 1.6rem;
+          }
+          .active {
+            background-color: $nikunabi_main__color;
+          }
+          td {
+            border: 1px solid #b1b1b1;
+            padding: 5px;
+            width: 10%;
+            font-size: 1.6rem;
+            text-align: center;
+            i {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    &-right {
+      width: 60%;
+      float: right;
+      @include media-down() {
+        width: 100%;
+        float: none;
+      }
+    }
+    &-name {
+      margin: 0 auto 20px;
+      font-size: 2.2rem;
+      small {
+
+      }
+    }
+    &-point {
+      font-size: 1.6rem;
+      margin: 0 auto 30px;
+    }
+  }
+}

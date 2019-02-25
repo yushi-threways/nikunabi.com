@@ -16,7 +16,7 @@ class Admins::BlogsController < Admins::ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+      @blog = Blog.new
   end
 
   # GET /blogs/1/edit
@@ -68,6 +68,12 @@ class Admins::BlogsController < Admins::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :subtitle, :content, :image, :image_cache, :remove_image)
+      params.require(:blog).permit(
+        :main_title, :main_content, :main_image, :main_image_cache, :remove_main_image, 
+        :title_01, :content_01, :image_01, :image_01_cache, :remove_main_01, 
+        :title_02, :content_02, :image_02, :image_02_cache, :remove_main_02, 
+        :title_03, :content_03, :image_03, :image_03_cache, :remove_main_03, 
+        :title_04, :content_04, :image_04, :image_04_cache, :remove_main_04 
+      )
     end
 end

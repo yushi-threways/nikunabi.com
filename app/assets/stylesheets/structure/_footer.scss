@@ -1,0 +1,40 @@
+@import "../variables/*";
+@import "../mixins/*";
+
+
+.footer {
+  padding: 0 0 30px;
+  &-inner {
+
+  }
+  &-nav {
+    border-top: 1px solid #f4f4f4;
+    padding: 30px 0 0;
+    &--unit {
+      text-align: center;
+      p {
+      }
+      ul {
+        li {
+          font-size: 1.3rem;
+        }
+      }
+      &-inner {
+      }
+    }
+  }
+}
+
+.copy {
+  display: block;
+  text-align: right;
+}
+.footer-nikunabi-logo {
+  max-width: 80px;
+  vertical-align: bottom;
+}
+
+.nikunai-accordion-menu {
+  @include media-down('sm') {
+  }
+}

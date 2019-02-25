@@ -1,4 +1,4 @@
-<%= form_with(model: @blog, url: ([:admins, @blog]), local: true) do |form| %>
+<%= form_with(model: @blog, url: ([:admins, @blog]), local: true, :html => { :multipart => true }) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
@@ -12,27 +12,102 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :title, 'タイトル' %>
-    <%= form.text_field :title, class: 'form-control' %>
+    <%= form.label :main_title, 'トップタイトル' %>
+    <%= form.text_field :main_title, class: 'form-control' %>
   </div>
   
-    <div class="form-group">
-    <%= form.label :subtitle, 'サブタイトル' %>
-    <%= form.text_field :subtitle, class: 'form-control' %>
-  </div>
-
   <div class="form-group">
-    <%= form.label :content, 'コンテンツ' %>
-    <%= form.text_area :content, class: 'form-control', :size => "20x10" %>
+    <%= form.label :main_ontent, 'トップコンテンツ' %>
+    <%= form.text_area :main_content, class: 'form-control', :size => "20x10" %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :image_cache %>
-    <%= form.label :image, '画像' %>
-    <%= form.file_field :image, title: "ファイルを選択する" %>
-    <p><%= form.check_box :remove_img %>画像を削除する</p>
-    <%= image_tag @blog.image.url(:thumb), class: :preview if @blog.image? %>
+    <%= form.hidden_field :main_image_cache %>
+    <%= form.label :main_image, 'サムネイル' %>
+    <%= form.file_field :main_image, title: "ファイルを選択する" %>
+    <p><%= form.check_box :remove_image %> 画像を削除する</p>
+    <%= image_tag @blog.main_image.url(:thumb), class: :preview if @blog.main_image? %>
   </div>
+
+  <p class="h4">コンテンツ１</p>
+  <hr>
+    <div class="form-group">
+      <%= form.label :title_01, 'タイトル' %>
+      <%= form.text_field :title_01, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content_01, 'コンテンツ' %>
+      <%= form.text_area :content_01, class: 'form-control', :size => "20x10" %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :image_01_cache %>
+      <%= form.label :image_01, '画像' %>
+      <%= form.file_field :image_01, title: "ファイルを選択する" %>
+      <p><%= form.check_box :remove_image_01 %>画像を削除する</p>
+      <%= image_tag @blog.image_01.url(:thumb), class: :preview if @blog.image_01? %>
+    </div>
+
+  <p class="h4">コンテンツ２</p>
+  <hr>
+    <div class="form-group">
+      <%= form.label :title_02, 'タイトル' %>
+      <%= form.text_field :title_02, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content_02, 'コンテンツ' %>
+      <%= form.text_area :content_02, class: 'form-control', :size => "20x10" %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :image_02_cache %>
+      <%= form.label :image_02, '画像' %>
+      <%= form.file_field :image_02, title: "ファイルを選択する" %>
+      <p><%= form.check_box :remove_image_02 %>画像を削除する</p>
+      <%= image_tag @blog.image_02.url(:thumb), class: :preview if @blog.image_02? %>
+    </div>
+
+  <p class="h4">コンテンツ３</p>
+  <hr>
+    <div class="form-group">
+      <%= form.label :title_03, 'タイトル' %>
+      <%= form.text_field :title_03, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content_03, 'コンテンツ' %>
+      <%= form.text_area :content_03, class: 'form-control', :size => "20x10" %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :image_03_cache %>
+      <%= form.label :image_03, '画像' %>
+      <%= form.file_field :image_03, title: "ファイルを選択する" %>
+      <p><%= form.check_box :remove_image_03 %>画像を削除する</p>
+      <%= image_tag @blog.image_03.url(:thumb), class: :preview if @blog.image_03? %>
+    </div>
+
+  <p class="h4">コンテンツ４</p>
+  <hr>
+    <div class="form-group">
+      <%= form.label :title_04, 'タイトル' %>
+      <%= form.text_field :title_04, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content_04, 'コンテンツ' %>
+      <%= form.text_area :content_04, class: 'form-control', :size => "20x10" %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :image_04_cache %>
+      <%= form.label :image_04, '画像' %>
+      <%= form.file_field :image_04, title: "ファイルを選択する" %>
+      <p><%= form.check_box :remove_image_04 %>画像を削除する</p>
+      <%= image_tag @blog.image_04.url(:thumb), class: :preview if @blog.image_04? %>
+    </div>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-pink btn-block' %>

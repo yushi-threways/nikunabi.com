@@ -5,17 +5,17 @@
      <div class="home-blog_top">
      <%= link_to blog_url(@firstblog) do %>
      <div class="home-blog_top--image">
-     <%= image_tag @firstblog.image.url %>
+     <%= image_tag @firstblog.main_image.url %>
      </div>
      <div class="home-blog_top-content">
      <p class="home-blog_top-content--time">
      <%= @firstblog.created_at.strftime("%Y.%m.%d(#{%w(日 月 火 水 木 金 土)[@firstblog.created_at.wday]})") %>
      </p>
      <p class="home-blog_top-content--title">
-     <%= @firstblog.title %>
+     <%= @firstblog.main_title %>
      </p>
      <p class="home-blog_top-content--content">
-     <%= @firstblog.content %>
+     <%= @firstblog.main_content %>
      </p>
      </div>
      </a><% end %>
@@ -37,17 +37,17 @@
      <div class="home-blog_<%= i %>-inner">
      <%= link_to blog_url(blog) do %>
      <div class="home-blog_<%= i %>--image">
-     <%= image_tag blog.image.url %>
+     <%= image_tag blog.main_image.url %>
      </div>
      <div class="home-blog_<%= i %>-content">
      <p class="home-blog_<%= i %>-content--time">
      <%= blog.created_at.strftime("%Y.%m.%d(#{%w(日 月 火 水 木 金 土)[blog.created_at.wday]})") %>
      </p>
      <p class="home-blog_<%= i %>-content--title">
-     <%= blog.title %>
+     <%= blog.main_title %>
      </p>
      <p class="home-blog_<%= i %>-content--content">
-     <%= blog.content %>
+     <%= blog.main_content %>
      </p>
      </div>
      </a><% end %>
