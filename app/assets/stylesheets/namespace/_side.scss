@@ -1,0 +1,34 @@
+
+@import "../variables/*";
+@import "../mixins/*";
+
+
+.nikunabi-side {
+  margin: 0 auto 30px;
+  h4  {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  hr {
+    color: #eeece4;
+    margin: 10px 0;
+  }
+}
+
+.side_news {
+  border: 1px solid #eeece4;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.home-information {
+  &--inner {
+    time {
+
+    }
+    p {
+      margin: 5px auto;
+      font-size: 1.2rem;
+    }
+  }
+}

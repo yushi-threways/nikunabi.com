@@ -32,7 +32,7 @@ crumb :blogs do
 end
 
 crumb :show_blog do |blog|
-  link blog.title, blog_path(blog)
+  link blog.main_title, blog_path(blog)
   parent :blogs
 end
 

@@ -10,18 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//=require jquery
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require bootstrap-sprockets
 //= require adminlte
 //= require cocoon
 //= require underscore
 //= require gmaps/google
-//= require cropper
 //= require jquery.flexslider-min
+//= require jquery-fileupload
+//= require_tree .
 
 $(document).on("turbolinks:load", function() {
   $('.flexslider').flexslider({

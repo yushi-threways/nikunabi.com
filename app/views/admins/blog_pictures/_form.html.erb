@@ -1,0 +1,24 @@
+<%= form_with(model: @blog_picture, url: ([:admins, @blog_picture]), local: true) do |form| %>
+  <% if @blog_picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog_picture.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% blog_picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :image_cache %>
+    <%= form.label :images, '画像' %>
+    <%= form.file_field :images, :multiple => true, title: "ファイルを選択する" %>
+    <p><%= form.check_box :remove_img %>画像を削除する</p>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-pink btn-block' %>
+  </div>
+<% end %>

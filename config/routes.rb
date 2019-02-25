@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/shop_events', to: 'shops#event'
     resources :blogs
     resources :informations
+    resources :blog_pictures
   end
 
   namespace :shops, shallow: true do

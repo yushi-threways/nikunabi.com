@@ -1,0 +1,47 @@
+
+@import "../../variables/*";
+@import "../../mixins/*";
+
+.nikunabi-navbar {
+  margin: 0;
+  border: none;
+  min-height: 30px; 
+  &-header {
+
+    .navbar-toggle {
+      padding: 10px 0 0;
+      .icon-bar {
+        background-color: $nikunabi_main__color;
+      }
+    }
+  }
+}
+
+.nikunabi-main-navbar {
+  .navbar-header {
+    @include media-down(){
+      display: none;
+    }
+  }
+}
+
+.nikunabi-logo {
+  width: 100%;
+  img {
+    padding: 5px 0 0;
+    max-width: 120px;
+    vertical-align: bottom;
+    @include media-down() {
+        max-width: 70px;
+        padding: 0;
+    }
+  }
+}
+
+.nikunabi_title {
+  .nikunabi-logo {
+    @include media-up() {
+      display: none;
+    }
+  }
+}

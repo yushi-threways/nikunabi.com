@@ -1,62 +1,43 @@
 <% breadcrumb :show_blog, @blog %>
 <p id="notice"><%= notice %></p>
-<div class="col-sm-8 col-md-8 col-xs-12">
-<div class="static_blog_show">
-<div class="static_blog_show-inner">
-<small class="blog_show-desc">なごや焼肉情報誌 ニクナビ通信</small>
-<h2 class="blog_show-toptitle">NIKUNABI TIMES!!<h2>
-<div class="clearfix">
-<div class="blog_show">
-<h3 class="blog_show-title"><%= @blog.title %></h3>
-<div class="blog_show-unit clearfix">
-<div class="blog_show-unit-image blog_show-unit-left">
-<%= image_tag @blog.image.url %>
-</div>
-<div class="blog_show-unit-content blog_show-unit-right">
-<h4 class="blog_show-subtitle"><%= @blog.subtitle %></h4>
-<p><%= simple_format(@blog.content) %>
-</p>
-</div>
-</div>
-</div>
-<p class="blog_show-created"><%= @blog.created_at.strftime('%Y/%m/%d(%a)') %></p>
-
-<%
-=begin
-%>
-<div class="blog_show-fixcontent">
-<div class="blog_show-unit clearfix">
-<div class="blog_show-unit-content blog_show-unit-right">
-<h3>なごやの焼肉情報サイト～ニクナビ～とは？</h3>
-<p>
-国民食のように愛されている焼肉店。しかし、焼肉は最終工程の調理する作業がお客様に投げられています。
-お客様にもっと美味しい“焼肉”を知っていただくために、
-生まれ故郷である“なごや”のさらに狭い地域から焼肉の情報をお届けするのがニクナビです。
-</p>
-</div>
-<div class="blog_show-unit-image blog_show-unit-left">
-<%= image_tag 'blog_show_fix.jpg' %>
-</div>
-</div>
-</div>
-
-<div class="col-sm-3">
-<% if Blog.exists?(:id => @blog.id) %>
-<%= render :partial => 'show_blogs_sidebar' %>
-<% else %>
-<p>過去のニュースはございません。</p>
-<% end %>
-</div>
-<%
-=end
-%>
-</div>
-</div>
-</div>
-<div class="blog_show-other--blogs">
-<%= link_to 'ニクナビタイムズ一覧を見る', :blogs, class: "btn btn-pink" %>
-</div>
-</div>
+  <div class="col-sm-8 col-md-8 col-xs-12">
+  <article class="show-Blog">
+    <div class="show-Blog_Img"><%= image_tag @blog.main_image.url %></div>
+    <h1 class="show-Blog_Title"><%= @blog.main_title %></h1>
+    <p class="show-Blog_Time"><time><%= @blog.updated_at.strftime("%Y/%m/%d 更新") %></time></p>
+    <p class="show-Blog_Content"><%= simple_format(@blog.main_content) %></p>
+    <div class="show-Blog_TableContents">
+    <p>目次</p>
+      <ul>
+      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_01, blog_path(@blog, anchor: :content_01) %></li>
+      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_02, blog_path(@blog, anchor: :content_02) %></li>
+      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_03, blog_path(@blog, anchor: :content_03) %></li>
+      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_04, blog_path(@blog, anchor: :content_04) %></li>
+      </ul>
+    </div>
+    
+    <section id="cotent_01" class="show-Blog_Content01 show-Blog_Content">
+      <div class="show-Blog_Content-img"><%= image_tag @blog.image_01.url %></div>
+      <h2 class="show-Blog_Content-title"><%= @blog.title_01 %></h2>
+      <p class="show-Blog_Content-content"><%= @blog.content_01 %></p>
+    </section>
+    <section id="cotent_02" class="show-Blog_Content02 show-Blog_Content">
+      <div class="show-Blog_Content-img"><%= image_tag @blog.image_02.url %></div>
+      <h2 class="show-Blog_Content-title"><%= @blog.title_02 %></h2>
+      <p class="show-Blog_Content-content"><%= @blog.content_02 %></p>
+    </section>
+    <section id="cotent_03" class="show-Blog_Content03 show-Blog_Content">
+      <div class="show-Blog_Content-img"><%= image_tag @blog.image_03.url %></div>
+      <h2 class="show-Blog_Content-title"><%= @blog.title_03 %></h2>
+      <p class="show-Blog_Content-content"><%= @blog.content_03 %></p>
+    </section>
+    <section id="cotent_04" class="show-Blog_Content04 show-Blog_Content">
+      <div class="show-Blog_Content-img"><%= image_tag @blog.image_04.url %></div>
+      <h2 class="show-Blog_Content-title"><%= @blog.title_04 %></h2>
+      <p class="show-Blog_Content-content"><%= @blog.content_04 %></p>
+    </section>
+    </article>
+  </div>
 
 <div class="col-sm-4 col-md-4 col-xs-12">
 <div class="blog_show-other clearfix">
@@ -65,14 +46,14 @@
 <div class="blog_show-other--inner">
      <%= link_to blog_path(otherblog) do %>
      <div class="blog_show-other--image">
-     <%= image_tag otherblog.image.url %>
+     <%= image_tag otherblog.main_image.url %>
      </div>
      <div class="blog_show-other--content">
      <p class="blog_show-other--time">
      <time><%= otherblog.created_at.strftime('%Y年%m月%d日') %></time>
      </p>
      <p class="blog_show-other--title">
-     <%= otherblog.title %>
+     <%= otherblog.main_title %>
      </p>
      </div>
      </a>

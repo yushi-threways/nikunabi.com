@@ -5,23 +5,13 @@
 <div class="blogs-area clearfix">
 <% @blogs.each do |blog| %>
 <article class="blogs-areas">
-<div class="blogs-areas-image"><%= image_tag blog.image.url %></div>
-<h3 class="blogs-areas-title"><%= blog.title %></h3>
-<p class="blogs-areas-subtitle"><%= blog.subtitle %> <time class="blogs-areas-time"><%= blog.created_at.strftime('%Y年%m月%d日') %></p>
+<div class="blogs-areas-image"><%= image_tag blog.main_image.url %></div>
+<h3 class="blogs-areas-title"><%= blog.main_title %></h3>
+<p class="blogs-areas-subtitle"><time class="blogs-areas-time"><%= blog.created_at.strftime('%Y年%m月%d日') %></p>
 <p class="blogs-areas-content">
-  <% if blog.content.length > 96 %>
-    <%= truncate(blog.content, length: 96 ) %>
-    <%= link_to '続きをみる', '', class: "read-more-text read-more-#{blog.id}" %>
-    <script>
-      $('.read-more-<%= blog.id %>').on('click', function(e) {
-        e.preventDefault()
-        $(this).parent().html('<%= escape_javascript @blog.content %>')
-      })
-    </script>
-  <% else %>
-    <%= simple_format(blog.content) %>
-  <% end %>
-<p>
+    <%= truncate(blog.main_content, length: 96 ) %>
+    <%= link_to '続きをみる', blog_path(blog), class: "read-more-text read-more-#{blog.id}" %>
+<p/>
 </article>
 <% end %>
 </div>
