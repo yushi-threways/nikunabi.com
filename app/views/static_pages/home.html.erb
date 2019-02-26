@@ -109,20 +109,7 @@
 
 </div>
 
-<%
-=begin
-%>
-<div class="new_top_list">
-    <h3 class="home-part--title">ニクナビPR店舗</h3>
-    <ul>
-      <%= render :partial => "static_pages/shop_list", locals: { shop: @newShop } %>
-    </ul>
-</div>
-
-<%
-=end
-%>
-
+<% if Information.exists? %>
 <div class="col-xs-12 col-md-3">
   <div class="side_news nikunabi-side">
     <h4>お知らせ</h4>
@@ -133,8 +120,10 @@
   </div>
 </div>
 </div>
+<% end %>
 
-
+<%
+=begin %>
 <div class="home-feature">
 <h3 class="home-part--title">サービスで探す</h3>
 <ul class="list-inline home-feature">
@@ -149,9 +138,11 @@
   <li><%= link_to '食事コース', feature_url(:id => 9) %></li>
 </ul>
 </div>
+<% 
+=end %>
+
 
 <div class="home-serch-form">
-<h3 class="home-part--title">もっと詳しく検索する</h3>
  <button class="search-hidden-home-btn" type="button" class="hidden-bin">検索フォームを表示する</button> 
   <div class="hidden-form-home" style="display: none">
   <%= render :partial => "search/search_form" %>
