@@ -19,22 +19,22 @@
     <section id="cotent_01" class="show-Blog_Content01 show-Blog_Content">
       <div class="show-Blog_Content-img"><%= image_tag @blog.image_01.url %></div>
       <h2 class="show-Blog_Content-title"><%= @blog.title_01 %></h2>
-      <p class="show-Blog_Content-content"><%= @blog.content_01 %></p>
+      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_01) %></p>
     </section>
     <section id="cotent_02" class="show-Blog_Content02 show-Blog_Content">
       <div class="show-Blog_Content-img"><%= image_tag @blog.image_02.url %></div>
       <h2 class="show-Blog_Content-title"><%= @blog.title_02 %></h2>
-      <p class="show-Blog_Content-content"><%= @blog.content_02 %></p>
+      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_02) %></p>
     </section>
     <section id="cotent_03" class="show-Blog_Content03 show-Blog_Content">
       <div class="show-Blog_Content-img"><%= image_tag @blog.image_03.url %></div>
       <h2 class="show-Blog_Content-title"><%= @blog.title_03 %></h2>
-      <p class="show-Blog_Content-content"><%= @blog.content_03 %></p>
+      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_03) %></p>
     </section>
     <section id="cotent_04" class="show-Blog_Content04 show-Blog_Content">
       <div class="show-Blog_Content-img"><%= image_tag @blog.image_04.url %></div>
       <h2 class="show-Blog_Content-title"><%= @blog.title_04 %></h2>
-      <p class="show-Blog_Content-content"><%= @blog.content_04 %></p>
+      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_04) %></p>
     </section>
     </article>
   </div>
