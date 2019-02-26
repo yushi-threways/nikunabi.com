@@ -165,11 +165,15 @@
   }
   &-title {
     font-weight: bold;
+      @include media-down('sm') {
+        font-size: 1.8rem;
+    }
   }
   &-subtitle {
     font-weight: bold;
   }
   &-content {
+
   }
   &-time {
     font-weight: normal;
@@ -267,7 +271,10 @@
     }
   }
   &_Content {
-    
+    font-size: 1.4rem;
+    @include media-down() {
+      font-size: 1.3rem;
+    }
   }
   &_Time {
     color: #888;
@@ -276,7 +283,7 @@
   &_TableContents {
     border: 1px solid #CCC;
     padding: 10px 15px;
-    margin: 20px auto 0;
+    margin: 20px auto;
     p {
       font-size: 1.6rem;
       margin: 0 auto 10px;
@@ -322,6 +329,9 @@
     }
   }
   &-content {
-
+    font-size: 1.4rem;
+    @include media-down() {
+      font-size: 1.3rem;
+    }
   }
 }
