@@ -36,6 +36,14 @@ crumb :show_blog do |blog|
   parent :blogs
 end
 
+crumb :shop_registrations do
+  link "店舗登録", new_shop_registration_path
+end
+
+crumb :shop_session do
+  link "店舗ログイン", new_shop_session_path
+end
+
 # crumb :issue do |issue|
 #   link issue.title, issue_path(issue)
 #   parent :project_issues, issue.project

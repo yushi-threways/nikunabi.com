@@ -27,19 +27,6 @@
 </div>
 
 <div class="nikunabi_check_box">
-<p>サービス検索</p>
-<ul class="label_list">
-<%= form.collection_check_boxes(:features_id_in, Feature.all, :id, :name, include_hidden: false) do |r| %>
-<li class="label_list_item">
-  <%= r.label(class: "nikunabi_check_box--label") do %>
-      <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
-    <% end %>
-</li>
-<% end %>
-</ul>
-</div>
-
-<div class="nikunabi_check_box">
 <p>シーン検索</p>
 <ul class="label_list">
 <%= form.collection_check_boxes(:details_scenes_id_in, Scene.all, :id, :name, include_hidden: false) do |r| %>
@@ -52,6 +39,24 @@
 </ul>
 </div>
 
+<%
+=begin
+%>
+<div class="nikunabi_check_box">
+<p>サービス検索</p>
+<ul class="label_list">
+<%= form.collection_check_boxes(:features_id_in, Feature.all, :id, :name, include_hidden: false) do |r| %>
+<li class="label_list_item">
+  <%= r.label(class: "nikunabi_check_box--label") do %>
+      <%= r.check_box(autocomplete: "off") %> <span><%= r.object.name %></span>
+    <% end %>
+</li>
+<% end %>
+</ul>
+</div>
+<%
+=end
+%>
 
   <div class="form-group">
   <div class="actions">

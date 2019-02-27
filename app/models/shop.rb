@@ -17,8 +17,8 @@ class Shop < ApplicationRecord
   accepts_nested_attributes_for :prides, allow_destroy: true
   has_many :shop_recommends, dependent: :destroy
   has_many :recommends, through: :shop_recommends, dependent: :destroy
-  has_many :shop_features, dependent: :destroy
-  has_many :features, through: :shop_features, dependent: :destroy
+  # has_many :shop_features, dependent: :destroy
+  # has_many :features, through: :shop_features, dependent: :destroy
   has_many :shop_events, dependent: :destroy
 
 
