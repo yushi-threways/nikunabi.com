@@ -1,6 +1,6 @@
 <% breadcrumb :show_blog, @blog %>
 <p id="notice"><%= notice %></p>
-  <div class="col-sm-8 col-md-8 col-xs-12">
+  <div class="col-sm-9 col-md-9 col-xs-12">
   <article class="show-Blog">
     <div class="show-Blog_Img"><%= image_tag @blog.main_image.url %></div>
     <h1 class="show-Blog_Title"><%= @blog.main_title %></h1>
@@ -9,37 +9,72 @@
     <div class="show-Blog_TableContents">
     <p>目次</p>
       <ul>
-      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_01, blog_path(@blog, anchor: :content_01) %></li>
-      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_02, blog_path(@blog, anchor: :content_02) %></li>
+      <% unless @blog.title_01.empty? %>
+        <li class="show-Blog_TableContents-item"><%= link_to @blog.title_01, blog_path(@blog, anchor: :content_01) %></li>
+      <% end %>
+      <% unless @blog.title_02.empty? %>
+      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_02, blog_path(@blog, anchor: :content_02) %></li>    
+      <% end %>
+      <% unless @blog.title_03.empty? %>
       <li class="show-Blog_TableContents-item"><%= link_to @blog.title_03, blog_path(@blog, anchor: :content_03) %></li>
-      <li class="show-Blog_TableContents-item"><%= link_to @blog.title_04, blog_path(@blog, anchor: :content_04) %></li>
+      <% end %>
+      <% unless @blog.title_04.empty? %>
+        <li class="show-Blog_TableContents-item"><%= link_to @blog.title_04, blog_path(@blog, anchor: :content_04) %></li>
+      <% end %>
       </ul>
     </div>
-    
-    <section id="cotent_01" class="show-Blog_Content01 show-Blog_Content">
-      <div class="show-Blog_Content-img"><%= image_tag @blog.image_01.url %></div>
-      <h2 class="show-Blog_Content-title"><%= @blog.title_01 %></h2>
-      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_01) %></p>
+      <section id="content_01" class="show-Blog_Content01 show-Blog_Content">
+        <div class="show-Blog_Content-img"><%= image_tag @blog.image_01.url %></div>
+        <h2 class="show-Blog_Content-title"><%= @blog.title_01 %></h2>
+        <p class="show-Blog_Content-content"><%= simple_format(@blog.content_01) %></p>
+      </section>
+
+    <% unless @blog.title_02.empty? &&	@blog.image_02.file.nil? && @blog.content_02.empty? %>
+    <section id="content_02" class="show-Blog_Content02 show-Blog_Content">
+       <% unless @blog.image_02.file.nil? %>
+        <div class="show-Blog_Content-img"><%= image_tag @blog.image_02.url %></div>
+        <% end %>
+        <% unless @blog.title_02.empty? %>
+        <h2 class="show-Blog_Content-title"><%= @blog.title_02 %></h2>
+        <% end %>
+        <% unless @blog.content_02.empty? %>
+        <p class="show-Blog_Content-content"><%= simple_format(@blog.content_02) %></p>
+        <% end %>
     </section>
-    <section id="cotent_02" class="show-Blog_Content02 show-Blog_Content">
-      <div class="show-Blog_Content-img"><%= image_tag @blog.image_02.url %></div>
-      <h2 class="show-Blog_Content-title"><%= @blog.title_02 %></h2>
-      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_02) %></p>
+    <% end %>
+
+    <% unless @blog.title_03.empty? &&	@blog.image_03.file.nil? && @blog.content_03.empty? %>
+    <section id="content_03" class="show-Blog_Content03 show-Blog_Content">
+        <% unless @blog.image_03.file.nil? %>
+        <div class="show-Blog_Content-img"><%= image_tag @blog.image_03.url %></div>
+        <% end %>
+        <% unless @blog.title_03.empty? %>
+        <h2 class="show-Blog_Content-title"><%= @blog.title_03 %></h2>
+        <% end %>
+        <% unless @blog.content_03.empty? %>
+        <p class="show-Blog_Content-content"><%= simple_format(@blog.content_03) %></p>
+        <% end %>
     </section>
-    <section id="cotent_03" class="show-Blog_Content03 show-Blog_Content">
-      <div class="show-Blog_Content-img"><%= image_tag @blog.image_03.url %></div>
-      <h2 class="show-Blog_Content-title"><%= @blog.title_03 %></h2>
-      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_03) %></p>
+    <% end %>
+
+    <% unless @blog.title_04.empty? &&	@blog.image_04.file.nil? && @blog.content_04.empty? %>
+    <section id="content_04" class="show-Blog_Content04 show-Blog_Content">
+        <% unless @blog.image_04.file.nil? %>
+        <div class="show-Blog_Content-img"><%= image_tag @blog.image_04.url %></div>
+        <% end %>
+        <% unless @blog.title_04.empty? %>
+        <h2 class="show-Blog_Content-title"><%= @blog.title_04 %></h2>
+        <% end %>
+        <% unless @blog.content_04.empty? %>
+        <p class="show-Blog_Content-content"><%= simple_format(@blog.content_04) %></p>
+        <% end %>
     </section>
-    <section id="cotent_04" class="show-Blog_Content04 show-Blog_Content">
-      <div class="show-Blog_Content-img"><%= image_tag @blog.image_04.url %></div>
-      <h2 class="show-Blog_Content-title"><%= @blog.title_04 %></h2>
-      <p class="show-Blog_Content-content"><%= simple_format(@blog.content_04) %></p>
-    </section>
+    <% end %>
+
     </article>
   </div>
 
-<div class="col-sm-4 col-md-4 col-xs-12">
+<div class="col-sm-3 col-md-3 col-xs-12">
 <div class="blog_show-other clearfix">
 <p class="blog_show-other--maintitle">過去のおすすめ記事</p>
 <% @otherblogs.each do |otherblog| %>
